@@ -1,7 +1,7 @@
 ---
 title: "Welcome to Blog"
 date: 2020-12-13T16:03:25-05:00
-draft: true
+draft: false
 author: Mike Quigley
 tags: ["autobio", "tech", "art"]
 ---
