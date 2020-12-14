@@ -5,6 +5,34 @@
     <link>https://quig.info/blog/tags/</link>
     <description>Recent content in Tags on Mike Quigley</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language><atom:link href="https://quig.info/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-US</language>
+    <lastBuildDate>Sun, 13 Dec 2020 16:03:25 -0500</lastBuildDate><atom:link href="https://quig.info/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>art</title>
+      <link>https://quig.info/blog/tags/art/</link>
+      <pubDate>Sun, 13 Dec 2020 16:03:25 -0500</pubDate>
+      
+      <guid>https://quig.info/blog/tags/art/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>autobio</title>
+      <link>https://quig.info/blog/tags/autobio/</link>
+      <pubDate>Sun, 13 Dec 2020 16:03:25 -0500</pubDate>
+      
+      <guid>https://quig.info/blog/tags/autobio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tech</title>
+      <link>https://quig.info/blog/tags/tech/</link>
+      <pubDate>Sun, 13 Dec 2020 16:03:25 -0500</pubDate>
+      
+      <guid>https://quig.info/blog/tags/tech/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
