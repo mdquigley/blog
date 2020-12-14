@@ -1,4 +1,4 @@
-baseURL = "https://mdquigley.github.io/blog"
+baseURL = "https://quig.info/blog"
 title = "Mike Quigley"
 theme = "cactus"
 languageCode = "en-US"
