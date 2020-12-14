@@ -1,7 +1,7 @@
 ---
 title: "Welcome to Blog"
 date: 2020-12-13T16:03:25-05:00
-draft: false
+draft: true
 author: Mike Quigley
 tags: ["autobio", "tech", "art"]
 ---
@@ -12,5 +12,6 @@ Like a whole ton of people, I've thought about starting to blog several times ov
 
 I don't think everything warrants sharing online, and I value private writing. But I figure this can serve as a means to bump up my communication skills while tracking various tech-related projects, and maybe some art. I'm constantly flipping between art practice and fiddling with technology. I hope this might help to improve my follow through, potentially in both areas but I will likely start with the technology side of things since that's potentially easier to remember to document while you're working on the same device. Often my art practice takes place in my dirt & brick floored basement specifically to take a break from digital screens.  
 
-We'll see how this goes. Maybe I'll just talk to myself. In which case, thanks for setting this up. 
+So as a start I set this up with *[Hugo](https://gohugo.io/)* and am hanging it off my of artist website, which is hosted via *[GitHub Pages](https://pages.github.com/)*. It's using the *[cactus](https://themes.gohugo.io/hugo-theme-cactus)* theme which some basic css edits and my own favicon & header icon to match my main site. 
 
+We'll see how this goes. Maybe I'll just talk to myself. In which case, thanks for setting this up. 
