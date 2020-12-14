@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>autobio on Mike Quigley</title>
+    <link>http://example.org/tags/autobio/</link>
+    <description>Recent content in autobio on Mike Quigley</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 13 Dec 2020 16:03:25 -0500</lastBuildDate><atom:link href="http://example.org/tags/autobio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Welcome to Blog</title>
+      <link>http://example.org/posts/welcome-to-blog/</link>
+      <pubDate>Sun, 13 Dec 2020 16:03:25 -0500</pubDate>
+      
+      <guid>http://example.org/posts/welcome-to-blog/</guid>
+      <description>Okay, first real post. Here we go.
+Like a whole ton of people, I&amp;rsquo;ve thought about starting to blog several times over the years. I&amp;rsquo;ve journaled in a physical notebook on and off forever, and have pretty consistently kept a bullet journal for a combination of task and habit tracking, capturing ideas, and shortlength journaling. I&amp;rsquo;ve also written privately in longer form digital documents, which I do find helpful. I think having something be publicly available might force me to A) write more concisely and B) write more often(?</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,65 @@
+body {
+    font-family: 'Meslo LG', monospace;
+}
+
+body p {
+    font-family: "Garamond", serif;
+    font-size: large;
+}
+
+body h1,
+body .h1 {
+    color: #b57281;
+}
+
+body h1 a:hover,
+body .h1 a:hover {
+    text-decoration: underline;
+}
+
+#nav a {
+    color: #b57281 !important;
+}
+
+#header-post .active {
+    color: #383838;
+}
+
+#header-post #nav ul li {
+    border-right: 1px dotted #b57281;
+}
+
+#header-post #menu-icon:hover {
+    color: #b57281;
+}
+
+#header-post #menu-icon-tablet:hover {
+    color: #b57281;
+}
+
+#header-post #top-icon-tablet:hover {
+    color: #b57281;
+}
+
+#header #nav ul a:hover,
+#header-post #nav ul a:hover {
+    background-image: linear-gradient(transparent, transparent 5px, #b57281 5px, #b57281);
+    background-position: bottom;
+    background-size: 100% 6px;
+    background-repeat: repeat-x;
+}
+
+#nav ul li {
+    border-right: 1px dotted #b57281 !important;
+}
+
+#nav ul li:last-of-type {
+    border-right: none !important;
+}
+
+/* #header #nav ul a:hover {
+    background-image: linear-gradient(transparent, transparent 5px, #b57281 5px, #b57281);
+    background-position: bottom;
+    background-size: 100% 6px;
+    background-repeat: repeat-x;
+} */

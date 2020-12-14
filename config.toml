@@ -1,0 +1,29 @@
+baseURL = "https://mdquigley.github.io/blog"
+title = "Mike Quigley"
+theme = "cactus"
+languageCode = "en-US"
+
+publishDir = "docs"
+
+[params]
+	description = "Journal for projects, etc."
+	mainSection = "posts"
+	css = ["css/custom.css"]
+
+[[menu.main]]
+name = "Blog"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "Back to quig.info"
+url = "https://quig.info"
+weight = 2
+
+[[params.social]]
+	name = "github"
+	link = "https://github.com/mdquigley"
+
+[[params.social]]
+	name = "email"
+	link = "quig.info@gmail.com"

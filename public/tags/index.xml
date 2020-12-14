@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Mike Quigley</title>
+    <link>http://example.org/tags/</link>
+    <description>Recent content in Tags on Mike Quigley</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 13 Dec 2020 16:03:25 -0500</lastBuildDate><atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>art</title>
+      <link>http://example.org/tags/art/</link>
+      <pubDate>Sun, 13 Dec 2020 16:03:25 -0500</pubDate>
+      
+      <guid>http://example.org/tags/art/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>autobio</title>
+      <link>http://example.org/tags/autobio/</link>
+      <pubDate>Sun, 13 Dec 2020 16:03:25 -0500</pubDate>
+      
+      <guid>http://example.org/tags/autobio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tech</title>
+      <link>http://example.org/tags/tech/</link>
+      <pubDate>Sun, 13 Dec 2020 16:03:25 -0500</pubDate>
+      
+      <guid>http://example.org/tags/tech/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
