@@ -3,22 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://quig.info/blog/posts/home-server/</loc>
+    <lastmod>2020-12-16T11:11:57-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/</loc>
+    <lastmod>2020-12-16T11:11:57-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/posts/</loc>
+    <lastmod>2020-12-16T11:11:57-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://quig.info/blog/tags/art/</loc>
     <lastmod>2020-12-13T16:03:25-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://quig.info/blog/tags/autobio/</loc>
-    <lastmod>2020-12-13T16:03:25-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://quig.info/blog/</loc>
-    <lastmod>2020-12-13T16:03:25-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://quig.info/blog/posts/</loc>
     <lastmod>2020-12-13T16:03:25-05:00</lastmod>
   </url>
   
