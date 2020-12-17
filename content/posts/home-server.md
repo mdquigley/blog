@@ -1,7 +1,7 @@
 ---
 title: "Home Server"
 date: 2020-12-16T11:11:57-05:00
-draft: true
+draft: false
 author: Mike Quigley
 ---
 
