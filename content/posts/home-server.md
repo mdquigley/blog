@@ -13,7 +13,8 @@ I'll need it to have **ssh**, as it will sit headless next to my router, as well
 To install **ssh**: `sudo apt install openssh-server`  
 To open port 22 on the firewall: `sudo ufw allow ssh`  
 You can verify the status with: `systemctl status ssh`  
-and start, stop, or restart it with `systemctl start/stop/restart ssh`
+and start, stop, or restart it with `systemctl start/stop/restart ssh`  
+([Source](https://linuxconfig.org/ubuntu-20-04-ssh-server))
 
 ### VNC
 To install **vnc**: `sudo apt install tightvncserver`  
@@ -40,20 +41,23 @@ After=syslog.target network.target
 Type=forking
 User=user1
 ExecStartPre=-/usr/bin/vncserver -kill :%i &> /dev/null
-ExecStart=/usr/bin/vncserver -depth 24 -geometry 800x600 :%i
+ExecStart=/usr/bin/vncserver -depth 24 -geometry 1920x1080 :%i
 PIDFile=/home/user1/.vnc/%H:%i.pid
 ExecStop=/usr/bin/vncserver -kill :%i
 
 [Install]
 WantedBy=multi-user.target
 ```
-To have VNC desktop 1 start after reboot: `sudo systemctl enable vncserver@1`
-
+To have VNC desktop 1 start after reboot: `sudo systemctl enable vncserver@1`  
+([Source](https://linuxconfig.org/vnc-server-on-ubuntu-20-04-focal-fossa-linux))
 
 ### SABNZBD
 To install **sabnzbd**: `sudo apt install sabnzbdplus`  
 To start or stop `sudo service sabnzbdplus start/stop`  
 Open `http://localhost:8080/sabnzbd` to setup and enter provider info  
+To run the service on startup, edit `/etc/default/sabnzbdplus` and set the required `USER=` to
+the local account  
+([Source](https://sabnzbd.org/wiki/installation/install-ubuntu-repo))
 * To Do:  
   * Create "watched" folder in /mnt/storage/media/downloads  
   * Move "complete" & "incomplete" folders from ~/Downloads to /mnt/storage/media/downloads
