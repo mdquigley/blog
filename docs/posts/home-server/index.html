@@ -12,8 +12,8 @@
 <meta property="og:description" content="I&rsquo;ve kept a home server in various configurations over the last several years. Back in April, with an abundance of time at home due to the pandemic, I migrated my server from a old Dell tower running Ubuntu Server to a Raspberry Pi 4 that I had bought a while back and let sit on the shelf. That was fun to tool around with Raspbian and set it up for local network backups and media streaming." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://quig.info/blog/posts/home-server/" />
-<meta property="article:published_time" content="2020-12-16T11:11:57-05:00" />
-<meta property="article:modified_time" content="2020-12-16T11:11:57-05:00" />
+<meta property="article:published_time" content="2020-12-18T17:45:30-05:00" />
+<meta property="article:modified_time" content="2020-12-18T17:45:30-05:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Home Server"/>
@@ -155,13 +155,12 @@
   <ul>
     <li>
       <ul>
+        <li><a href="#hardware-setup">HARDWARE SETUP</a></li>
         <li><a href="#ssh">SSH</a></li>
         <li><a href="#vnc">VNC</a></li>
         <li><a href="#sabnzbd">SABNZBD</a></li>
-        <li><a href="#plexmediaserver">PLEXMEDIASERVER</a></li>
-        <li><a href="#fstab">FSTAB</a></li>
+        <li><a href="#plex-media-server">PLEX MEDIA SERVER</a></li>
         <li><a href="#cron">CRON</a></li>
-        <li><a href="#additional-tools">Additional tools</a></li>
       </ul>
     </li>
   </ul>
@@ -180,7 +179,7 @@
         
         <div class="postdate">
           
-          <time datetime="2020-12-16 11:11:57 -0500 EST" itemprop="datePublished">2020-12-16</time>
+          <time datetime="2020-12-18 17:45:30 -0500 EST" itemprop="datePublished">2020-12-18</time>
           
         </div>
         
@@ -191,7 +190,11 @@
   
     <div class="content" itemprop="articleBody">
       <p>I&rsquo;ve kept a home server in various configurations over the last several years. Back in April, with an abundance of time at home due to the pandemic, I migrated my server from a old Dell tower running Ubuntu Server to a Raspberry Pi 4 that I had bought a while back and let sit on the shelf. That was fun to tool around with Raspbian and set it up for local network backups and media streaming. But recently it appears that the RPi SD card has gone read-only. I tried repairing it but nothing seems to work and I had thought about swapping to an alternate setup so I could experiment with the RPi for other projects anyway. So rather than flash the SD card and try to rebuild my server config (if the card isn&rsquo;t essentially dead), I&rsquo;m going to swap my server setup to an old Mac Mini I have collecting dust. I had previously installed Ubuntu on it in order to format drives and get the RPi server setup anyway, so the big portion is already done.</p>
-<p>I&rsquo;ll need it to have <strong>ssh</strong>, as it will sit headless next to my router, as well as <strong>sabnzbd</strong> for newsgroups and <strong>plexmediaserver</strong> for local streaming. It will have two external 4TB hdd&rsquo;s hanging off it for media storage and local backups of my other computers, so I&rsquo;ll need to setup <strong>fstab</strong> to allow those to mount on boot and I&rsquo;ll also need <strong>cron</strong> jobs to backup the one 4TB hdd to the other, and to move downloaded <strong>.nzb</strong> files to the watched folder for plex. I think that&rsquo;s it? I&rsquo;ll edit this if I remember anything else. Super simple compared to what some other folks do with their home servers. I&rsquo;d like to get more use out of it eventually, maybe consolidating music storage to stream within the house.</p>
+<p>I&rsquo;ll need it to have <strong>ssh</strong> and <strong>vnc</strong>, as it will sit headless next to my router, as well as <strong>sabnzbd</strong> for newsgroups and <strong>plexmediaserver</strong> for local streaming. It will have two external 4TB hdd&rsquo;s for media storage and local backups of my other computers, and I&rsquo;ll also need <strong>cron</strong> jobs to backup the one 4TB hdd to the other, and to move downloaded .nzb files to the watched folder for plex. I think that&rsquo;s it? I&rsquo;ll edit this if I remember anything else. Super simple compared to what some other folks do with their home servers. I&rsquo;d like to get more use out of it eventually, maybe consolidating music storage to stream within the house.</p>
+<h3 id="hardware-setup">HARDWARE SETUP</h3>
+<p>Mac Mini (running Ubuntu)<br>
+4TB external drive, which Ubuntu mounts at <code>/media/USERNAME/storage</code><br>
+4TB external drive, which Ubuntu mounts at <code>/media/USERNAME/bu-storage</code></p>
 <h3 id="ssh">SSH</h3>
 <p>To install <strong>ssh</strong>: <code>sudo apt install openssh-server</code><br>
 To open port 22 on the firewall: <code>sudo ufw allow ssh</code><br>
@@ -211,17 +214,17 @@ startxfce4 &amp;
 Service can be started or stopped with: <code>sudo service vncserver@1 start/stop</code><br>
 To have <strong>vncserver</strong> run on startup, create:<br>
 <code>sudo nano /etc/systemd/system/vncserver@.service</code><br>
-Fill it as below. Replace &ldquo;user1&rdquo; with the local user:</p>
+Fill it as below. Replace &ldquo;USERNAME&rdquo; with the local user:</p>
 <pre><code>[Unit]
 Description=Systemd VNC server startup script for Ubuntu 20.04
 After=syslog.target network.target
 
 [Service]
 Type=forking
-User=user1
+User=USERNAME
 ExecStartPre=-/usr/bin/vncserver -kill :%i &amp;&gt; /dev/null
 ExecStart=/usr/bin/vncserver -depth 24 -geometry 1920x1080 :%i
-PIDFile=/home/user1/.vnc/%H:%i.pid
+PIDFile=/home/USERNAME/.vnc/%H:%i.pid
 ExecStop=/usr/bin/vncserver -kill :%i
 
 [Install]
@@ -231,23 +234,33 @@ WantedBy=multi-user.target
 <h3 id="sabnzbd">SABNZBD</h3>
 <p>To install <strong>sabnzbd</strong>: <code>sudo apt install sabnzbdplus</code><br>
 To start or stop <code>sudo service sabnzbdplus start/stop</code><br>
-Open <code>http://localhost:8080/sabnzbd</code> to setup and enter provider info<br>
+Create folders:<br>
+<code>/media/USERNAME/storage/media/downloads/complete</code><br>
+<code>/media/USERNAME/storage/media/downloads/incomplete</code><br>
+<code>/media/USERNAME/storage/media/downloads/watched</code><br>
+Open <code>http://localhost:8080/sabnzbd</code> to enter provider info and point to <strong>completed</strong>, <strong>incomplete</strong>, and <strong>watched</strong> folders<br>
 To run the service on startup, edit <code>/etc/default/sabnzbdplus</code> and set the required <code>USER=</code> to
 the local account<br>
 (<a href="https://sabnzbd.org/wiki/installation/install-ubuntu-repo">Source</a>)</p>
-<ul>
-<li>To Do:
-<ul>
-<li>Create &ldquo;watched&rdquo; folder in /mnt/storage/media/downloads</li>
-<li>Move &ldquo;complete&rdquo; &amp; &ldquo;incomplete&rdquo; folders from ~/Downloads to /mnt/storage/media/downloads</li>
-</ul>
-</li>
-</ul>
-<h3 id="plexmediaserver">PLEXMEDIASERVER</h3>
-<h3 id="fstab">FSTAB</h3>
+<h3 id="plex-media-server">PLEX MEDIA SERVER</h3>
+<p>Install: <code>sudo apt install plexmediaserver</code><br>
+Run <code>sudo chmod o+rx /media/USERNAME</code> so the <strong>plex</strong> user has <a href="https://support.plex.tv/articles/201543057-why-is-some-of-my-content-not-found/">necessary read and execute permissions</a> on the media libraries<br>
+In the browser, open <code>http://127.0.0.1:32400/web</code> to configure through the GUI<br>
+Add a Library, name it <strong>Movies</strong> and point it to <code>/media/USERNAME/storage/media/movies</code><br>
+Add a Library, name it <strong>TV Shows</strong> and point it to <code>/media/USERNAME/storage/media/tv</code><br>
+(<a href="https://support.plex.tv/articles/200288586-installation/">Source</a>)</p>
 <h3 id="cron">CRON</h3>
-<h3 id="additional-tools">Additional tools</h3>
-<p>tldr</p>
+<p>Scripts to be run with <strong>cron</strong> live in <code>/home/USERNAME/crontasks</code><br>
+Backup external storage drive with <code>backup_storage.sh</code>:</p>
+<pre><code>#!/bin/bash  
+rsync -avP --delete /media/USERNAME/storage/ /media/USERNAME/bu-storage/ 2&gt; /home/USERNAME/crontasks/logs backup_storage.err
+</code></pre><p>Move downloaded .nzb files to the Plex <strong>watched</strong> folder with <code>move_nzb.sh</code>:</p>
+<pre><code>#!/bin/bash
+mv /home/USERNAME/Downloads/*.nzb* /media/USERNAME/storage/media/downloads/watched/ &gt; /dev/null 2&gt;&amp;1
+</code></pre><p>Load these scripts into <strong>cron</strong> with <code>crontab -e</code>:</p>
+<pre><code>0 5 * * * /home/USERNAME/crontasks/backup_storage.sh  
+0 * * * * /home/USERNAME/crontasks/move_nzb.sh
+</code></pre><p>Careful with your <strong>cron</strong> syntax. Check out <a href="https://crontab.guru/">Crontab Guru</a> to verify any new settings.</p>
 
     </div>
   </article>
@@ -277,13 +290,12 @@ the local account<br>
   <ul>
     <li>
       <ul>
+        <li><a href="#hardware-setup">HARDWARE SETUP</a></li>
         <li><a href="#ssh">SSH</a></li>
         <li><a href="#vnc">VNC</a></li>
         <li><a href="#sabnzbd">SABNZBD</a></li>
-        <li><a href="#plexmediaserver">PLEXMEDIASERVER</a></li>
-        <li><a href="#fstab">FSTAB</a></li>
+        <li><a href="#plex-media-server">PLEX MEDIA SERVER</a></li>
         <li><a href="#cron">CRON</a></li>
-        <li><a href="#additional-tools">Additional tools</a></li>
       </ul>
     </li>
   </ul>
