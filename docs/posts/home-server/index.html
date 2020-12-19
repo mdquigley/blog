@@ -201,6 +201,9 @@ To open port 22 on the firewall: <code>sudo ufw allow ssh</code><br>
 You can verify the status with: <code>systemctl status ssh</code><br>
 and start, stop, or restart it with <code>systemctl start/stop/restart ssh</code><br>
 (<a href="https://linuxconfig.org/ubuntu-20-04-ssh-server">Source</a>)</p>
+<p>To copy a local machine&rsquo;s public key to the server: <code>ssh-copy-id -i ~/.ssh/id_rsa.pub USERNAME@servername.local</code><br>
+Test log in with: <code>ssh USERNAME@servername.local</code><br>
+(<a href="https://linuxconfig.org/how-to-generate-and-manage-ssh-keys-on-linux">Source</a>)</p>
 <h3 id="vnc">VNC</h3>
 <p>To install <strong>vnc</strong>: <code>sudo apt install tightvncserver</code><br>
 Configure a password: <code>vncpasswd</code><br>
