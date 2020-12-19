@@ -21,6 +21,10 @@ You can verify the status with: `systemctl status ssh`
 and start, stop, or restart it with `systemctl start/stop/restart ssh`  
 ([Source](https://linuxconfig.org/ubuntu-20-04-ssh-server))
 
+To copy a local machine's public key to the server: `ssh-copy-id -i ~/.ssh/id_rsa.pub USERNAME@servername.local`  
+Test log in with: `ssh USERNAME@servername.local`  
+([Source](https://linuxconfig.org/how-to-generate-and-manage-ssh-keys-on-linux))
+
 ### VNC
 To install **vnc**: `sudo apt install tightvncserver`  
 Configure a password: `vncpasswd`  
