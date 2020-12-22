@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://quig.info/blog/tags/backups/</loc>
+    <lastmod>2020-12-18T17:45:30-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/tags/cron/</loc>
+    <lastmod>2020-12-18T17:45:30-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://quig.info/blog/posts/home-server/</loc>
     <lastmod>2020-12-18T17:45:30-05:00</lastmod>
   </url>
@@ -13,7 +23,42 @@
   </url>
   
   <url>
+    <loc>https://quig.info/blog/tags/plex/</loc>
+    <lastmod>2020-12-18T17:45:30-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://quig.info/blog/posts/</loc>
+    <lastmod>2020-12-18T17:45:30-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/tags/sabnzbd/</loc>
+    <lastmod>2020-12-18T17:45:30-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/tags/scripts/</loc>
+    <lastmod>2020-12-18T17:45:30-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/tags/server/</loc>
+    <lastmod>2020-12-18T17:45:30-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/tags/ssh/</loc>
+    <lastmod>2020-12-18T17:45:30-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/tags/</loc>
+    <lastmod>2020-12-18T17:45:30-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/tags/vnc/</loc>
     <lastmod>2020-12-18T17:45:30-05:00</lastmod>
   </url>
   
@@ -24,11 +69,6 @@
   
   <url>
     <loc>https://quig.info/blog/tags/autobio/</loc>
-    <lastmod>2020-12-13T16:03:25-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://quig.info/blog/tags/</loc>
     <lastmod>2020-12-13T16:03:25-05:00</lastmod>
   </url>
   

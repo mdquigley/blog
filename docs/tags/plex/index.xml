@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>plex on Mike Quigley</title>
+    <link>https://quig.info/blog/tags/plex/</link>
+    <description>Recent content in plex on Mike Quigley</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 18 Dec 2020 17:45:30 -0500</lastBuildDate><atom:link href="https://quig.info/blog/tags/plex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Home Server</title>
+      <link>https://quig.info/blog/posts/home-server/</link>
+      <pubDate>Fri, 18 Dec 2020 17:45:30 -0500</pubDate>
+      
+      <guid>https://quig.info/blog/posts/home-server/</guid>
+      <description>I&amp;rsquo;ve kept a home server in various configurations over the last several years. Back in April, with an abundance of time at home due to the pandemic, I migrated my server from a old Dell tower running Ubuntu Server to a Raspberry Pi 4 that I had bought a while back and let sit on the shelf. That was fun to tool around with Raspbian and set it up for local network backups and media streaming.</description>
+    </item>
+    
+  </channel>
+</rss>

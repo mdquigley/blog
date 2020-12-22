@@ -3,6 +3,8 @@ title: "Home Server"
 date: 2020-12-18T17:45:30-05:00
 draft: false
 author: Mike Quigley
+tags: ["ssh", "vnc", "plex", "sabnzbd", "cron", "backups
+", "server", "scripts"]
 ---
 
 I've kept a home server in various configurations over the last several years. Back in April, with an abundance of time at home due to the pandemic, I migrated my server from a old Dell tower running Ubuntu Server to a Raspberry Pi 4 that I had bought a while back and let sit on the shelf. That was fun to tool around with Raspbian and set it up for local network backups and media streaming. But recently it appears that the RPi SD card has gone read-only. I tried repairing it but nothing seems to work and I had thought about swapping to an alternate setup so I could experiment with the RPi for other projects anyway. So rather than flash the SD card and try to rebuild my server config (if the card isn't essentially dead), I'm going to swap my server setup to an old Mac Mini I have collecting dust. I had previously installed Ubuntu on it in order to format drives and get the RPi server setup anyway, so the big portion is already done. 
