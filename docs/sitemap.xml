@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://quig.info/blog/tags/cli/</loc>
+    <lastmod>2020-12-22T22:30:38-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/tags/command-line-tools/</loc>
+    <lastmod>2020-12-22T22:30:38-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/</loc>
+    <lastmod>2020-12-22T22:30:38-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/posts/odds-and-ends/</loc>
+    <lastmod>2020-12-22T22:30:38-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/posts/</loc>
+    <lastmod>2020-12-22T22:30:38-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/tags/</loc>
+    <lastmod>2020-12-22T22:30:38-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://quig.info/blog/tags/backups/</loc>
     <lastmod>2020-12-18T17:45:30-05:00</lastmod>
   </url>
@@ -18,17 +48,7 @@
   </url>
   
   <url>
-    <loc>https://quig.info/blog/</loc>
-    <lastmod>2020-12-18T17:45:30-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://quig.info/blog/tags/plex/</loc>
-    <lastmod>2020-12-18T17:45:30-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://quig.info/blog/posts/</loc>
     <lastmod>2020-12-18T17:45:30-05:00</lastmod>
   </url>
   
@@ -49,11 +69,6 @@
   
   <url>
     <loc>https://quig.info/blog/tags/ssh/</loc>
-    <lastmod>2020-12-18T17:45:30-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://quig.info/blog/tags/</loc>
     <lastmod>2020-12-18T17:45:30-05:00</lastmod>
   </url>
   

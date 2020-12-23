@@ -6,7 +6,26 @@
     <description>Recent content on Mike Quigley</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 18 Dec 2020 17:45:30 -0500</lastBuildDate><atom:link href="https://quig.info/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Dec 2020 22:30:38 -0500</lastBuildDate><atom:link href="https://quig.info/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Odds and Ends</title>
+      <link>https://quig.info/blog/posts/odds-and-ends/</link>
+      <pubDate>Tue, 22 Dec 2020 22:30:38 -0500</pubDate>
+      
+      <guid>https://quig.info/blog/posts/odds-and-ends/</guid>
+      <description>This will be an actively updated post to document various tools I use on my laptop and home server.
+Taskwarrior Command line todo tracking
+To install (ubuntu): sudo apt install task
+To install (macos): brew install task
+https://taskwarrior.org/
+tldr Brief summaries &amp;amp; examples of command line tools
+To install (ubuntu): sudo apt install tldr
+To install (macos): brew install tldr
+https://tldr.sh/
+cmus Command line music player
+To install (ubuntu): sudo apt install cmus</description>
+    </item>
+    
     <item>
       <title>Home Server</title>
       <link>https://quig.info/blog/posts/home-server/</link>
