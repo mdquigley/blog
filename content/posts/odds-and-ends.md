@@ -27,6 +27,6 @@ https://cmus.github.io/
 
 ### ImageMagick
 Image operations (mostly bulk converting)  
-To install (macos): brew install imagemagick  
+To install (macos): `brew install imagemagick`  
 https://imagemagick.org/  
 
