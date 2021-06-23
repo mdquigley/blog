@@ -6,7 +6,16 @@
     <description>Recent content on Mike Quigley</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 23 Jun 2021 18:17:22 -0400</lastBuildDate><atom:link href="https://quig.info/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Jun 2021 18:43:01 -0400</lastBuildDate><atom:link href="https://quig.info/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zone Out</title>
+      <link>https://quig.info/blog/posts/zone-out/</link>
+      <pubDate>Wed, 23 Jun 2021 18:43:01 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/posts/zone-out/</guid>
+      <description>Final project for Java Music Systems with Professor Nick Didkovsky, Zone Out is a Java program that creates generative ambient music for three voices, written with JMSL and JSyn. Above is an excerpt recording. It was originally hosted as a Java applet on a personal website. I plan to recreate and expand on this idea with JavaScript using Tone.js as a personal project sometime soon.</description>
+    </item>
+    
     <item>
       <title>Funch</title>
       <link>https://quig.info/blog/posts/funch/</link>
