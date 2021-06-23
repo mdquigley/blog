@@ -9,4 +9,6 @@ tags: ["Java", "JSyn", "Java Music Specification Language", "Generative Music"]
 
 {{< bandcamp 378051418 3217804963 >}}
 
-Final project for Java Music Systems with Professor Nick Didkovsky, Zone Out is a Java program that creates generative ambient music for three voices, written with JMSL and JSyn. Above is an excerpt recording. It was originally hosted as a Java applet on a personal website. I plan to recreate and expand on this idea with JavaScript using Tone.js as a personal project sometime soon.
+Final project for Java Music Systems with Professor Nick Didkovsky, Zone Out is a Java program that creates generative ambient music for three voices, written with Java Music Specification Language and JSyn. Above is an excerpt recording. It was originally hosted as a Java applet on a personal website. I'd like to recreate and expand on this idea with JavaScript using Tone.js as a personal project sometime soon.
+
+Source code is available on [GitHub](https://github.com/mdquigley/zone-out).
