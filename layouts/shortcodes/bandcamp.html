@@ -1,0 +1,13 @@
+<!-- 
+    Bandcamp embed shortcode, track number optional
+    Use: ` bandcamp ALBUM_NUMBER TRACK_NUMBER}} `
+ -->
+
+<div class="embed video-player">
+
+    <iframe style="border: 0; width: 100%; height: 120px;"
+        src="https://bandcamp.com/EmbeddedPlayer/album={{ index .Params 0 }}/size=large/bgcol=ffffff/linkcol=b57281/tracklist=false/artwork=small/track={{ index .Params 1 }}/transparent=true/"
+        height="240" width="320" seamless=""></iframe>
+
+
+</div>
