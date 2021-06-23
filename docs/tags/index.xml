@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Mike Quigley</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 22 Dec 2020 22:30:38 -0500</lastBuildDate><atom:link href="https://quig.info/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Jun 2021 18:17:22 -0400</lastBuildDate><atom:link href="https://quig.info/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>audio effects</title>
+      <link>https://quig.info/blog/tags/audio-effects/</link>
+      <pubDate>Wed, 23 Jun 2021 18:17:22 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/tags/audio-effects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>digital signal processing</title>
+      <link>https://quig.info/blog/tags/digital-signal-processing/</link>
+      <pubDate>Wed, 23 Jun 2021 18:17:22 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/tags/digital-signal-processing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>music technology</title>
+      <link>https://quig.info/blog/tags/music-technology/</link>
+      <pubDate>Wed, 23 Jun 2021 18:17:22 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/tags/music-technology/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>cli</title>
       <link>https://quig.info/blog/tags/cli/</link>
@@ -121,6 +148,15 @@
       <pubDate>Sun, 13 Dec 2020 16:03:25 -0500</pubDate>
       
       <guid>https://quig.info/blog/tags/tech/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>max/msp</title>
+      <link>https://quig.info/blog/tags/max/msp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://quig.info/blog/tags/max/msp/</guid>
       <description></description>
     </item>
     

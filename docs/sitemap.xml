@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://quig.info/blog/tags/audio-effects/</loc>
+    <lastmod>2021-06-23T18:17:22-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/tags/digital-signal-processing/</loc>
+    <lastmod>2021-06-23T18:17:22-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/posts/funch/</loc>
+    <lastmod>2021-06-23T18:17:22-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/</loc>
+    <lastmod>2021-06-23T18:17:22-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/tags/music-technology/</loc>
+    <lastmod>2021-06-23T18:17:22-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/posts/</loc>
+    <lastmod>2021-06-23T18:17:22-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/tags/</loc>
+    <lastmod>2021-06-23T18:17:22-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://quig.info/blog/tags/cli/</loc>
     <lastmod>2020-12-22T22:30:38-05:00</lastmod>
   </url>
@@ -13,22 +48,7 @@
   </url>
   
   <url>
-    <loc>https://quig.info/blog/</loc>
-    <lastmod>2020-12-22T22:30:38-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://quig.info/blog/posts/odds-and-ends/</loc>
-    <lastmod>2020-12-22T22:30:38-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://quig.info/blog/posts/</loc>
-    <lastmod>2020-12-22T22:30:38-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://quig.info/blog/tags/</loc>
     <lastmod>2020-12-22T22:30:38-05:00</lastmod>
   </url>
   
@@ -99,6 +119,10 @@
   
   <url>
     <loc>https://quig.info/blog/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://quig.info/blog/tags/max/msp/</loc>
   </url>
   
 </urlset>
