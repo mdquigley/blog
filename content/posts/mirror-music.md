@@ -7,7 +7,7 @@ tags: ["max/msp", "jitter", "computer vision", "synthesis", "human computer inte
 ---
 {{< youtube hMbm4svvM6w >}}  
 
-**Mirror music** is an interactive synthesizer that generates random pitches within a user specified key, triggered by motion, and characterized in range and timbre by color.   
+**Mirror Music** is an interactive synthesizer that generates random pitches within a user specified key, triggered by motion, and characterized in range and timbre by color.   
 
 Video input is split into a grid of 16 squares, or "pixels". Each pixel is analyzed for motion and color data. When motion in a pixel is detected, the color data at that moment is sent to 1 of 16 poly~ instances that generates a random pitch within the specified key, played for the specified length with attack, decay, sustain, and release.  
 

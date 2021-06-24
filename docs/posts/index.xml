@@ -13,7 +13,7 @@
       <pubDate>Wed, 23 Jun 2021 20:15:04 -0400</pubDate>
       
       <guid>https://quig.info/blog/posts/mirror-music/</guid>
-      <description>Mirror music is an interactive synthesizer that generates random pitches within a user specified key, triggered by motion, and characterized in range and timbre by color.
+      <description>Mirror Music is an interactive synthesizer that generates random pitches within a user specified key, triggered by motion, and characterized in range and timbre by color.
 Video input is split into a grid of 16 squares, or &amp;ldquo;pixels&amp;rdquo;. Each pixel is analyzed for motion and color data. When motion in a pixel is detected, the color data at that moment is sent to 1 of 16 poly~ instances that generates a random pitch within the specified key, played for the specified length with attack, decay, sustain, and release.</description>
     </item>
     
