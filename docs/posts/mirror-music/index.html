@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Mirror Music | Mike Quigley</title>
+  <meta name="description" content="Journal for projects, etc.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Mirror Music" />
+<meta property="og:description" content="Mirror music is an interactive synthesizer that generates random pitches within a user specified key, triggered by motion, and characterized in range and timbre by color.
+Video input is split into a grid of 16 squares, or &ldquo;pixels&rdquo;. Each pixel is analyzed for motion and color data. When motion in a pixel is detected, the color data at that moment is sent to 1 of 16 poly~ instances that generates a random pitch within the specified key, played for the specified length with attack, decay, sustain, and release." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://quig.info/blog/posts/mirror-music/" />
+<meta property="article:published_time" content="2021-06-23T20:15:04-04:00" />
+<meta property="article:modified_time" content="2021-06-23T20:15:04-04:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mirror Music"/>
+<meta name="twitter:description" content="Mirror music is an interactive synthesizer that generates random pitches within a user specified key, triggered by motion, and characterized in range and timbre by color.
+Video input is split into a grid of 16 squares, or &ldquo;pixels&rdquo;. Each pixel is analyzed for motion and color data. When motion in a pixel is detected, the color data at that moment is sent to 1 of 16 poly~ instances that generates a random pitch within the specified key, played for the specified length with attack, decay, sustain, and release."/>
+
+  
+  
+  
+  <link rel="stylesheet" href="https://quig.info/blog/css/style-white.css">
+  
+   <link rel="stylesheet" href="https://quig.info/blog/css/custom.css"> 
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://quig.info/blog/images/favicon.ico" />
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/blog/">Blog</a></li>
+         
+        <li><a href="https://quig.info">Back to quig.info</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://quig.info/blog/posts/visual-feedback-in-a-laptop-instrument/">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&text=Mirror%20Music">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&is_video=false&description=Mirror%20Music">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Mirror%20Music&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+      <i class="fab fa-stumbleupon " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+      <i class="fab fa-digg " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&name=Mirror%20Music&description=Mirror%20music%20is%20an%20interactive%20synthesizer%20that%20generates%20random%20pitches%20within%20a%20user%20specified%20key%2c%20triggered%20by%20motion%2c%20and%20characterized%20in%20range%20and%20timbre%20by%20color.%0aVideo%20input%20is%20split%20into%20a%20grid%20of%2016%20squares%2c%20or%20%26ldquo%3bpixels%26rdquo%3b.%20Each%20pixel%20is%20analyzed%20for%20motion%20and%20color%20data.%20When%20motion%20in%20a%20pixel%20is%20detected%2c%20the%20color%20data%20at%20that%20moment%20is%20sent%20to%201%20of%2016%20poly~%20instances%20that%20generates%20a%20random%20pitch%20within%20the%20specified%20key%2c%20played%20for%20the%20specified%20length%20with%20attack%2c%20decay%2c%20sustain%2c%20and%20release.">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&t=Mirror%20Music">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents"></nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Mirror Music
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2021-06-23 20:15:04 -0400 EDT" itemprop="datePublished">2021-06-23</time>
+          
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/blog/tags/max/msp" rel="tag">max/msp</a>
+            
+             ,  
+            <a class="tag-link" href="/blog/tags/jitter" rel="tag">jitter</a>
+            
+             ,  
+            <a class="tag-link" href="/blog/tags/computer-vision" rel="tag">computer vision</a>
+            
+             ,  
+            <a class="tag-link" href="/blog/tags/synthesis" rel="tag">synthesis</a>
+            
+             ,  
+            <a class="tag-link" href="/blog/tags/human-computer-interaction" rel="tag">human computer interaction</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    <div class="content" itemprop="articleBody">
+      
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/hMbm4svvM6w" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p><strong>Mirror music</strong> is an interactive synthesizer that generates random pitches within a user specified key, triggered by motion, and characterized in range and timbre by color.</p>
+<p>Video input is split into a grid of 16 squares, or &ldquo;pixels&rdquo;. Each pixel is analyzed for motion and color data. When motion in a pixel is detected, the color data at that moment is sent to 1 of 16 poly~ instances that generates a random pitch within the specified key, played for the specified length with attack, decay, sustain, and release.</p>
+<p>The level of green in the pixel is used to control the blend of sinewave and trianglewave generators. A predeominance of blue causes the randomly chosen pitch to be lowered an octave below the tonic, and a predominance of red causes the randomly chosen pitch to be raised an octave above the tonic.</p>
+<p>Controls for brightness, contrast, and saturation allow the user to manipulate the color data of each pixel before analyzation. Motion threshold allows the user to determine what level of motion triggers a note. With retrigger off, notes/pixels will not be retriggered until the entire notelength has passed. With retrigger on a pixel can continuously be triggered by generating new amplitude envelopes before the previous one finishes.</p>
+<p>This was my final project for Advanced Max/MSP/Jitter Programming with <a href="https://dafna.info/">Professor Dafna Naphtali</a>. The motion sensing and &ldquo;visual feedback&rdquo; was based off of a system similar to what was used in another project examining the effectiveness of <a href="../visual-feedback-in-a-laptop-instrument">Visual Feedback In A Laptop Instrument</a>.</p>
+<p>Source code is available on <a href="https://github.com/mdquigley/mirror-music">GitHub</a></p>
+<p>A look at some of the subpatches
+<img src="https://github.com/mdquigley/mirror-music/raw/master/screenshots/MirrorMusic02.png" alt="Mirror Music Subpatch 1">
+<img src="https://github.com/mdquigley/mirror-music/raw/master/screenshots/MirrorMusic03.png" alt="Mirror Music Subpatch 2">
+<img src="https://github.com/mdquigley/mirror-music/raw/master/screenshots/MirrorMusic04.png" alt="Mirror Music Subpatch 3">
+<img src="https://github.com/mdquigley/mirror-music/raw/master/screenshots/MirrorMusic05.png" alt="Mirror Music Subpatch 4"></p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/blog/">Blog</a></li>
+         
+          <li><a href="https://quig.info">Back to quig.info</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents"></nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&text=Mirror%20Music">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&is_video=false&description=Mirror%20Music">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Mirror%20Music&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+      <i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+      <i class="fab fa-digg fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&name=Mirror%20Music&description=Mirror%20music%20is%20an%20interactive%20synthesizer%20that%20generates%20random%20pitches%20within%20a%20user%20specified%20key%2c%20triggered%20by%20motion%2c%20and%20characterized%20in%20range%20and%20timbre%20by%20color.%0aVideo%20input%20is%20split%20into%20a%20grid%20of%2016%20squares%2c%20or%20%26ldquo%3bpixels%26rdquo%3b.%20Each%20pixel%20is%20analyzed%20for%20motion%20and%20color%20data.%20When%20motion%20in%20a%20pixel%20is%20detected%2c%20the%20color%20data%20at%20that%20moment%20is%20sent%20to%201%20of%2016%20poly~%20instances%20that%20generates%20a%20random%20pitch%20within%20the%20specified%20key%2c%20played%20for%20the%20specified%20length%20with%20attack%2c%20decay%2c%20sustain%2c%20and%20release.">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&t=Mirror%20Music">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021  Mike Quigley 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/blog/">Blog</a></li>
+         
+        <li><a href="https://quig.info">Back to quig.info</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/blog/lib/font-awesome/css/all.min.css>
+<script src=/blog/lib/jquery/jquery.min.js></script>
+<script src=/blog/js/main.js></script>
+
+
+
+</html>
