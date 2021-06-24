@@ -321,7 +321,7 @@
     display: block;
     margin-top: 3rem;
     margin-bottom: 1rem;
-    color: #b57281;
+    color: #2bbc8a;
     letter-spacing: 0.01em;
     font-weight: 700;
     font-style: normal;
@@ -608,7 +608,7 @@
     -webkit-filter: grayscale(100%);
   }
   #header #nav {
-    color: #b57281;
+    color: #2bbc8a;
     letter-spacing: 0.01em;
     font-weight: 200;
     font-style: normal;
@@ -622,10 +622,10 @@
   }
   #header #nav ul a {
     margin-right: 15px;
-    color: #b57281;
+    color: #2bbc8a;
   }
   #header #nav ul a:hover {
-    background-image: linear-gradient(transparent, transparent 5px, #b57281 5px, #b57281);
+    background-image: linear-gradient(transparent, transparent 5px, #2bbc8a 5px, #2bbc8a);
     background-position: bottom;
     background-size: 100% 6px;
     background-repeat: repeat-x;
@@ -634,7 +634,7 @@
     display: inline-block;
     margin-right: 15px;
     border-right: 1px dotted;
-    border-color: #b57281;
+    border-color: #2bbc8a;
     vertical-align: middle;
   }
   #header #nav ul .icon {
@@ -737,7 +737,7 @@
     margin-left: 15px;
   }
   #header-post #menu-icon:hover {
-    color: #b57281;
+    color: #2bbc8a;
   }
   #header-post #menu-icon-tablet {
     float: right;
@@ -745,7 +745,7 @@
     margin-left: 15px;
   }
   #header-post #menu-icon-tablet:hover {
-    color: #b57281;
+    color: #2bbc8a;
   }
   #header-post #top-icon-tablet {
     position: fixed;
@@ -755,17 +755,17 @@
     margin-left: 15px;
   }
   #header-post #top-icon-tablet:hover {
-    color: #b57281;
+    color: #2bbc8a;
   }
   #header-post .active {
-    color: #b57281;
+    color: #2bbc8a;
   }
   #header-post #menu {
     visibility: hidden;
     margin-right: 2rem;
   }
   #header-post #nav {
-    color: #b57281;
+    color: #2bbc8a;
     letter-spacing: 0.01em;
     font-weight: 200;
     font-style: normal;
@@ -776,16 +776,16 @@
   }
   #header-post #nav ul a {
     margin-right: 15px;
-    color: #b57281;
+    color: #2bbc8a;
   }
   #header-post #nav ul a:hover {
-    background-image: linear-gradient(transparent, transparent 5px, #b57281 5px, #b57281);
+    background-image: linear-gradient(transparent, transparent 5px, #2bbc8a 5px, #2bbc8a);
     background-position: bottom;
     background-size: 100% 6px;
     background-repeat: repeat-x;
   }
   #header-post #nav ul li {
-    border-right: 1px dotted #b57281;
+    border-right: 1px dotted #2bbc8a;
   }
   #header-post #nav ul li:last-child {
     margin-right: 0;
@@ -840,7 +840,7 @@
     font-size: 0.8rem;
   }
   #header-post #toc nav > ul > li:before {
-    color: #b57281;
+    color: #2bbc8a;
     content: "#";
     margin-right: 8px;
   }
@@ -849,7 +849,7 @@
     font-size: 0.7rem;
   }
   #header-post #toc nav > ul > li > ul > li:before {
-    color: #b57281;
+    color: #2bbc8a;
     content: "·";
     font-weight: bold;
     margin-right: 3px;
@@ -937,11 +937,11 @@
     text-align: center;
   }
   #footer-post #nav-footer a {
-    color: #b57281;
+    color: #2bbc8a;
     font-size: 1em;
   }
   #footer-post #nav-footer a:hover {
-    background-image: linear-gradient(transparent, transparent 5px, #b57281 5px, #b57281);
+    background-image: linear-gradient(transparent, transparent 5px, #2bbc8a 5px, #2bbc8a);
     background-position: bottom;
     background-size: 100% 6px;
     background-repeat: repeat-x;
@@ -972,7 +972,7 @@
   #footer-post #actions-footer a {
     display: inline-block;
     padding-left: 1rem;
-    color: #b57281;
+    color: #2bbc8a;
   }
   #footer-post #share-footer {
     padding-right: 1rem;
@@ -1020,7 +1020,7 @@
     font-size: 0.8rem;
   }
   #footer-post #toc-footer #TableOfContents > ul > li > a::before {
-    color: #b57281;
+    color: #2bbc8a;
     content: "#";
     margin-right: 8px;
   }
@@ -1030,7 +1030,7 @@
     line-height: 15px;
   }
   #footer-post #toc-footer #TableOfContents > ul > li > ul > li:before {
-    color: #b57281;
+    color: #2bbc8a;
     content: "·";
     font-weight: bold;
     margin-right: 3px;
@@ -1113,7 +1113,7 @@
     position: absolute;
     top: -4px;
     left: -1rem;
-    color: #b57281;
+    color: #2bbc8a;
     content: "#";
     font-weight: bold;
     font-size: 1.2rem;
@@ -1145,7 +1145,7 @@
     margin: 1rem 10px;
     padding: 0.5em 10px;
     background: inherit;
-    color: #b57281;
+    color: #2bbc8a;
     quotes: "\201C" "\201D" "\2018" "\2019";
     font-weight: bold;
   }
@@ -1154,7 +1154,7 @@
   }
   article .content blockquote:before {
     margin-right: 0.25em;
-    color: #b57281;
+    color: #2bbc8a;
     content: "\201C";
     vertical-align: -0.4em;
     font-size: 2em;
@@ -1354,7 +1354,7 @@
     -moz-border-radius: 5px;
   }
   .search-input:focus {
-    border: solid 1px #b57281;
+    border: solid 1px #2bbc8a;
   }
   #search-result ul.search-result-list {
     padding: 0;
@@ -1632,7 +1632,7 @@
     transition: opacity 0.2s ease-in;
   }
   .highlight .btn-copy:hover {
-    color: #b57281;
+    color: #2bbc8a;
   }
   .highlight pre {
     margin: 0;

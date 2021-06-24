@@ -11,6 +11,7 @@
   <meta property="og:title" content="Bandname" />
 <meta property="og:description" content="Overview Bandname is a very simple site that checks if a Bandcamp subdomain is available. It&rsquo;s built using jQuery and a CORS Anywhere proxy running on Heroku.
 Check it out here: https://quig.info/bandname
+Source code is available on GitHub
 I have a few musical projects that use Bandcamp to stream and sell music and merch. And while it&rsquo;s not too difficult to whip up a new email and walk through the Bandcamp Signup page to see if a specific subdomain is available, it&rsquo;s perhaps just a few more steps than is necessary." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://quig.info/blog/posts/bandname/" />
@@ -21,6 +22,7 @@ I have a few musical projects that use Bandcamp to stream and sell music and mer
 <meta name="twitter:title" content="Bandname"/>
 <meta name="twitter:description" content="Overview Bandname is a very simple site that checks if a Bandcamp subdomain is available. It&rsquo;s built using jQuery and a CORS Anywhere proxy running on Heroku.
 Check it out here: https://quig.info/bandname
+Source code is available on GitHub
 I have a few musical projects that use Bandcamp to stream and sell music and merch. And while it&rsquo;s not too difficult to whip up a new email and walk through the Bandcamp Signup page to see if a specific subdomain is available, it&rsquo;s perhaps just a few more steps than is necessary."/>
 
   
@@ -142,7 +144,7 @@ I have a few musical projects that use Bandcamp to stream and sell music and mer
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fbandname%2f&name=Bandname&description=Overview%20Bandname%20is%20a%20very%20simple%20site%20that%20checks%20if%20a%20Bandcamp%20subdomain%20is%20available.%20It%26rsquo%3bs%20built%20using%20jQuery%20and%20a%20CORS%20Anywhere%20proxy%20running%20on%20Heroku.%0aCheck%20it%20out%20here%3a%20https%3a%2f%2fquig.info%2fbandname%0aI%20have%20a%20few%20musical%20projects%20that%20use%20Bandcamp%20to%20stream%20and%20sell%20music%20and%20merch.%20And%20while%20it%26rsquo%3bs%20not%20too%20difficult%20to%20whip%20up%20a%20new%20email%20and%20walk%20through%20the%20Bandcamp%20Signup%20page%20to%20see%20if%20a%20specific%20subdomain%20is%20available%2c%20it%26rsquo%3bs%20perhaps%20just%20a%20few%20more%20steps%20than%20is%20necessary.">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fbandname%2f&name=Bandname&description=Overview%20Bandname%20is%20a%20very%20simple%20site%20that%20checks%20if%20a%20Bandcamp%20subdomain%20is%20available.%20It%26rsquo%3bs%20built%20using%20jQuery%20and%20a%20CORS%20Anywhere%20proxy%20running%20on%20Heroku.%0aCheck%20it%20out%20here%3a%20https%3a%2f%2fquig.info%2fbandname%0aSource%20code%20is%20available%20on%20GitHub%0aI%20have%20a%20few%20musical%20projects%20that%20use%20Bandcamp%20to%20stream%20and%20sell%20music%20and%20merch.%20And%20while%20it%26rsquo%3bs%20not%20too%20difficult%20to%20whip%20up%20a%20new%20email%20and%20walk%20through%20the%20Bandcamp%20Signup%20page%20to%20see%20if%20a%20specific%20subdomain%20is%20available%2c%20it%26rsquo%3bs%20perhaps%20just%20a%20few%20more%20steps%20than%20is%20necessary.">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
@@ -202,8 +204,9 @@ I have a few musical projects that use Bandcamp to stream and sell music and mer
     <div class="content" itemprop="articleBody">
       <h2 id="overview">Overview</h2>
 <p><strong>Bandname</strong> is a very simple site that checks if a <a href="https://bandcamp.com">Bandcamp</a> subdomain is available. It&rsquo;s built using <a href="https://jquery.com/">jQuery</a> and a <a href="https://github.com/Rob--W/cors-anywhere">CORS Anywhere</a> proxy running on <a href="https://heroku.com/">Heroku</a>.</p>
+<p>Check it out here: <a href="https://quig.info/bandname">https://quig.info/bandname</a><br>
+Source code is available on <a href="https://github.com/mdquigley/bandname">GitHub</a></p>
 <p><img src="../../images/bandname.gif" alt="bandname interface"></p>
-<p>Check it out here: <a href="https://quig.info/bandname">https://quig.info/bandname</a></p>
 <p>I have a few musical projects that use Bandcamp to stream and sell music and merch. And while it&rsquo;s not too difficult to whip up a new email and walk through the Bandcamp Signup page to see if a specific subdomain is available, it&rsquo;s perhaps just a few more steps than is necessary. So I thought of creating a simple tool to avoid that process mostly just to have a quick new project.</p>
 <p>Below I describe what&rsquo;s actually going on. First is the actual JQuery request that gets us what we want to know (<em>is this available?</em>). Second is the CORS Anywhere proxy to be able to actually make the JQuery request, since Bandcamp has some restrictions on cross-origin resource sharing.</p>
 <h2 id="jquery-request">JQuery Request</h2>
@@ -341,7 +344,7 @@ $.ajax({
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fbandname%2f&name=Bandname&description=Overview%20Bandname%20is%20a%20very%20simple%20site%20that%20checks%20if%20a%20Bandcamp%20subdomain%20is%20available.%20It%26rsquo%3bs%20built%20using%20jQuery%20and%20a%20CORS%20Anywhere%20proxy%20running%20on%20Heroku.%0aCheck%20it%20out%20here%3a%20https%3a%2f%2fquig.info%2fbandname%0aI%20have%20a%20few%20musical%20projects%20that%20use%20Bandcamp%20to%20stream%20and%20sell%20music%20and%20merch.%20And%20while%20it%26rsquo%3bs%20not%20too%20difficult%20to%20whip%20up%20a%20new%20email%20and%20walk%20through%20the%20Bandcamp%20Signup%20page%20to%20see%20if%20a%20specific%20subdomain%20is%20available%2c%20it%26rsquo%3bs%20perhaps%20just%20a%20few%20more%20steps%20than%20is%20necessary.">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fbandname%2f&name=Bandname&description=Overview%20Bandname%20is%20a%20very%20simple%20site%20that%20checks%20if%20a%20Bandcamp%20subdomain%20is%20available.%20It%26rsquo%3bs%20built%20using%20jQuery%20and%20a%20CORS%20Anywhere%20proxy%20running%20on%20Heroku.%0aCheck%20it%20out%20here%3a%20https%3a%2f%2fquig.info%2fbandname%0aSource%20code%20is%20available%20on%20GitHub%0aI%20have%20a%20few%20musical%20projects%20that%20use%20Bandcamp%20to%20stream%20and%20sell%20music%20and%20merch.%20And%20while%20it%26rsquo%3bs%20not%20too%20difficult%20to%20whip%20up%20a%20new%20email%20and%20walk%20through%20the%20Bandcamp%20Signup%20page%20to%20see%20if%20a%20specific%20subdomain%20is%20available%2c%20it%26rsquo%3bs%20perhaps%20just%20a%20few%20more%20steps%20than%20is%20necessary.">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
