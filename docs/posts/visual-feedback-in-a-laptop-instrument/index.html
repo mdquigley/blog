@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Visual Feedback in a Laptop Instrument | Mike Quigley</title>
+  <meta name="description" content="Journal for projects, etc.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Visual Feedback in a Laptop Instrument" />
+<meta property="og:description" content="Over time instrumentalists come to understand the distinctions between primary physical actions that produce sound and ancillary actions that aid in expressing musical or emotional information, which can be vital to audience understanding. It is possible that the loss of haptic feedback makes the properties of a musical instrument less understandable to both performer and audience. Perhaps then visual feedback can allow an instrumentalist to better understand the limitations of his or her instrument when no such haptic feedback exists, as is the case with many musical systems that incorporate live video interaction." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://quig.info/blog/posts/visual-feedback-in-a-laptop-instrument/" />
+<meta property="article:published_time" content="2021-06-23T19:53:30-04:00" />
+<meta property="article:modified_time" content="2021-06-23T19:53:30-04:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Visual Feedback in a Laptop Instrument"/>
+<meta name="twitter:description" content="Over time instrumentalists come to understand the distinctions between primary physical actions that produce sound and ancillary actions that aid in expressing musical or emotional information, which can be vital to audience understanding. It is possible that the loss of haptic feedback makes the properties of a musical instrument less understandable to both performer and audience. Perhaps then visual feedback can allow an instrumentalist to better understand the limitations of his or her instrument when no such haptic feedback exists, as is the case with many musical systems that incorporate live video interaction."/>
+
+  
+  
+  
+  <link rel="stylesheet" href="https://quig.info/blog/css/style-white.css">
+  
+   <link rel="stylesheet" href="https://quig.info/blog/css/custom.css"> 
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://quig.info/blog/images/favicon.ico" />
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/blog/">Blog</a></li>
+         
+        <li><a href="https://quig.info">Back to quig.info</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://quig.info/blog/posts/zone-out/">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&text=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&title=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&is_video=false&description=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Visual%20Feedback%20in%20a%20Laptop%20Instrument&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&title=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&title=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&title=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-stumbleupon " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&title=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-digg " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&name=Visual%20Feedback%20in%20a%20Laptop%20Instrument&description=Over%20time%20instrumentalists%20come%20to%20understand%20the%20distinctions%20between%20primary%20physical%20actions%20that%20produce%20sound%20and%20ancillary%20actions%20that%20aid%20in%20expressing%20musical%20or%20emotional%20information%2c%20which%20can%20be%20vital%20to%20audience%20understanding.%20It%20is%20possible%20that%20the%20loss%20of%20haptic%20feedback%20makes%20the%20properties%20of%20a%20musical%20instrument%20less%20understandable%20to%20both%20performer%20and%20audience.%20Perhaps%20then%20visual%20feedback%20can%20allow%20an%20instrumentalist%20to%20better%20understand%20the%20limitations%20of%20his%20or%20her%20instrument%20when%20no%20such%20haptic%20feedback%20exists%2c%20as%20is%20the%20case%20with%20many%20musical%20systems%20that%20incorporate%20live%20video%20interaction.">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&t=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents"></nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Visual Feedback in a Laptop Instrument
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2021-06-23 19:53:30 -0400 EDT" itemprop="datePublished">2021-06-23</time>
+          
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/blog/tags/max/msp" rel="tag">max/msp]</a>
+            
+             ,  
+            <a class="tag-link" href="/blog/tags/visual-feedback" rel="tag">visual feedback</a>
+            
+             ,  
+            <a class="tag-link" href="/blog/tags/haptic-feedback" rel="tag">haptic feedback</a>
+            
+             ,  
+            <a class="tag-link" href="/blog/tags/human-computer-interaction" rel="tag">human computer interaction</a>
+            
+             ,  
+            <a class="tag-link" href="/blog/tags/mapping" rel="tag">mapping</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    <div class="content" itemprop="articleBody">
+      <p><img src="../../images/visual-feedback.png" alt="Visual Feedack Sketch">
+Over time instrumentalists come to understand the distinctions between primary physical actions that produce sound and ancillary actions that aid in expressing musical or emotional information, which can be vital to audience understanding. It is possible that the loss of haptic feedback makes the properties of a musical instrument less understandable to both performer and audience. Perhaps then visual feedback can allow an instrumentalist to better understand the limitations of his or her instrument when no such haptic feedback exists, as is the case with many musical systems that incorporate live video interaction. This experiment tested the hypothesis that, <em>in a video camera controlled software instrument, the presentation of visual feedback will aid in the users’ understanding of musical mappings to
+visual space.</em> Participants were familiarized with such a software instrument and asked to recreate recordings of changes in pitch and timbre within timed trials. A visual feedback display was designed and presented only to an experimental group. For three separate recordings, each changing in one parameter (pitch or timbre), participants of the experimental group, on average, performed faster than those of the control group. These findings imply that visual feedback does allow an instrumentalist to better understand the limitations of their instrument.</p>
+<p>This was the final project for Psychology of Music with Dr. Morwaread Farbood. The motion sensing and &ldquo;visual feedback&rdquo; was based off of a system similar to what was used in another project, a camera-based interactive synthesizer called <a href="../mirror-music.md">Mirror Music</a>.</p>
+<p>Source code and paper are available on <a href="https://github.com/mdquigley/visual-feedback">GitHub</a></p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/blog/">Blog</a></li>
+         
+          <li><a href="https://quig.info">Back to quig.info</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents"></nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&text=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&title=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&is_video=false&description=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Visual%20Feedback%20in%20a%20Laptop%20Instrument&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&title=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&title=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&title=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&title=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-digg fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&name=Visual%20Feedback%20in%20a%20Laptop%20Instrument&description=Over%20time%20instrumentalists%20come%20to%20understand%20the%20distinctions%20between%20primary%20physical%20actions%20that%20produce%20sound%20and%20ancillary%20actions%20that%20aid%20in%20expressing%20musical%20or%20emotional%20information%2c%20which%20can%20be%20vital%20to%20audience%20understanding.%20It%20is%20possible%20that%20the%20loss%20of%20haptic%20feedback%20makes%20the%20properties%20of%20a%20musical%20instrument%20less%20understandable%20to%20both%20performer%20and%20audience.%20Perhaps%20then%20visual%20feedback%20can%20allow%20an%20instrumentalist%20to%20better%20understand%20the%20limitations%20of%20his%20or%20her%20instrument%20when%20no%20such%20haptic%20feedback%20exists%2c%20as%20is%20the%20case%20with%20many%20musical%20systems%20that%20incorporate%20live%20video%20interaction.">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fvisual-feedback-in-a-laptop-instrument%2f&t=Visual%20Feedback%20in%20a%20Laptop%20Instrument">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021  Mike Quigley 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/blog/">Blog</a></li>
+         
+        <li><a href="https://quig.info">Back to quig.info</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/blog/lib/font-awesome/css/all.min.css>
+<script src=/blog/lib/jquery/jquery.min.js></script>
+<script src=/blog/js/main.js></script>
+
+
+
+</html>
