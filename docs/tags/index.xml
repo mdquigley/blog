@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Mike Quigley</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 23 Jun 2021 20:15:04 -0400</lastBuildDate><atom:link href="https://quig.info/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Jun 2021 14:47:52 -0400</lastBuildDate><atom:link href="https://quig.info/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bandcamp</title>
+      <link>https://quig.info/blog/tags/bandcamp/</link>
+      <pubDate>Thu, 24 Jun 2021 14:47:52 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/tags/bandcamp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cors-anywhere</title>
+      <link>https://quig.info/blog/tags/cors-anywhere/</link>
+      <pubDate>Thu, 24 Jun 2021 14:47:52 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/tags/cors-anywhere/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>heroku</title>
+      <link>https://quig.info/blog/tags/heroku/</link>
+      <pubDate>Thu, 24 Jun 2021 14:47:52 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/tags/heroku/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>computer vision</title>
       <link>https://quig.info/blog/tags/computer-vision/</link>

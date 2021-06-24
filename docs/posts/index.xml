@@ -6,7 +6,18 @@
     <description>Recent content in Posts on Mike Quigley</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 23 Jun 2021 20:15:04 -0400</lastBuildDate><atom:link href="https://quig.info/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Jun 2021 14:47:52 -0400</lastBuildDate><atom:link href="https://quig.info/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bandname</title>
+      <link>https://quig.info/blog/posts/bandname/</link>
+      <pubDate>Thu, 24 Jun 2021 14:47:52 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/posts/bandname/</guid>
+      <description>Overview Bandname is a very simple site that checks if a Bandcamp subdomain is available. It&amp;rsquo;s built using jQuery and a CORS Anywhere proxy running on Heroku.
+Check it out here: https://quig.info/bandname
+I have a few musical projects that use Bandcamp to stream and sell music and merch. And while it&amp;rsquo;s not too difficult to whip up a new email and walk through the Bandcamp Signup page to see if a specific subdomain is available, it&amp;rsquo;s perhaps just a few more steps than is necessary.</description>
+    </item>
+    
     <item>
       <title>Mirror Music</title>
       <link>https://quig.info/blog/posts/mirror-music/</link>
