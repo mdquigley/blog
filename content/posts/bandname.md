@@ -8,9 +8,10 @@ tags: ["bandcamp", "heroku", "cors-anywhere"]
 ## Overview
 **Bandname** is a very simple site that checks if a [Bandcamp](https://bandcamp.com) subdomain is available. It's built using [jQuery](https://jquery.com/) and a [CORS Anywhere](https://github.com/Rob--W/cors-anywhere) proxy running on [Heroku](https://heroku.com/).
 
-![bandname interface](../../images/bandname.gif)
+Check it out here: https://quig.info/bandname  
+Source code is available on [GitHub](https://github.com/mdquigley/bandname)
 
-Check it out here: https://quig.info/bandname
+![bandname interface](../../images/bandname.gif)
 
 I have a few musical projects that use Bandcamp to stream and sell music and merch. And while it's not too difficult to whip up a new email and walk through the Bandcamp Signup page to see if a specific subdomain is available, it's perhaps just a few more steps than is necessary. So I thought of creating a simple tool to avoid that process mostly just to have a quick new project.
 
