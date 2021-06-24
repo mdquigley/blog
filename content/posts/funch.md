@@ -1,6 +1,6 @@
 ---
 title: "Funch"
-date: 2021-06-23T18:17:22-04:00
+date: 2021-06-20T18:17:22-04:00
 draft: false
 author: Mike Quigley
 tags: ["music technology", "max/msp", "digital signal processing", "audio effects"]

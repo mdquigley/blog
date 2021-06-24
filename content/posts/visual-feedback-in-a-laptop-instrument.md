@@ -1,6 +1,6 @@
 ---
 title: "Visual Feedback in a Laptop Instrument"
-date: 2021-06-23T19:53:30-04:00
+date: 2021-06-22T19:53:30-04:00
 draft: false
 author: Mike Quigley
 tags: ["max/msp]", "visual feedback", "haptic feedback", "human computer interaction", "mapping"]

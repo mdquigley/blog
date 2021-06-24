@@ -20,7 +20,7 @@ Video input is split into a grid of 16 squares, or &amp;ldquo;pixels&amp;rdquo;.
     <item>
       <title>Visual Feedback in a Laptop Instrument</title>
       <link>https://quig.info/blog/posts/visual-feedback-in-a-laptop-instrument/</link>
-      <pubDate>Wed, 23 Jun 2021 19:53:30 -0400</pubDate>
+      <pubDate>Tue, 22 Jun 2021 19:53:30 -0400</pubDate>
       
       <guid>https://quig.info/blog/posts/visual-feedback-in-a-laptop-instrument/</guid>
       <description>Over time instrumentalists come to understand the distinctions between primary physical actions that produce sound and ancillary actions that aid in expressing musical or emotional information, which can be vital to audience understanding. It is possible that the loss of haptic feedback makes the properties of a musical instrument less understandable to both performer and audience. Perhaps then visual feedback can allow an instrumentalist to better understand the limitations of his or her instrument when no such haptic feedback exists, as is the case with many musical systems that incorporate live video interaction.</description>
@@ -29,7 +29,7 @@ Video input is split into a grid of 16 squares, or &amp;ldquo;pixels&amp;rdquo;.
     <item>
       <title>Zone Out</title>
       <link>https://quig.info/blog/posts/zone-out/</link>
-      <pubDate>Wed, 23 Jun 2021 18:43:01 -0400</pubDate>
+      <pubDate>Mon, 21 Jun 2021 18:43:01 -0400</pubDate>
       
       <guid>https://quig.info/blog/posts/zone-out/</guid>
       <description>Final project for Java Music Systems with Professor Nick Didkovsky, Zone Out is a Java program that creates generative ambient music for three voices, written with Java Music Specification Language and JSyn. Above is an excerpt recording. It was originally hosted as a Java applet on a personal website. I&amp;rsquo;d like to recreate and expand on this idea with JavaScript using Tone.js as a personal project sometime soon.</description>
@@ -38,7 +38,7 @@ Video input is split into a grid of 16 squares, or &amp;ldquo;pixels&amp;rdquo;.
     <item>
       <title>Funch</title>
       <link>https://quig.info/blog/posts/funch/</link>
-      <pubDate>Wed, 23 Jun 2021 18:17:22 -0400</pubDate>
+      <pubDate>Sun, 20 Jun 2021 18:17:22 -0400</pubDate>
       
       <guid>https://quig.info/blog/posts/funch/</guid>
       <description>Funch was my final project for Computer Music Synthesis with Professor Peter McCulloch. It is a max patch capable of processing both live audio and sound files. It consists of four main sections, each dedicated to the predominant max object in that portion of the patch. The user can manipulate various parameters affecting sample and bit rates, ring modulation, delay and resonance. Each unit output can be mixed independently and a recording of the master output can be made.</description>
