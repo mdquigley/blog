@@ -1,10 +1,10 @@
 body {
-    font-family: 'Meslo LG', monospace;
+    font-family: monospace;
 }
 
 body p {
-    font-family: "Garamond", serif;
-    font-size: large;
+    font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: medium;
 }
 
 body h1,
