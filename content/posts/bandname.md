@@ -1,9 +1,9 @@
 ---
-title: "Bandname"
+title: "Bandname with JQuery & CORS Anywhere"
 date: 2021-06-24T14:47:52-04:00
 draft: false
 author: Mike Quigley
-tags: ["bandcamp", "heroku", "cors-anywhere"]
+tags: ["bandcamp", "heroku", "cors-anywhere", "jquery"]
 ---
 ## Overview
 **Bandname** is a very simple site that checks if a [Bandcamp](https://bandcamp.com) subdomain is available. It's built using [jQuery](https://jquery.com/) and a [CORS Anywhere](https://github.com/Rob--W/cors-anywhere) proxy running on [Heroku](https://heroku.com/).
