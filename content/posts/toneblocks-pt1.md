@@ -34,7 +34,11 @@ In our file, lets load in Tone.js from CDNJS with a `<script>` tag in the `<head
 <head>
 ...
     <!-- Load Tone.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js" integrity="sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"
+    integrity="sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer">
+    </script>
 </head>
 ...
 ```
@@ -89,7 +93,11 @@ Next, we're going to implement a Blockly workspace and a custom block that print
 <head>
 ...
     <!-- Load Tone.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js" integrity="sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"
+    integrity="sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer">
+    </script>
     
     <!-- Load Blockly -->
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
