@@ -33,6 +33,7 @@ In our file, lets load in Tone.js from CDNJS with a `<script>` tag in the `<head
 <html lang="en">
 <head>
 ...
+    <!-- Load Tone.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js" integrity="sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 ...
@@ -44,6 +45,7 @@ Now that Tone.js is loaded into our main file, we'll be able to use it to create
 <head>...</head>
 <body>
     <script>
+        // Create synth and route output to destination
         const synth = new Tone.Synth().toDestination();
     </script>
 </body>
@@ -58,12 +60,17 @@ And checking the Tone.js docs, Synth objects have a [`triggerAttackRelease()`](h
 <html lang="en">
 <head>...</head>
 <body>
-
+    <!-- Create button element -->
     <button id="play">Play</button>
 
     <script>
+        // Create synth and route output to destination
         const synth = new Tone.Synth().toDestination();
+
+        // Assign button variable to button element
         const button = document.getElementById('play');
+
+        // Add "on click" function to play note when button is pressed
         button.addEventListener('click', () => {
             synth.triggerAttackRelease('C4', '8n');
         });
