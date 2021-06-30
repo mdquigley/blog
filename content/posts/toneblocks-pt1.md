@@ -24,23 +24,71 @@ Essentially, Toneblocks combines two frameworks, Tone.js and Blockly, in a proof
 To get a sense of what's going on here, we're going to walk through three versions of a traditional "Hello World" program. First, we'll get Tone.js set up and play our first musical note. Second, we'll get Blockly set up and create our first block in a simple workspace. Finally, we'll get these two tools working together and create a programmable block that plays a note. 
 
 ### Hello Tone
-Create a project folder and a file `index.html`. In our file, lets load in Tone.js with a `<script>` tag in the `<head>` section. This will allow us to utilize all that Tone.js has to offer
+The [Tone.js API documentation](https://tonejs.github.io/docs/14.7.77/index.html) has lots of detailed information on what's available, as well as some example projects and real world demos/applications. To get us started, we'l try implementing a simple Synth object that that plays a note when a button is pressed.
+
+Create a project folder and a file `index.html`.  
+In our file, lets load in Tone.js from CDNJS with a `<script>` tag in the `<head>` section. Note the version and integrity hash may be different now than at the time this post was written.
 ```
 <!DOCTYPE html>
 <html lang="en">
 <head>
 ...
-    <!-- NOTE: version & integrity hash may have changed since publishing -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.68/Tone.js"
-        integrity="sha512-eBjUIAF/NN5kcGlFXz5n9UMAv+LKYFqtGnqHu83qQCXRJaL6iSsjFeOdft9AK9lD/9meTkj/5ctn6DGV5rz6Pg=="
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js" integrity="sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+...
 ```
-and set the `<head>` info as you normally would.
-- loading tone.js via script in header 
-- create play button
-- script tag in body to create synth and onclick function to play a note
+Now that Tone.js is loaded into our main file, we'll be able to use it to create a synth. Lets do that in a new `<script>` tag in the `<body>` section.
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>...</head>
+<body>
+    <script>
+        const synth = new Tone.Synth().toDestination();
+    </script>
+</body>
+...
+```
+In the code above, we create a new variable of type const, assign it a new [`Tone.Synth()`](https://tonejs.github.io/docs/14.7.77/Synth) object, and connect the the synth's output to the system's main output (likely your speakers) using the [`toDestination()`](https://tonejs.github.io/docs/14.7.77/Synth#toDestination) method.
+
+We want the synth to play a note when we press a button. So lets create a button in the `<body>` section of the file. Then we can access the button in our `<script>` section and give it an *on click* function to trigger the synth.
+And checking the Tone.js docs, Synth objects have a [`triggerAttackRelease()`](https://tonejs.github.io/docs/14.7.77/Synth#triggerAttackRelease) method which takes a pitch value and a duration value. We'll use 'C4' for our pitch value, which is middle C on a piano, or ~261.63 Hz. And we'll use '8n' as our duration, so the tone will play for the length of an 8th note. 
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>...</head>
+<body>
+
+    <button id="play">Play</button>
+
+    <script>
+        const synth = new Tone.Synth().toDestination();
+        const button = document.getElementById('play');
+        button.addEventListener('click', () => {
+            synth.triggerAttackRelease('C4', '8n');
+        });
+    </script>
+</body>
+...
+```
+So now if you run your `index.html` file in your browser, you should see a single button with "Play" displayed. And when you press it, you should hear an 8th note of Middle C. Hello Tone! 🎵
 
 ### Hello Block
+Next, we're going to implement a Blockly workspace and a custom block that prints "Hello Block" when the workspace code is run. The [Blockly API documentation](https://developers.google.com/blockly/) has a breakdown of its many features, as well as examples and tools to help with creating your own environment. 
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+...
+    <!-- Load Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js" integrity="sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Load Blockly -->
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+</head>
+...
+```
 
 - basic injecting Blockly into the index.html file
 - creating a block that prints Hello World
