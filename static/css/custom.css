@@ -60,3 +60,15 @@ body .h1 a:hover {
 a:hover {
     color: #b57281 !important;
 }
+
+article .content h2:before {
+    color: #b57281;
+}
+
+#header-post #toc nav > ul > li:before {
+    color: #b57281;
+}
+
+#header-post #toc nav > ul > li > ul > li:before {
+    color: #b57281;
+}
