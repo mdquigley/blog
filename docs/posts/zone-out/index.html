@@ -11,9 +11,10 @@
   <meta property="og:title" content="Zone Out" />
 <meta property="og:description" content="Final project for Java Music Systems with Professor Nick Didkovsky, Zone Out is a Java program that creates generative ambient music for three voices, written with Java Music Specification Language and JSyn. Above is an excerpt recording. It was originally hosted as a Java applet on a personal website. I&rsquo;d like to recreate and expand on this idea with JavaScript using Tone.js as a personal project sometime soon." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://quig.info/blog/posts/zone-out/" />
+<meta property="og:url" content="https://quig.info/blog/posts/zone-out/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-06-21T18:43:01-04:00" />
 <meta property="article:modified_time" content="2021-06-21T18:43:01-04:00" />
+
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Zone Out"/>
@@ -45,7 +46,7 @@
   <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -61,25 +62,25 @@
       <ul>
         
         <li>
-          <a class="icon" href=" https://quig.info/blog/posts/funch/">
+          <a class="icon" href=" https://quig.info/blog/posts/funch/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="https://quig.info/blog/posts/visual-feedback-in-a-laptop-instrument/">
+          <a class="icon" href="https://quig.info/blog/posts/visual-feedback-in-a-laptop-instrument/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
         
         <li>
-          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
             <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
           </a>
         </li>
         <li>
-          <a class="icon" href="#">
+          <a class="icon" href="#" aria-label="Share">
             <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
           </a>
         </li>
@@ -99,57 +100,47 @@
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f" aria-label="Facebook">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&text=Zone%20Out">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&text=Zone%20Out" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&is_video=false&description=Zone%20Out">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&is_video=false&description=Zone%20Out" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Zone%20Out&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f">
+    <a class="icon" href="mailto:?subject=Zone%20Out&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out">
-      <i class="fab fa-stumbleupon " aria-hidden="true"></i>
-    </a>
-  </li>
-  <li>
-    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out">
-      <i class="fab fa-digg " aria-hidden="true"></i>
-    </a>
-  </li>
-  <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&name=Zone%20Out&description=Final%20project%20for%20Java%20Music%20Systems%20with%20Professor%20Nick%20Didkovsky%2c%20Zone%20Out%20is%20a%20Java%20program%20that%20creates%20generative%20ambient%20music%20for%20three%20voices%2c%20written%20with%20Java%20Music%20Specification%20Language%20and%20JSyn.%20Above%20is%20an%20excerpt%20recording.%20It%20was%20originally%20hosted%20as%20a%20Java%20applet%20on%20a%20personal%20website.%20I%26rsquo%3bd%20like%20to%20recreate%20and%20expand%20on%20this%20idea%20with%20JavaScript%20using%20Tone.js%20as%20a%20personal%20project%20sometime%20soon.">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&name=Zone%20Out&description=Final%20project%20for%20Java%20Music%20Systems%20with%20Professor%20Nick%20Didkovsky%2c%20Zone%20Out%20is%20a%20Java%20program%20that%20creates%20generative%20ambient%20music%20for%20three%20voices%2c%20written%20with%20Java%20Music%20Specification%20Language%20and%20JSyn.%20Above%20is%20an%20excerpt%20recording.%20It%20was%20originally%20hosted%20as%20a%20Java%20applet%20on%20a%20personal%20website.%20I%26rsquo%3bd%20like%20to%20recreate%20and%20expand%20on%20this%20idea%20with%20JavaScript%20using%20Tone.js%20as%20a%20personal%20project%20sometime%20soon." aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&t=Zone%20Out">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&t=Zone%20Out" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -175,6 +166,8 @@
           <time datetime="2021-06-21 18:43:01 -0400 EDT" itemprop="datePublished">2021-06-21</time>
           
         </div>
+        
+        
         
         
         <div class="article-tag">
@@ -249,57 +242,47 @@
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&text=Zone%20Out">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&text=Zone%20Out" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&is_video=false&description=Zone%20Out">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&is_video=false&description=Zone%20Out" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Zone%20Out&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f">
+    <a class="icon" href="mailto:?subject=Zone%20Out&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out">
-      <i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i>
-    </a>
-  </li>
-  <li>
-    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&title=Zone%20Out">
-      <i class="fab fa-digg fa-lg" aria-hidden="true"></i>
-    </a>
-  </li>
-  <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&name=Zone%20Out&description=Final%20project%20for%20Java%20Music%20Systems%20with%20Professor%20Nick%20Didkovsky%2c%20Zone%20Out%20is%20a%20Java%20program%20that%20creates%20generative%20ambient%20music%20for%20three%20voices%2c%20written%20with%20Java%20Music%20Specification%20Language%20and%20JSyn.%20Above%20is%20an%20excerpt%20recording.%20It%20was%20originally%20hosted%20as%20a%20Java%20applet%20on%20a%20personal%20website.%20I%26rsquo%3bd%20like%20to%20recreate%20and%20expand%20on%20this%20idea%20with%20JavaScript%20using%20Tone.js%20as%20a%20personal%20project%20sometime%20soon.">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&name=Zone%20Out&description=Final%20project%20for%20Java%20Music%20Systems%20with%20Professor%20Nick%20Didkovsky%2c%20Zone%20Out%20is%20a%20Java%20program%20that%20creates%20generative%20ambient%20music%20for%20three%20voices%2c%20written%20with%20Java%20Music%20Specification%20Language%20and%20JSyn.%20Above%20is%20an%20excerpt%20recording.%20It%20was%20originally%20hosted%20as%20a%20Java%20applet%20on%20a%20personal%20website.%20I%26rsquo%3bd%20like%20to%20recreate%20and%20expand%20on%20this%20idea%20with%20JavaScript%20using%20Tone.js%20as%20a%20personal%20project%20sometime%20soon." aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&t=Zone%20Out">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fzone-out%2f&t=Zone%20Out" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>
@@ -309,13 +292,13 @@
 
     <div id="actions-footer">
       
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
           <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
           <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
           <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
           <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
     </div>
 

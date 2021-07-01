@@ -12,9 +12,10 @@
 <meta property="og:description" content="Mirror Music is an interactive synthesizer that generates random pitches within a user specified key, triggered by motion, and characterized in range and timbre by color.
 Video input is split into a grid of 16 squares, or &ldquo;pixels&rdquo;. Each pixel is analyzed for motion and color data. When motion in a pixel is detected, the color data at that moment is sent to 1 of 16 poly~ instances that generates a random pitch within the specified key, played for the specified length with attack, decay, sustain, and release." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://quig.info/blog/posts/mirror-music/" />
+<meta property="og:url" content="https://quig.info/blog/posts/mirror-music/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-06-23T20:15:04-04:00" />
 <meta property="article:modified_time" content="2021-06-23T20:15:04-04:00" />
+
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mirror Music"/>
@@ -47,7 +48,7 @@ Video input is split into a grid of 16 squares, or &ldquo;pixels&rdquo;. Each pi
   <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -63,25 +64,25 @@ Video input is split into a grid of 16 squares, or &ldquo;pixels&rdquo;. Each pi
       <ul>
         
         <li>
-          <a class="icon" href=" https://quig.info/blog/posts/visual-feedback-in-a-laptop-instrument/">
+          <a class="icon" href=" https://quig.info/blog/posts/visual-feedback-in-a-laptop-instrument/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="https://quig.info/blog/posts/bandname/">
+          <a class="icon" href="https://quig.info/blog/posts/bandname/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
         
         <li>
-          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
             <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
           </a>
         </li>
         <li>
-          <a class="icon" href="#">
+          <a class="icon" href="#" aria-label="Share">
             <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
           </a>
         </li>
@@ -101,57 +102,47 @@ Video input is split into a grid of 16 squares, or &ldquo;pixels&rdquo;. Each pi
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f" aria-label="Facebook">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&text=Mirror%20Music">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&text=Mirror%20Music" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&is_video=false&description=Mirror%20Music">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&is_video=false&description=Mirror%20Music" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Mirror%20Music&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f">
+    <a class="icon" href="mailto:?subject=Mirror%20Music&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
-      <i class="fab fa-stumbleupon " aria-hidden="true"></i>
-    </a>
-  </li>
-  <li>
-    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
-      <i class="fab fa-digg " aria-hidden="true"></i>
-    </a>
-  </li>
-  <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&name=Mirror%20Music&description=Mirror%20Music%20is%20an%20interactive%20synthesizer%20that%20generates%20random%20pitches%20within%20a%20user%20specified%20key%2c%20triggered%20by%20motion%2c%20and%20characterized%20in%20range%20and%20timbre%20by%20color.%0aVideo%20input%20is%20split%20into%20a%20grid%20of%2016%20squares%2c%20or%20%26ldquo%3bpixels%26rdquo%3b.%20Each%20pixel%20is%20analyzed%20for%20motion%20and%20color%20data.%20When%20motion%20in%20a%20pixel%20is%20detected%2c%20the%20color%20data%20at%20that%20moment%20is%20sent%20to%201%20of%2016%20poly~%20instances%20that%20generates%20a%20random%20pitch%20within%20the%20specified%20key%2c%20played%20for%20the%20specified%20length%20with%20attack%2c%20decay%2c%20sustain%2c%20and%20release.">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&name=Mirror%20Music&description=Mirror%20Music%20is%20an%20interactive%20synthesizer%20that%20generates%20random%20pitches%20within%20a%20user%20specified%20key%2c%20triggered%20by%20motion%2c%20and%20characterized%20in%20range%20and%20timbre%20by%20color.%0aVideo%20input%20is%20split%20into%20a%20grid%20of%2016%20squares%2c%20or%20%26ldquo%3bpixels%26rdquo%3b.%20Each%20pixel%20is%20analyzed%20for%20motion%20and%20color%20data.%20When%20motion%20in%20a%20pixel%20is%20detected%2c%20the%20color%20data%20at%20that%20moment%20is%20sent%20to%201%20of%2016%20poly~%20instances%20that%20generates%20a%20random%20pitch%20within%20the%20specified%20key%2c%20played%20for%20the%20specified%20length%20with%20attack%2c%20decay%2c%20sustain%2c%20and%20release." aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&t=Mirror%20Music">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&t=Mirror%20Music" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -177,6 +168,8 @@ Video input is split into a grid of 16 squares, or &ldquo;pixels&rdquo;. Each pi
           <time datetime="2021-06-23 20:15:04 -0400 EDT" itemprop="datePublished">2021-06-23</time>
           
         </div>
+        
+        
         
         
         <div class="article-tag">
@@ -257,57 +250,47 @@ Video input is split into a grid of 16 squares, or &ldquo;pixels&rdquo;. Each pi
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&text=Mirror%20Music">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&text=Mirror%20Music" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&is_video=false&description=Mirror%20Music">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&is_video=false&description=Mirror%20Music" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Mirror%20Music&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f">
+    <a class="icon" href="mailto:?subject=Mirror%20Music&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
-      <i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i>
-    </a>
-  </li>
-  <li>
-    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&title=Mirror%20Music">
-      <i class="fab fa-digg fa-lg" aria-hidden="true"></i>
-    </a>
-  </li>
-  <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&name=Mirror%20Music&description=Mirror%20Music%20is%20an%20interactive%20synthesizer%20that%20generates%20random%20pitches%20within%20a%20user%20specified%20key%2c%20triggered%20by%20motion%2c%20and%20characterized%20in%20range%20and%20timbre%20by%20color.%0aVideo%20input%20is%20split%20into%20a%20grid%20of%2016%20squares%2c%20or%20%26ldquo%3bpixels%26rdquo%3b.%20Each%20pixel%20is%20analyzed%20for%20motion%20and%20color%20data.%20When%20motion%20in%20a%20pixel%20is%20detected%2c%20the%20color%20data%20at%20that%20moment%20is%20sent%20to%201%20of%2016%20poly~%20instances%20that%20generates%20a%20random%20pitch%20within%20the%20specified%20key%2c%20played%20for%20the%20specified%20length%20with%20attack%2c%20decay%2c%20sustain%2c%20and%20release.">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&name=Mirror%20Music&description=Mirror%20Music%20is%20an%20interactive%20synthesizer%20that%20generates%20random%20pitches%20within%20a%20user%20specified%20key%2c%20triggered%20by%20motion%2c%20and%20characterized%20in%20range%20and%20timbre%20by%20color.%0aVideo%20input%20is%20split%20into%20a%20grid%20of%2016%20squares%2c%20or%20%26ldquo%3bpixels%26rdquo%3b.%20Each%20pixel%20is%20analyzed%20for%20motion%20and%20color%20data.%20When%20motion%20in%20a%20pixel%20is%20detected%2c%20the%20color%20data%20at%20that%20moment%20is%20sent%20to%201%20of%2016%20poly~%20instances%20that%20generates%20a%20random%20pitch%20within%20the%20specified%20key%2c%20played%20for%20the%20specified%20length%20with%20attack%2c%20decay%2c%20sustain%2c%20and%20release." aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&t=Mirror%20Music">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2fmirror-music%2f&t=Mirror%20Music" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>
@@ -317,13 +300,13 @@ Video input is split into a grid of 16 squares, or &ldquo;pixels&rdquo;. Each pi
 
     <div id="actions-footer">
       
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
           <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
           <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
           <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
           <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
     </div>
 
