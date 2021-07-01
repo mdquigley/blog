@@ -133,12 +133,118 @@ In its barest form, Blockly requires a *Workspace* on your page within which you
 </body>
 ...
 ```
-Now that the elements are there, we need to "inject" 
+Now that the elements are there, we need to "inject" Blockly into the `blocklyDiv` element and associate the `toolbox` with it. We'll do this in our main `<script>` tag inside of `<body>`
+```
+// Inject Blockly workspace
+const workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
+```
+Next we'll create a function to run the code inside our Blockly workspace. We'll reserve the word "code" so that if the user tries to create anything  called "code" it won't cause problems.
+```
+// Create function to evaluate Blockly code
+function runCode() {
 
+    // reserve "code" to avoid conflicts between the user's workspace and the page
+    Blockly.JavaScript.addReservedWords('code');
 
+    // Assign the contents of the workspace to the 'code' variable
+    const code = Blockly.JavaScript.workspaceToCode(workspace);
 
-- basic injecting Blockly into the index.html file
-- creating a block that prints Hello World
+    // Try to evaluate the code in the workspace, display any errors
+    try {
+        eval(code);
+    } catch (e) {
+        alert(e);
+    }
+}
+```
+Since we already have a button created from our *Hello Tone* section, we'll make that same button run the Blockly workspace code when it's pressed, simply by calling the `runCode()` function from the *on click* event listener.
+```
+// Add "on click" function to play note when button is pressed,
+// and run the workspace code
+button.addEventListener('click', () => {
+    synth.triggerAttackRelease('C4', '8n');
+    runCode();
+});
+```
+So now your `index.html` should look like this:
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toneblocks Pt1</title>
+
+        <!-- Load Tone.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js" integrity="sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+        <!-- Load Blockly -->
+        <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
+        <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+        <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+        <script src="https://unpkg.com/blockly/msg/en.js"></script>
+</head>
+<body>
+
+    <!-- Create button element -->
+    <button id="play">Play</button>
+
+    <!-- Create Blockly elements -->
+    <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+    <xml id="toolbox" style="display: none">
+        <block type="controls_if"></block>
+        <block type="controls_repeat_ext"></block>
+        <block type="logic_compare"></block>
+        <block type="math_number"></block>
+        <block type="math_arithmetic"></block>
+        <block type="text"></block>
+        <block type="text_print"></block>
+      </xml>
+
+    <script>
+ 
+        // Create synth and route output to destination
+        const synth = new Tone.Synth().toDestination();
+
+        // Assign button variable to button element
+        const button = document.getElementById('play');
+
+        // Add "on click" function to play note when button is pressed,
+        // and run the workspace code
+        button.addEventListener('click', () => {
+            synth.triggerAttackRelease('C4', '8n');
+            runCode();
+        });
+
+        // Inject Blockly workspace
+        const workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
+
+        // Create function to evaluate Blockly code
+        function runCode() {
+
+            // reserve "code" to avoid conflicts between the user's workspace and the page
+            Blockly.JavaScript.addReservedWords('code');
+
+            // Assign the contents of the workspace to te 'code' variable
+            const code = Blockly.JavaScript.workspaceToCode(workspace);
+
+            // Try to evaluate the code in the workspace, display any errors
+            try {
+                eval(code);
+            } catch (e) {
+                alert(e);
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
+```
+Load the file in a browser window, you should see the **Play** button and a Blockly workspace with example blocks. Try dragging the **print** block into the workspace. Then connext the empty **text** block to that and type in "Hello Block". Click the **Play** button and you will hear the tone and get an alert displaying "Hello Block". It should look similar to beow:  
+
+![](../../images/hello-block.png)
 
 ### A Tone Block
 - creating a block that plays a note based on MIDI number input
