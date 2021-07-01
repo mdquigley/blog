@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://quig.info/blog/tags/blockly/</loc>
+    <lastmod>2021-06-28T12:43:36-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/</loc>
+    <lastmod>2021-06-28T12:43:36-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/music-technology/</loc>
+    <lastmod>2021-06-28T12:43:36-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/posts/</loc>
+    <lastmod>2021-06-28T12:43:36-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/</loc>
+    <lastmod>2021-06-28T12:43:36-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/thesis/</loc>
+    <lastmod>2021-06-28T12:43:36-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/posts/toneblocks-pt1/</loc>
+    <lastmod>2021-06-28T12:43:36-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/tonejs/</loc>
+    <lastmod>2021-06-28T12:43:36-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/web-audio/</loc>
+    <lastmod>2021-06-28T12:43:36-04:00</lastmod>
+  </url><url>
     <loc>https://quig.info/blog/tags/bandcamp/</loc>
     <lastmod>2021-06-24T14:47:52-04:00</lastmod>
   </url><url>
@@ -15,15 +42,6 @@
     <lastmod>2021-06-24T14:47:52-04:00</lastmod>
   </url><url>
     <loc>https://quig.info/blog/tags/jquery/</loc>
-    <lastmod>2021-06-24T14:47:52-04:00</lastmod>
-  </url><url>
-    <loc>https://quig.info/blog/</loc>
-    <lastmod>2021-06-24T14:47:52-04:00</lastmod>
-  </url><url>
-    <loc>https://quig.info/blog/posts/</loc>
-    <lastmod>2021-06-24T14:47:52-04:00</lastmod>
-  </url><url>
-    <loc>https://quig.info/blog/tags/</loc>
     <lastmod>2021-06-24T14:47:52-04:00</lastmod>
   </url><url>
     <loc>https://quig.info/blog/tags/computer-vision/</loc>
@@ -75,9 +93,6 @@
     <lastmod>2021-06-20T18:17:22-04:00</lastmod>
   </url><url>
     <loc>https://quig.info/blog/posts/funch/</loc>
-    <lastmod>2021-06-20T18:17:22-04:00</lastmod>
-  </url><url>
-    <loc>https://quig.info/blog/tags/music-technology/</loc>
     <lastmod>2021-06-20T18:17:22-04:00</lastmod>
   </url><url>
     <loc>https://quig.info/blog/tags/cli/</loc>

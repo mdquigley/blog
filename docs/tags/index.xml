@@ -6,7 +6,52 @@
     <description>Recent content in Tags on Mike Quigley</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 24 Jun 2021 14:47:52 -0400</lastBuildDate><atom:link href="https://quig.info/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Jun 2021 12:43:36 -0400</lastBuildDate><atom:link href="https://quig.info/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>blockly</title>
+      <link>https://quig.info/blog/tags/blockly/</link>
+      <pubDate>Mon, 28 Jun 2021 12:43:36 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/tags/blockly/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>music technology</title>
+      <link>https://quig.info/blog/tags/music-technology/</link>
+      <pubDate>Mon, 28 Jun 2021 12:43:36 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/tags/music-technology/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>thesis</title>
+      <link>https://quig.info/blog/tags/thesis/</link>
+      <pubDate>Mon, 28 Jun 2021 12:43:36 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/tags/thesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tonejs</title>
+      <link>https://quig.info/blog/tags/tonejs/</link>
+      <pubDate>Mon, 28 Jun 2021 12:43:36 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/tags/tonejs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web-audio</title>
+      <link>https://quig.info/blog/tags/web-audio/</link>
+      <pubDate>Mon, 28 Jun 2021 12:43:36 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/tags/web-audio/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>bandcamp</title>
       <link>https://quig.info/blog/tags/bandcamp/</link>
@@ -157,15 +202,6 @@
       <pubDate>Sun, 20 Jun 2021 18:17:22 -0400</pubDate>
       
       <guid>https://quig.info/blog/tags/digital-signal-processing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>music technology</title>
-      <link>https://quig.info/blog/tags/music-technology/</link>
-      <pubDate>Sun, 20 Jun 2021 18:17:22 -0400</pubDate>
-      
-      <guid>https://quig.info/blog/tags/music-technology/</guid>
       <description></description>
     </item>
     

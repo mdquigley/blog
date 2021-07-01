@@ -1,7 +1,7 @@
 ---
 title: "Toneblocks Pt1"
 date: 2021-06-28T12:43:36-04:00
-draft: true
+draft: false
 author: Mike Quigley
 tags: ["thesis", "web-audio", "tonejs", "blockly", "music-technology"]
 ---

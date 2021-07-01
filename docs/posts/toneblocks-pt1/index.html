@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Toneblocks Pt1 | Mike Quigley</title>
+  <meta name="description" content="Journal for projects, etc.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Toneblocks Pt1" />
+<meta property="og:description" content="Overview Toneblocks is a web-based musical creative coding environment, built with Tone.js and Blockly. Originally developed as my thesis project for the Master of Music in Music Technology requirements at NYU Steinhardt. It is the basis for a paper/poster/video presentated at NIME 2021 titled Toneblocks: block-based musical programming, co-authored with Willie Payne. Watch a brief video demonstration on Youtube, or play around with it on my site.
+This is Part 1 of several posts taking a closer look at the application and its underlying mechanics." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://quig.info/blog/posts/toneblocks-pt1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-28T12:43:36-04:00" />
+<meta property="article:modified_time" content="2021-06-28T12:43:36-04:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Toneblocks Pt1"/>
+<meta name="twitter:description" content="Overview Toneblocks is a web-based musical creative coding environment, built with Tone.js and Blockly. Originally developed as my thesis project for the Master of Music in Music Technology requirements at NYU Steinhardt. It is the basis for a paper/poster/video presentated at NIME 2021 titled Toneblocks: block-based musical programming, co-authored with Willie Payne. Watch a brief video demonstration on Youtube, or play around with it on my site.
+This is Part 1 of several posts taking a closer look at the application and its underlying mechanics."/>
+
+  
+  
+  
+  <link rel="stylesheet" href="https://quig.info/blog/css/style-white.css">
+  
+   <link rel="stylesheet" href="https://quig.info/blog/css/custom.css"> 
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://quig.info/blog/images/favicon.ico" />
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/blog/">Blog</a></li>
+         
+        <li><a href="https://quig.info">Back to quig.info</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://quig.info/blog/posts/bandname/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&text=Toneblocks%20Pt1" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&title=Toneblocks%20Pt1" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&is_video=false&description=Toneblocks%20Pt1" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Toneblocks%20Pt1&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&title=Toneblocks%20Pt1" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&title=Toneblocks%20Pt1" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&name=Toneblocks%20Pt1&description=Overview%20Toneblocks%20is%20a%20web-based%20musical%20creative%20coding%20environment%2c%20built%20with%20Tone.js%20and%20Blockly.%20Originally%20developed%20as%20my%20thesis%20project%20for%20the%20Master%20of%20Music%20in%20Music%20Technology%20requirements%20at%20NYU%20Steinhardt.%20It%20is%20the%20basis%20for%20a%20paper%2fposter%2fvideo%20presentated%20at%20NIME%202021%20titled%20Toneblocks%3a%20block-based%20musical%20programming%2c%20co-authored%20with%20Willie%20Payne.%20Watch%20a%20brief%20video%20demonstration%20on%20Youtube%2c%20or%20play%20around%20with%20it%20on%20my%20site.%0aThis%20is%20Part%201%20of%20several%20posts%20taking%20a%20closer%20look%20at%20the%20application%20and%20its%20underlying%20mechanics." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&t=Toneblocks%20Pt1" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#tonejs--blockly">Tone.js &amp; Blockly</a></li>
+    <li><a href="#lets-make-something">Lets Make Something!</a>
+      <ul>
+        <li><a href="#hello-tone">Hello Tone</a></li>
+        <li><a href="#hello-block">Hello Block</a></li>
+        <li><a href="#a-tone-block">A Tone Block</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Toneblocks Pt1
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2021-06-28 12:43:36 -0400 EDT" itemprop="datePublished">2021-06-28</time>
+          
+        </div>
+        
+        
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/blog/tags/thesis" rel="tag">thesis</a>
+            
+             ,  
+            <a class="tag-link" href="/blog/tags/web-audio" rel="tag">web-audio</a>
+            
+             ,  
+            <a class="tag-link" href="/blog/tags/tonejs" rel="tag">tonejs</a>
+            
+             ,  
+            <a class="tag-link" href="/blog/tags/blockly" rel="tag">blockly</a>
+            
+             ,  
+            <a class="tag-link" href="/blog/tags/music-technology" rel="tag">music-technology</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    <div class="content" itemprop="articleBody">
+      <p><img src="../../images/toneblocks.gif" alt=""></p>
+<h2 id="overview">Overview</h2>
+<p>Toneblocks is a web-based musical creative coding environment, built with <a href="https://tonejs.github.io/">Tone.js</a> and <a href="https://developers.google.com/blockly">Blockly</a>. Originally developed as my thesis project for the Master of Music in Music Technology requirements at NYU Steinhardt. It is the basis for a paper/poster/video presentated at <a href="http://nime2021.org/program/#/paper/122">NIME 2021</a> titled <em>Toneblocks: block-based musical programming</em>, co-authored with <a href="https://williepayne.com/">Willie Payne</a>. Watch a brief video demonstration on <a href="https://www.youtube.com/watch?v=rq1xpfseygU">Youtube</a>, or play around with it <a href="https://quig.info/toneblocks">on my site</a>.</p>
+<p>This is <strong>Part 1</strong> of several posts taking a closer look at the application and its underlying mechanics.</p>
+<h2 id="tonejs--blockly">Tone.js &amp; Blockly</h2>
+<p>Essentially, Toneblocks combines two frameworks, Tone.js and Blockly, in a proof of concept project that seeks to make programming less daunting to novice users (thus, a block-based interface) interested in creating music with code (thus, synthesis with web audio).</p>
+<p><a href="https://tonejs.github.io/">Tone.js</a> is a web audio JavaScript framework built for musicians and audio programmers looking to create interesting web-based audio applications.  Particularly of interest to me was Tone.js&rsquo;s synchronization abilities. Specifically, the Tone.js Transport is handy way to sync musical events in a more intuitive way than some other code-based audio environments. Tone.js is developed by <a href="https://yotammann.info/">Yotam Mann</a>.</p>
+<p><a href="https://developers.google.com/blockly">Blockly</a> is a framework for creating block-based graphical user interfaces, similar to those found in <a href="https://scratch.mit.edu/">Scratch</a>, a popular block-based programming language developed at MIT with a large and active user base. Blockly is developed by Google.</p>
+<h2 id="lets-make-something">Lets Make Something!</h2>
+<p>To get a sense of what&rsquo;s going on here, we&rsquo;re going to walk through three versions of a traditional &ldquo;Hello World&rdquo; program. First, we&rsquo;ll get Tone.js set up and play our first musical note. Second, we&rsquo;ll get Blockly set up and create our first block in a simple workspace. Finally, we&rsquo;ll get these two tools working together and create a programmable block that plays a note.</p>
+<h3 id="hello-tone">Hello Tone</h3>
+<p>The <a href="https://tonejs.github.io/docs/14.7.77/index.html">Tone.js API documentation</a> has lots of detailed information on what&rsquo;s available, as well as some example projects and real world demos/applications. To get us started, we&rsquo;l try implementing a simple Synth object that that plays a note when a button is pressed.</p>
+<p>Create a project folder and a file <code>index.html</code>.<br>
+In our file, lets load in Tone.js from CDNJS with a <code>&lt;script&gt;</code> tag in the <code>&lt;head&gt;</code> section. Note the version and integrity hash may be different now than at the time this post was written.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+...
+    &lt;!-- Load Tone.js --&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js&quot;
+    integrity=&quot;sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==&quot;
+    crossorigin=&quot;anonymous&quot;
+    referrerpolicy=&quot;no-referrer&quot;&gt;
+    &lt;/script&gt;
+&lt;/head&gt;
+...
+</code></pre><p>Now that Tone.js is loaded into our main file, we&rsquo;ll be able to use it to create a synth. Lets do that in a new <code>&lt;script&gt;</code> tag in the <code>&lt;body&gt;</code> section.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;...&lt;/head&gt;
+&lt;body&gt;
+    &lt;script&gt;
+        // Create synth and route output to destination
+        const synth = new Tone.Synth().toDestination();
+    &lt;/script&gt;
+&lt;/body&gt;
+...
+</code></pre><p>In the code above, we create a new variable of type const, assign it a new <a href="https://tonejs.github.io/docs/14.7.77/Synth"><code>Tone.Synth()</code></a> object, and connect the the synth&rsquo;s output to the system&rsquo;s main output (likely your speakers) using the <a href="https://tonejs.github.io/docs/14.7.77/Synth#toDestination"><code>toDestination()</code></a> method.</p>
+<p>We want the synth to play a note when we press a button. So lets create a button in the <code>&lt;body&gt;</code> section of the file. Then we can access the button in our <code>&lt;script&gt;</code> section and give it an <em>on click</em> function to trigger the synth.<br>
+Checking the Tone.js docs, Synth objects have a <a href="https://tonejs.github.io/docs/14.7.77/Synth#triggerAttackRelease"><code>triggerAttackRelease()</code></a> method which takes a pitch value and a duration value. We&rsquo;ll use &lsquo;C4&rsquo; for our pitch value, which is middle C on a piano, or ~261.63 Hz. And we&rsquo;ll use &lsquo;8n&rsquo; as our duration, so the tone will play for the length of an 8th note.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;...&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Create button element --&gt;
+    &lt;button id=&quot;play&quot;&gt;Play&lt;/button&gt;
+
+    &lt;script&gt;
+        // Create synth and route output to destination
+        const synth = new Tone.Synth().toDestination();
+
+        // Assign button variable to button element
+        const button = document.getElementById('play');
+
+        // Add &quot;on click&quot; function to play note when button is pressed
+        button.addEventListener('click', () =&gt; {
+            synth.triggerAttackRelease('C4', '8n');
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+...
+</code></pre><p>So now if you run your <code>index.html</code> file in your browser, you should see a single button with &ldquo;Play&rdquo; displayed. And when you press it, you should hear an 8th note of Middle C. Hello Tone! 🎵</p>
+<h3 id="hello-block">Hello Block</h3>
+<p>Next, we&rsquo;re going to implement a Blockly workspace and print &ldquo;Hello Block&rdquo; when the workspace code is run. The <a href="https://developers.google.com/blockly/">Blockly API documentation</a> has a breakdown of its many features, as well as examples and tools to help with creating your own environment.<br>
+First we&rsquo;ll load Blockly with a few <code>&lt;script&gt;</code> tags just like we did for Tone.js.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+...
+    &lt;!-- Load Tone.js --&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js&quot;
+    integrity=&quot;sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==&quot;
+    crossorigin=&quot;anonymous&quot;
+    referrerpolicy=&quot;no-referrer&quot;&gt;
+    &lt;/script&gt;
+    
+    &lt;!-- Load Blockly --&gt;
+        &lt;script src=&quot;https://unpkg.com/blockly/blockly_compressed.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;https://unpkg.com/blockly/blocks_compressed.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;https://unpkg.com/blockly/javascript_compressed.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;https://unpkg.com/blockly/msg/en.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+...
+</code></pre><p>In its barest form, Blockly requires a <em>Workspace</em> on your page within which you can click and drag blocks from a <em>Toolbox</em>, a list of avilable blocks. To get this set up, we need to create a few HTML elements in our <code>&lt;body&gt;</code> section so that Blockly can &ldquo;inject&rdquo; its workspace. The example blocks we&rsquo;ll use in this <em>Toolbox</em> are taken from the <a href="https://developers.google.com/blockly/guides/configure/web/fixed-size">Blockly docs</a>.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;...&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Create button element --&gt;
+    &lt;button id=&quot;play&quot;&gt;Play&lt;/button&gt;
+
+    &lt;!-- Create Blockly elements --&gt;
+    &lt;div id=&quot;blocklyDiv&quot; style=&quot;height: 480px; width: 600px;&quot;&gt;&lt;/div&gt;
+    &lt;xml id=&quot;toolbox&quot; style=&quot;display: none&quot;&gt;
+        &lt;block type=&quot;math_number&quot;&gt;&lt;/block&gt;
+        &lt;block type=&quot;text&quot;&gt;&lt;/block&gt;
+        &lt;block type=&quot;text_print&quot;&gt;&lt;/block&gt;
+      &lt;/xml&gt;
+
+    &lt;script&gt;...&lt;/script&gt;
+&lt;/body&gt;
+...
+</code></pre><p>Now that the elements are there, we need to &ldquo;inject&rdquo; Blockly into the <code>blocklyDiv</code> element and associate the <code>toolbox</code> with it. We&rsquo;ll do this in our main <code>&lt;script&gt;</code> tag inside of <code>&lt;body&gt;</code></p>
+<pre><code>// Inject Blockly workspace
+const workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
+</code></pre><p>Next we&rsquo;ll create a function to run the code inside our Blockly workspace. We&rsquo;ll reserve the word &ldquo;code&rdquo; so that if the user tries to create anything  called &ldquo;code&rdquo; it won&rsquo;t cause problems.</p>
+<pre><code>// Create function to evaluate Blockly code
+function runCode() {
+
+    // reserve &quot;code&quot; to avoid conflicts between the user's workspace and the page
+    Blockly.JavaScript.addReservedWords('code');
+
+    // Assign the contents of the workspace to the 'code' variable
+    const code = Blockly.JavaScript.workspaceToCode(workspace);
+
+    // Try to evaluate the code in the workspace, display any errors
+    try {
+        eval(code);
+    } catch (e) {
+        alert(e);
+    }
+}
+</code></pre><p>Since we already have a button created from our <em>Hello Tone</em> section, we&rsquo;ll make that same button run the Blockly workspace code when it&rsquo;s pressed, simply by calling the <code>runCode()</code> function from the <em>on click</em> event listener.</p>
+<pre><code>// Add &quot;on click&quot; function to play note when button is pressed,
+// and run the workspace code
+button.addEventListener('click', () =&gt; {
+    synth.triggerAttackRelease('C4', '8n');
+    runCode();
+});
+</code></pre><p>So now your <code>index.html</code> should look like this:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Toneblocks Pt1&lt;/title&gt;
+
+        &lt;!-- Load Tone.js --&gt;
+        &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js&quot; integrity=&quot;sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==&quot; crossorigin=&quot;anonymous&quot; referrerpolicy=&quot;no-referrer&quot;&gt;&lt;/script&gt;
+    
+        &lt;!-- Load Blockly --&gt;
+        &lt;script src=&quot;https://unpkg.com/blockly/blockly_compressed.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;https://unpkg.com/blockly/blocks_compressed.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;https://unpkg.com/blockly/javascript_compressed.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;https://unpkg.com/blockly/msg/en.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;!-- Create button element --&gt;
+    &lt;button id=&quot;play&quot;&gt;Play&lt;/button&gt;
+
+    &lt;!-- Create Blockly elements --&gt;
+    &lt;div id=&quot;blocklyDiv&quot; style=&quot;height: 480px; width: 600px;&quot;&gt;&lt;/div&gt;
+    &lt;xml id=&quot;toolbox&quot; style=&quot;display: none&quot;&gt;
+        &lt;block type=&quot;controls_if&quot;&gt;&lt;/block&gt;
+        &lt;block type=&quot;controls_repeat_ext&quot;&gt;&lt;/block&gt;
+        &lt;block type=&quot;logic_compare&quot;&gt;&lt;/block&gt;
+        &lt;block type=&quot;math_number&quot;&gt;&lt;/block&gt;
+        &lt;block type=&quot;math_arithmetic&quot;&gt;&lt;/block&gt;
+        &lt;block type=&quot;text&quot;&gt;&lt;/block&gt;
+        &lt;block type=&quot;text_print&quot;&gt;&lt;/block&gt;
+      &lt;/xml&gt;
+
+    &lt;script&gt;
+ 
+        // Create synth and route output to destination
+        const synth = new Tone.Synth().toDestination();
+
+        // Assign button variable to button element
+        const button = document.getElementById('play');
+
+        // Add &quot;on click&quot; function to play note when button is pressed,
+        // and run the workspace code
+        button.addEventListener('click', () =&gt; {
+            synth.triggerAttackRelease('C4', '8n');
+            runCode();
+        });
+
+        // Inject Blockly workspace
+        const workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
+
+        // Create function to evaluate Blockly code
+        function runCode() {
+
+            // reserve &quot;code&quot; to avoid conflicts between the user's workspace and the page
+            Blockly.JavaScript.addReservedWords('code');
+
+            // Assign the contents of the workspace to te 'code' variable
+            const code = Blockly.JavaScript.workspaceToCode(workspace);
+
+            // Try to evaluate the code in the workspace, display any errors
+            try {
+                eval(code);
+            } catch (e) {
+                alert(e);
+            }
+        }
+
+    &lt;/script&gt;
+    
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>Load the file in a browser window, you should see the <strong>Play</strong> button and a Blockly workspace with example blocks. Try dragging the <strong>print</strong> block into the workspace. Then connext the empty <strong>text</strong> block to that and type in &ldquo;Hello Block&rdquo;. Click the <strong>Play</strong> button and you will hear the tone and get an alert displaying &ldquo;Hello Block&rdquo;. It should look similar to beow:</p>
+<p><img src="../../images/hello-block.png" alt=""></p>
+<h3 id="a-tone-block">A Tone Block</h3>
+<p>For the final section, we&rsquo;ll create a custom Blockly block. This block will create a new Synth object, and have an input for a MIDI note number, supply by a separate number block. When the Blockly workspace code is run, the synth will play an 8th note with the equivalent pitch of the input MIDI number.</p>
+<p>With Blockly, every block needs a definition to dictate the shape, color, inputs, text, etc. of our block, and a generator function to handle the code that is added to the workspace when the block is created. As always, consult the developer&rsquo;s docs when using their API. <a href="https://developers.google.com/blockly/guides/create-custom-blocks/define-blocks">Blockly&rsquo;s is thorough</a>! We&rsquo;ll start by creating a file <code>synth.js</code> in our directory. And we&rsquo;ll define our custom block in JavaScript format (you can also use JSON).</p>
+<pre><code>// Define the block
+Blockly.Blocks['synth'] = { // Name it &quot;synth&quot;
+    init: function () {
+        this.appendDummyInput()
+            .appendField(&quot;Synth&quot;); // Label the block
+        this.appendValueInput('PITCH') // Name the input value
+            .setCheck('Number') // Check that it is a number
+            .appendField('MIDI Note'); // Label the input
+    }
+};
+</code></pre><p>Next we write the generator function. You&rsquo;ll notice this gets a little bit weird. We need to write some JavaScript code to get the pitch value from the input and check its type and range. Ultimately we want the block to create a new Synth object, read the pitch value from a seperate number block, and trigger a note. But we want the actual note triggering to happen when we click our <strong>Play</strong> button. In order to do that, we have to encapsulate the relevant code as a string, and return this to our workspace. That way, the instructions to create the synth and play the note are all there when the <code>runCode()</code> function is called. So in our <code>synth.js</code> file, just below our definition, the generator function looks like this:</p>
+<pre><code>// Generator function called when the block is dragged into the workspace
+Blockly.JavaScript['synth'] = function (block) {
+
+    // Get the pitch value from the input, convert it to an integer, or null if no value is present
+    const pitch = parseInt(Blockly.JavaScript.valueToCode(block, 'PITCH', Blockly.JavaScript.ORDER_FUNCTION_CALL)) || null;
+
+    // Check that the pitch value is in range 0 - 127
+    if (pitch &lt; 0 || pitch &gt; 127 || pitch === null) {
+        return `alert(&quot;MIDI Number must be between 0 and 127&quot;)`
+    }
+
+    // Assign the code to be returned to the workspace as text
+    // This will then be evaluated when runCode() is called
+    const code = 
+    `
+    // Create new synth object, route to destination (speakers)
+    const synth = new Tone.Synth().toDestination();
+
+    // Convert MIDI pitch value to frequency (Hz) and trigger an 8th note
+    synth.triggerAttackRelease(Tone.Frequency(${pitch}, &quot;midi&quot;), '8n');
+    `;
+    
+    // returns the text of the code we want added to the workspace
+    return code;
+};
+</code></pre><p>Now our custom synth block is all set. We just need to load it into our main <code>index.html</code> file and remove the old synth and trigger code (since we&rsquo;re doing that in the custom block now).<br>
+Load in the custom block in the <code>&lt;head&gt;</code> section below Tone.js and Blockly:</p>
+<pre><code>&lt;!-- Load Custom Block --&gt;
+&lt;script src=&quot;synth.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>Add the synth block to your <code>toolbox</code>:</p>
+<pre><code>&lt;xml id=&quot;toolbox&quot; style=&quot;display: none&quot;&gt;
+    &lt;block type=&quot;math_number&quot;&gt;&lt;/block&gt;
+    &lt;block type=&quot;text&quot;&gt;&lt;/block&gt;
+    &lt;block type=&quot;text_print&quot;&gt;&lt;/block&gt;
+    &lt;!-- our new custom synth block! --&gt;
+    &lt;block type=&quot;synth&quot;&gt;&lt;/block&gt;
+&lt;/xml&gt;
+</code></pre><p>Since we&rsquo;re handling the synth in it&rsquo;s own block, we can remove the original one we made and also remove the <code>triggerAttackRelease()</code> from the button&rsquo;s <em>on click</em> function. Instead that will all happen when we call <code>runCode()</code>.<br>
+The last thing to do is to have our button click start the Tone audio context. Most browsers won&rsquo;t allow audio to play until the user takes some kind of action. Since we&rsquo;re using the same button to create and trigger our audio, there could be some issues with the audio attempting to trigger before its been allowed. To avoid this, we&rsquo;ll call <code>Tone.start()</code> right before we run our code, and we&rsquo;ll give the <em>on click</em> function an asyc/await to make sure we&rsquo;re all set before evaluating the workspace code.</p>
+<pre><code>// Add &quot;on click&quot; function to start audio context and call runCode
+button.addEventListener('click', async () =&gt; {
+    await Tone.start();
+    runCode();
+});
+</code></pre><p>And that&rsquo;s it! Now we have a custom synth block which takes a MIDI Note number value and plays an 8th note at the corresponding pitch when you click <strong>Play</strong>. The full <code>index.html</code> file should be something like:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Toneblocks Pt1&lt;/title&gt;
+
+        &lt;!-- Load Tone.js --&gt;
+        &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js&quot; integrity=&quot;sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==&quot; crossorigin=&quot;anonymous&quot; referrerpolicy=&quot;no-referrer&quot;&gt;&lt;/script&gt;
+    
+        &lt;!-- Load Blockly --&gt;
+        &lt;script src=&quot;https://unpkg.com/blockly/blockly_compressed.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;https://unpkg.com/blockly/blocks_compressed.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;https://unpkg.com/blockly/javascript_compressed.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;https://unpkg.com/blockly/msg/en.js&quot;&gt;&lt;/script&gt;
+
+        &lt;!-- Load Custom Block --&gt;
+        &lt;script src=&quot;synth.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;!-- Create button element --&gt;
+    &lt;button id=&quot;play&quot;&gt;Play&lt;/button&gt;
+
+    &lt;!-- Create Blockly elements --&gt;
+    &lt;div id=&quot;blocklyDiv&quot; style=&quot;height: 480px; width: 600px;&quot;&gt;&lt;/div&gt;
+    &lt;xml id=&quot;toolbox&quot; style=&quot;display: none&quot;&gt;
+        &lt;block type=&quot;math_number&quot;&gt;&lt;/block&gt;
+        &lt;block type=&quot;text&quot;&gt;&lt;/block&gt;
+        &lt;block type=&quot;text_print&quot;&gt;&lt;/block&gt;
+        &lt;block type=&quot;synth&quot;&gt;&lt;/block&gt;
+      &lt;/xml&gt;
+
+    &lt;script&gt;
+ 
+        // Assign button variable to button element
+        const button = document.getElementById('play');
+
+        // Add &quot;on click&quot; function to start audio context and call runCode
+        button.addEventListener('click', async () =&gt; {
+            await Tone.start();
+            runCode();
+        });
+
+        // Inject Blockly workspace
+        const workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
+
+        // Create function to evaluate Blockly code
+        function runCode() {
+
+            // reserve &quot;code&quot; to avoid conflicts between the user's workspace and the page
+            Blockly.JavaScript.addReservedWords('code');
+
+            // Assign the contents of the workspace to te 'code' variable
+            const code = Blockly.JavaScript.workspaceToCode(workspace);
+
+            // Try to evaluate the code in the workspace, display any errors
+            try {
+                eval(code);
+            } catch (e) {
+                alert(e);
+            }
+        }
+
+    &lt;/script&gt;
+    
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>In a browser, it should look something like this, and play the pitch value you supply:
+<img src="../../images/a-tone-block.png" alt=""></p>
+<p>Thanks for following along! This was a simplified look at the basic mechanics underlying Toneblocks: using Blockly to interface with Tone.js and create music with code in the browser. In future posts I&rsquo;ll take a closer look at the specific blocks constructed for the application, like <strong>Synth</strong>, <strong>Volume</strong>, and scheduling <strong>Loops</strong> with the <code>Tone.Transport</code>.</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/blog/">Blog</a></li>
+         
+          <li><a href="https://quig.info">Back to quig.info</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#tonejs--blockly">Tone.js &amp; Blockly</a></li>
+    <li><a href="#lets-make-something">Lets Make Something!</a>
+      <ul>
+        <li><a href="#hello-tone">Hello Tone</a></li>
+        <li><a href="#hello-block">Hello Block</a></li>
+        <li><a href="#a-tone-block">A Tone Block</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&text=Toneblocks%20Pt1" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&title=Toneblocks%20Pt1" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&is_video=false&description=Toneblocks%20Pt1" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Toneblocks%20Pt1&body=Check out this article: https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&title=Toneblocks%20Pt1" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&title=Toneblocks%20Pt1" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&name=Toneblocks%20Pt1&description=Overview%20Toneblocks%20is%20a%20web-based%20musical%20creative%20coding%20environment%2c%20built%20with%20Tone.js%20and%20Blockly.%20Originally%20developed%20as%20my%20thesis%20project%20for%20the%20Master%20of%20Music%20in%20Music%20Technology%20requirements%20at%20NYU%20Steinhardt.%20It%20is%20the%20basis%20for%20a%20paper%2fposter%2fvideo%20presentated%20at%20NIME%202021%20titled%20Toneblocks%3a%20block-based%20musical%20programming%2c%20co-authored%20with%20Willie%20Payne.%20Watch%20a%20brief%20video%20demonstration%20on%20Youtube%2c%20or%20play%20around%20with%20it%20on%20my%20site.%0aThis%20is%20Part%201%20of%20several%20posts%20taking%20a%20closer%20look%20at%20the%20application%20and%20its%20underlying%20mechanics." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fquig.info%2fblog%2fposts%2ftoneblocks-pt1%2f&t=Toneblocks%20Pt1" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021  Mike Quigley 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/blog/">Blog</a></li>
+         
+        <li><a href="https://quig.info">Back to quig.info</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/blog/lib/font-awesome/css/all.min.css>
+<script src=/blog/lib/jquery/jquery.min.js></script>
+<script src=/blog/js/main.js></script>
+
+
+
+</html>
