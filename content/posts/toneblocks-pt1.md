@@ -57,8 +57,8 @@ Now that Tone.js is loaded into our main file, we'll be able to use it to create
 ```
 In the code above, we create a new variable of type const, assign it a new [`Tone.Synth()`](https://tonejs.github.io/docs/14.7.77/Synth) object, and connect the the synth's output to the system's main output (likely your speakers) using the [`toDestination()`](https://tonejs.github.io/docs/14.7.77/Synth#toDestination) method.
 
-We want the synth to play a note when we press a button. So lets create a button in the `<body>` section of the file. Then we can access the button in our `<script>` section and give it an *on click* function to trigger the synth.
-And checking the Tone.js docs, Synth objects have a [`triggerAttackRelease()`](https://tonejs.github.io/docs/14.7.77/Synth#triggerAttackRelease) method which takes a pitch value and a duration value. We'll use 'C4' for our pitch value, which is middle C on a piano, or ~261.63 Hz. And we'll use '8n' as our duration, so the tone will play for the length of an 8th note. 
+We want the synth to play a note when we press a button. So lets create a button in the `<body>` section of the file. Then we can access the button in our `<script>` section and give it an *on click* function to trigger the synth.  
+Checking the Tone.js docs, Synth objects have a [`triggerAttackRelease()`](https://tonejs.github.io/docs/14.7.77/Synth#triggerAttackRelease) method which takes a pitch value and a duration value. We'll use 'C4' for our pitch value, which is middle C on a piano, or ~261.63 Hz. And we'll use '8n' as our duration, so the tone will play for the length of an 8th note. 
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -85,7 +85,8 @@ And checking the Tone.js docs, Synth objects have a [`triggerAttackRelease()`](h
 So now if you run your `index.html` file in your browser, you should see a single button with "Play" displayed. And when you press it, you should hear an 8th note of Middle C. Hello Tone! 🎵
 
 ### Hello Block
-Next, we're going to implement a Blockly workspace and a custom block that prints "Hello Block" when the workspace code is run. The [Blockly API documentation](https://developers.google.com/blockly/) has a breakdown of its many features, as well as examples and tools to help with creating your own environment. 
+Next, we're going to implement a Blockly workspace and print "Hello Block" when the workspace code is run. The [Blockly API documentation](https://developers.google.com/blockly/) has a breakdown of its many features, as well as examples and tools to help with creating your own environment.  
+First we'll load Blockly with a few `<script>` tags just like we did for Tone.js.
 
 ```
 <!DOCTYPE html>
@@ -100,10 +101,41 @@ Next, we're going to implement a Blockly workspace and a custom block that print
     </script>
     
     <!-- Load Blockly -->
-    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+        <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
+        <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+        <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+        <script src="https://unpkg.com/blockly/msg/en.js"></script>
 </head>
 ...
 ```
+In its barest form, Blockly requires a *Workspace* on your page within which you can click and drag blocks from a *Toolbox*, a list of avilable blocks. To get this set up, we need to create a few HTML elements in our `<body>` section so that Blockly can "inject" its workspace. The example blocks we'll use in this *Toolbox* are taken from the [Blockly docs](https://developers.google.com/blockly/guides/configure/web/fixed-size).
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>...</head>
+<body>
+    <!-- Create button element -->
+    <button id="play">Play</button>
+
+    <!-- Create Blockly elements -->
+    <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+    <xml id="toolbox" style="display: none">
+        <block type="controls_if"></block>
+        <block type="controls_repeat_ext"></block>
+        <block type="logic_compare"></block>
+        <block type="math_number"></block>
+        <block type="math_arithmetic"></block>
+        <block type="text"></block>
+        <block type="text_print"></block>
+      </xml>
+
+    <script>...</script>
+</body>
+...
+```
+Now that the elements are there, we need to "inject" 
+
+
 
 - basic injecting Blockly into the index.html file
 - creating a block that prints Hello World
