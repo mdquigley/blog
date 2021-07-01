@@ -15,9 +15,9 @@ This is **Part 1** of several posts taking a closer look at the application and 
 ## Tone.js & Blockly
 Essentially, Toneblocks combines two frameworks, Tone.js and Blockly, in a proof of concept project that seeks to make programming less daunting to novice users (thus, a block-based interface) interested in creating music with code (thus, synthesis with web audio). 
 
-[Tone.js](https://tonejs.github.io/) is a web audio JavaScript framework built for musicians and audio programmers looking to create interesting web-based audio applications.  Particularly of interest to me was Tone.js's synchronization abilities. Specifically, the Tone.js Transport is handy way to sync musical events in a more intuitive way than some other code-based audio environments. 
+[Tone.js](https://tonejs.github.io/) is a web audio JavaScript framework built for musicians and audio programmers looking to create interesting web-based audio applications.  Particularly of interest to me was Tone.js's synchronization abilities. Specifically, the Tone.js Transport is handy way to sync musical events in a more intuitive way than some other code-based audio environments. Tone.js is developed by [Yotam Mann](https://yotammann.info/). 
 
-[Blockly](https://developers.google.com/blockly) is a framework for creating block-based graphical user interfaces, similar to those found in [Scratch](https://scratch.mit.edu/), a popular block-based programming language developed at MIT with a large and active user base. 
+[Blockly](https://developers.google.com/blockly) is a framework for creating block-based graphical user interfaces, similar to those found in [Scratch](https://scratch.mit.edu/), a popular block-based programming language developed at MIT with a large and active user base. Blockly is developed by Google.
 
 ## Lets Make Something!
 
@@ -120,11 +120,7 @@ In its barest form, Blockly requires a *Workspace* on your page within which you
     <!-- Create Blockly elements -->
     <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
     <xml id="toolbox" style="display: none">
-        <block type="controls_if"></block>
-        <block type="controls_repeat_ext"></block>
-        <block type="logic_compare"></block>
         <block type="math_number"></block>
-        <block type="math_arithmetic"></block>
         <block type="text"></block>
         <block type="text_print"></block>
       </xml>
@@ -247,4 +243,147 @@ Load the file in a browser window, you should see the **Play** button and a Bloc
 ![](../../images/hello-block.png)
 
 ### A Tone Block
-- creating a block that plays a note based on MIDI number input
+For the final section, we'll create a custom Blockly block. This block will create a new Synth object, and have an input for a MIDI note number, supply by a separate number block. When the Blockly workspace code is run, the synth will play an 8th note with the equivalent pitch of the input MIDI number.
+
+With Blockly, every block needs a definition to dictate the shape, color, inputs, text, etc. of our block, and a generator function to handle the code that is added to the workspace when the block is created. As always, consult the developer's docs when using their API. [Blockly's is thorough](https://developers.google.com/blockly/guides/create-custom-blocks/define-blocks)! We'll start by creating a file `synth.js` in our directory. And we'll define our custom block in JavaScript format (you can also use JSON).
+```
+// Define the block
+Blockly.Blocks['synth'] = { // Name it "synth"
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Synth"); // Label the block
+        this.appendValueInput('PITCH') // Name the input value
+            .setCheck('Number') // Check that it is a number
+            .appendField('MIDI Note'); // Label the input
+    }
+};
+```
+Next we write the generator function. You'll notice this gets a little bit weird. We need to write some JavaScript code to get the pitch value from the input and check its type and range. Ultimately we want the block to create a new Synth object, read the pitch value from a seperate number block, and trigger a note. But we want the actual note triggering to happen when we click our **Play** button. In order to do that, we have to encapsulate the relevant code as a string, and return this to our workspace. That way, the instructions to create the synth and play the note are all there when the `runCode()` function is called. So in our `synth.js` file, just below our definition, the generator function looks like this:
+```
+// Generator function called when the block is dragged into the workspace
+Blockly.JavaScript['synth'] = function (block) {
+
+    // Get the pitch value from the input, convert it to an integer, or null if no value is present
+    const pitch = parseInt(Blockly.JavaScript.valueToCode(block, 'PITCH', Blockly.JavaScript.ORDER_FUNCTION_CALL)) || null;
+
+    // Check that the pitch value is in range 0 - 127
+    if (pitch < 0 || pitch > 127 || pitch === null) {
+        return `alert("MIDI Number must be between 0 and 127")`
+    }
+
+    // Assign the code to be returned to the workspace as text
+    // This will then be evaluated when runCode() is called
+    const code = 
+    `
+    // Create new synth object, route to destination (speakers)
+    const synth = new Tone.Synth().toDestination();
+
+    // Convert MIDI pitch value to frequency (Hz) and trigger an 8th note
+    synth.triggerAttackRelease(Tone.Frequency(${pitch}, "midi"), '8n');
+    `;
+    
+    // returns the text of the code we want added to the workspace
+    return code;
+};
+```
+Now our custom synth block is all set. We just need to load it into our main `index.html` file and remove the old synth and trigger code (since we're doing that in the custom block now).  
+Load in the custom block in the `<head>` section below Tone.js and Blockly:
+```
+<!-- Load Custom Block -->
+<script src="synth.js"></script>
+```
+Add the synth block to your `toolbox`:
+```
+<xml id="toolbox" style="display: none">
+    <block type="math_number"></block>
+    <block type="text"></block>
+    <block type="text_print"></block>
+    <!-- our new custom synth block! -->
+    <block type="synth"></block>
+</xml>
+```
+Since we're handling the synth in it's own block, we can remove the original one we made and also remove the `triggerAttackRelease()` from the button's *on click* function. Instead that will all happen when we call `runCode()`.  
+The last thing to do is to have our button click start the Tone audio context. Most browsers won't allow audio to play until the user takes some kind of action. Since we're using the same button to create and trigger our audio, there could be some issues with the audio attempting to trigger before its been allowed. To avoid this, we'll call `Tone.start()` right before we run our code, and we'll give the *on click* function an asyc/await to make sure we're all set before evaluating the workspace code.
+```
+// Add "on click" function to start audio context and call runCode
+button.addEventListener('click', async () => {
+    await Tone.start();
+    runCode();
+});
+```
+And that's it! Now we have a custom synth block which takes a MIDI Note number value and plays an 8th note at the corresponding pitch when you click **Play**. The full `index.html` file should be something like:
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toneblocks Pt1</title>
+
+        <!-- Load Tone.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js" integrity="sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+        <!-- Load Blockly -->
+        <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
+        <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+        <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+        <script src="https://unpkg.com/blockly/msg/en.js"></script>
+
+        <!-- Load Custom Block -->
+        <script src="synth.js"></script>
+</head>
+<body>
+
+    <!-- Create button element -->
+    <button id="play">Play</button>
+
+    <!-- Create Blockly elements -->
+    <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+    <xml id="toolbox" style="display: none">
+        <block type="math_number"></block>
+        <block type="text"></block>
+        <block type="text_print"></block>
+        <block type="synth"></block>
+      </xml>
+
+    <script>
+ 
+        // Assign button variable to button element
+        const button = document.getElementById('play');
+
+        // Add "on click" function to start audio context and call runCode
+        button.addEventListener('click', async () => {
+            await Tone.start();
+            runCode();
+        });
+
+        // Inject Blockly workspace
+        const workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
+
+        // Create function to evaluate Blockly code
+        function runCode() {
+
+            // reserve "code" to avoid conflicts between the user's workspace and the page
+            Blockly.JavaScript.addReservedWords('code');
+
+            // Assign the contents of the workspace to te 'code' variable
+            const code = Blockly.JavaScript.workspaceToCode(workspace);
+
+            // Try to evaluate the code in the workspace, display any errors
+            try {
+                eval(code);
+            } catch (e) {
+                alert(e);
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
+```
+In a browser, it should look something like this, and play the pitch value you supply:
+![](../../images/a-tone-block.png)  
+
+Thanks for following along! This was a simplified look at the basic mechanics underlying Toneblocks: using Blockly to interface with Tone.js and create music with code in the browser. In future posts I'll take a closer look at the specific blocks constructed for the application, like **Synth**, **Volume**, and scheduling **Loops** with the `Tone.Transport`.
