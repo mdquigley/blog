@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+  <link rel="preload" href="/blog/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/blog/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/blog/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/blog/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> Toneblocks Pt1 | Mike Quigley</title>
+  <link rel = 'canonical' href = 'https://quig.info/blog/posts/toneblocks-pt1/'>
   <meta name="description" content="Journal for projects, etc.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
@@ -24,8 +29,11 @@ This is Part 1 of several posts taking a closer look at the application and its 
 
   
   
+    
   
-  <link rel="stylesheet" href="https://quig.info/blog/css/style-white.css">
+  
+  <link rel="stylesheet" href="https://quig.info/blog/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+
   
    <link rel="stylesheet" href="https://quig.info/blog/css/custom.css"> 
   
@@ -216,327 +224,313 @@ This is Part 1 of several posts taking a closer look at the application and its 
 <h3 id="hello-tone">Hello Tone</h3>
 <p>The <a href="https://tonejs.github.io/docs/14.7.77/index.html">Tone.js API documentation</a> has lots of detailed information on what&rsquo;s available, as well as some example projects and real world demos/applications. To get us started, we&rsquo;l try implementing a simple Synth object that that plays a note when a button is pressed.</p>
 <p>Create a project folder and a file <code>index.html</code>.<br>
-In our file, lets load in Tone.js from CDNJS with a <code>&lt;script&gt;</code> tag in the <code>&lt;head&gt;</code> section. Note the version and integrity hash may be different now than at the time this post was written.</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
+In our file, lets load in Tone.js from CDNJS with a <code>&lt;script&gt;</code> tag in the <code>&lt;head&gt;</code> section. Note the version and integrity hash may be different at the time you are reading this post.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#719e07">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#268bd2">html</span> lang<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;en&#34;</span>&gt;
+&lt;<span style="color:#268bd2">head</span>&gt;
 ...
-    &lt;!-- Load Tone.js --&gt;
-    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js&quot;
-    integrity=&quot;sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==&quot;
-    crossorigin=&quot;anonymous&quot;
-    referrerpolicy=&quot;no-referrer&quot;&gt;
-    &lt;/script&gt;
-&lt;/head&gt;
-...
-</code></pre><p>Now that Tone.js is loaded into our main file, we&rsquo;ll be able to use it to create a synth. Lets do that in a new <code>&lt;script&gt;</code> tag in the <code>&lt;body&gt;</code> section.</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;...&lt;/head&gt;
-&lt;body&gt;
-    &lt;script&gt;
-        // Create synth and route output to destination
-        const synth = new Tone.Synth().toDestination();
-    &lt;/script&gt;
-&lt;/body&gt;
-...
-</code></pre><p>In the code above, we create a new variable of type const, assign it a new <a href="https://tonejs.github.io/docs/14.7.77/Synth"><code>Tone.Synth()</code></a> object, and connect the the synth&rsquo;s output to the system&rsquo;s main output (likely your speakers) using the <a href="https://tonejs.github.io/docs/14.7.77/Synth#toDestination"><code>toDestination()</code></a> method.</p>
+    <span style="color:#586e75">&lt;!-- Load Tone.js --&gt;</span>
+    &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js&#34;</span>
+    integrity<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==&#34;</span>
+    crossorigin<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;anonymous&#34;</span>
+    referrerpolicy<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;no-referrer&#34;</span>&gt;
+    &lt;/<span style="color:#268bd2">script</span>&gt;
+&lt;/<span style="color:#268bd2">head</span>&gt;
+</code></pre></div><p>Now that Tone.js is loaded into our main file, we&rsquo;ll be able to use it to create a synth. Lets do that in a new <code>&lt;script&gt;</code> tag in the <code>&lt;body&gt;</code> section.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#268bd2">body</span>&gt;
+    &lt;<span style="color:#268bd2">script</span>&gt;
+        <span style="color:#586e75">// Create synth and route output to destination
+</span><span style="color:#586e75"></span>        <span style="color:#268bd2">const</span> synth <span style="color:#719e07">=</span> <span style="color:#719e07">new</span> Tone.Synth().toDestination();
+    &lt;/<span style="color:#268bd2">script</span>&gt;
+&lt;/<span style="color:#268bd2">body</span>&gt;
+</code></pre></div><p>In the code above, we create a new variable of type const, assign it a new <a href="https://tonejs.github.io/docs/14.7.77/Synth"><code>Tone.Synth()</code></a> object, and connect the the synth&rsquo;s output to the system&rsquo;s main output (likely your speakers) using the <a href="https://tonejs.github.io/docs/14.7.77/Synth#toDestination"><code>toDestination()</code></a> method.</p>
 <p>We want the synth to play a note when we press a button. So lets create a button in the <code>&lt;body&gt;</code> section of the file. Then we can access the button in our <code>&lt;script&gt;</code> section and give it an <em>on click</em> function to trigger the synth.<br>
 Checking the Tone.js docs, Synth objects have a <a href="https://tonejs.github.io/docs/14.7.77/Synth#triggerAttackRelease"><code>triggerAttackRelease()</code></a> method which takes a pitch value and a duration value. We&rsquo;ll use &lsquo;C4&rsquo; for our pitch value, which is middle C on a piano, or ~261.63 Hz. And we&rsquo;ll use &lsquo;8n&rsquo; as our duration, so the tone will play for the length of an 8th note.</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;...&lt;/head&gt;
-&lt;body&gt;
-    &lt;!-- Create button element --&gt;
-    &lt;button id=&quot;play&quot;&gt;Play&lt;/button&gt;
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#268bd2">body</span>&gt;
+    <span style="color:#586e75">&lt;!-- Create button element --&gt;</span>
+    &lt;<span style="color:#268bd2">button</span> id<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;play&#34;</span>&gt;Play&lt;/<span style="color:#268bd2">button</span>&gt;
 
-    &lt;script&gt;
-        // Create synth and route output to destination
-        const synth = new Tone.Synth().toDestination();
+    &lt;<span style="color:#268bd2">script</span>&gt;
+        <span style="color:#586e75">// Create synth and route output to destination
+</span><span style="color:#586e75"></span>        <span style="color:#268bd2">const</span> synth <span style="color:#719e07">=</span> <span style="color:#719e07">new</span> Tone.Synth().toDestination();
 
-        // Assign button variable to button element
-        const button = document.getElementById('play');
+        <span style="color:#586e75">// Assign button variable to button element
+</span><span style="color:#586e75"></span>        <span style="color:#268bd2">const</span> button <span style="color:#719e07">=</span> <span style="color:#b58900">document</span>.getElementById(<span style="color:#2aa198">&#39;play&#39;</span>);
 
-        // Add &quot;on click&quot; function to play note when button is pressed
-        button.addEventListener('click', () =&gt; {
-            synth.triggerAttackRelease('C4', '8n');
+        <span style="color:#586e75">// Add &#34;on click&#34; function to play note when button is pressed
+</span><span style="color:#586e75"></span>        button.addEventListener(<span style="color:#2aa198">&#39;click&#39;</span>, () =&gt; {
+            synth.triggerAttackRelease(<span style="color:#2aa198">&#39;C4&#39;</span>, <span style="color:#2aa198">&#39;8n&#39;</span>);
         });
-    &lt;/script&gt;
-&lt;/body&gt;
-...
-</code></pre><p>So now if you run your <code>index.html</code> file in your browser, you should see a single button with &ldquo;Play&rdquo; displayed. And when you press it, you should hear an 8th note of Middle C. Hello Tone! 🎵</p>
+    &lt;/<span style="color:#268bd2">script</span>&gt;
+&lt;/<span style="color:#268bd2">body</span>&gt;
+</code></pre></div><p>So now if you run your <code>index.html</code> file in your browser, you should see a single button with &ldquo;Play&rdquo; displayed. And when you press it, you should hear an 8th note of Middle C. Hello Tone! 🎵</p>
 <h3 id="hello-block">Hello Block</h3>
 <p>Next, we&rsquo;re going to implement a Blockly workspace and print &ldquo;Hello Block&rdquo; when the workspace code is run. The <a href="https://developers.google.com/blockly/">Blockly API documentation</a> has a breakdown of its many features, as well as examples and tools to help with creating your own environment.<br>
 First we&rsquo;ll load Blockly with a few <code>&lt;script&gt;</code> tags just like we did for Tone.js.</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#719e07">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#268bd2">html</span> lang<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;en&#34;</span>&gt;
+&lt;<span style="color:#268bd2">head</span>&gt;
 ...
-    &lt;!-- Load Tone.js --&gt;
-    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js&quot;
-    integrity=&quot;sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==&quot;
-    crossorigin=&quot;anonymous&quot;
-    referrerpolicy=&quot;no-referrer&quot;&gt;
-    &lt;/script&gt;
+    <span style="color:#586e75">&lt;!-- Load Tone.js --&gt;</span>
+    &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js&#34;</span>
+    integrity<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==&#34;</span>
+    crossorigin<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;anonymous&#34;</span>
+    referrerpolicy<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;no-referrer&#34;</span>&gt;
+    &lt;/<span style="color:#268bd2">script</span>&gt;
     
-    &lt;!-- Load Blockly --&gt;
-        &lt;script src=&quot;https://unpkg.com/blockly/blockly_compressed.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;https://unpkg.com/blockly/blocks_compressed.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;https://unpkg.com/blockly/javascript_compressed.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;https://unpkg.com/blockly/msg/en.js&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-...
-</code></pre><p>In its barest form, Blockly requires a <em>Workspace</em> on your page within which you can click and drag blocks from a <em>Toolbox</em>, a list of avilable blocks. To get this set up, we need to create a few HTML elements in our <code>&lt;body&gt;</code> section so that Blockly can &ldquo;inject&rdquo; its workspace. The example blocks we&rsquo;ll use in this <em>Toolbox</em> are taken from the <a href="https://developers.google.com/blockly/guides/configure/web/fixed-size">Blockly docs</a>.</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;...&lt;/head&gt;
-&lt;body&gt;
-    &lt;!-- Create button element --&gt;
-    &lt;button id=&quot;play&quot;&gt;Play&lt;/button&gt;
+    <span style="color:#586e75">&lt;!-- Load Blockly --&gt;</span>
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://unpkg.com/blockly/blockly_compressed.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://unpkg.com/blockly/blocks_compressed.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://unpkg.com/blockly/javascript_compressed.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://unpkg.com/blockly/msg/en.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
+&lt;/<span style="color:#268bd2">head</span>&gt;
+</code></pre></div><p>In its barest form, Blockly requires a <em>Workspace</em> on your page within which you can click and drag blocks from a <em>Toolbox</em>, a list of avilable blocks. To get this set up, we need to create a few HTML elements in our <code>&lt;body&gt;</code> section so that Blockly can &ldquo;inject&rdquo; its workspace. The example blocks we&rsquo;ll use in this <em>Toolbox</em> are taken from the <a href="https://developers.google.com/blockly/guides/configure/web/fixed-size">Blockly docs</a>.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#268bd2">body</span>&gt;
+    <span style="color:#586e75">&lt;!-- Create button element --&gt;</span>
+    &lt;<span style="color:#268bd2">button</span> id<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;play&#34;</span>&gt;Play&lt;/<span style="color:#268bd2">button</span>&gt;
 
-    &lt;!-- Create Blockly elements --&gt;
-    &lt;div id=&quot;blocklyDiv&quot; style=&quot;height: 480px; width: 600px;&quot;&gt;&lt;/div&gt;
-    &lt;xml id=&quot;toolbox&quot; style=&quot;display: none&quot;&gt;
-        &lt;block type=&quot;math_number&quot;&gt;&lt;/block&gt;
-        &lt;block type=&quot;text&quot;&gt;&lt;/block&gt;
-        &lt;block type=&quot;text_print&quot;&gt;&lt;/block&gt;
-      &lt;/xml&gt;
+    <span style="color:#586e75">&lt;!-- Create Blockly elements --&gt;</span>
+    &lt;<span style="color:#268bd2">div</span> id<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;blocklyDiv&#34;</span> style<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;height: 480px; width: 600px;&#34;</span>&gt;&lt;/<span style="color:#268bd2">div</span>&gt;
+    &lt;<span style="color:#268bd2">xml</span> id<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;toolbox&#34;</span> style<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;display: none&#34;</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;math_number&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;text&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;text_print&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+      &lt;/<span style="color:#268bd2">xml</span>&gt;
 
-    &lt;script&gt;...&lt;/script&gt;
-&lt;/body&gt;
-...
-</code></pre><p>Now that the elements are there, we need to &ldquo;inject&rdquo; Blockly into the <code>blocklyDiv</code> element and associate the <code>toolbox</code> with it. We&rsquo;ll do this in our main <code>&lt;script&gt;</code> tag inside of <code>&lt;body&gt;</code></p>
-<pre><code>// Inject Blockly workspace
-const workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
-</code></pre><p>Next we&rsquo;ll create a function to run the code inside our Blockly workspace. We&rsquo;ll reserve the word &ldquo;code&rdquo; so that if the user tries to create anything  called &ldquo;code&rdquo; it won&rsquo;t cause problems.</p>
-<pre><code>// Create function to evaluate Blockly code
-function runCode() {
+    &lt;<span style="color:#268bd2">script</span>&gt;...&lt;/<span style="color:#268bd2">script</span>&gt;
+&lt;/<span style="color:#268bd2">body</span>&gt;
+</code></pre></div><p>Now that the elements are there, we need to &ldquo;inject&rdquo; Blockly into the <code>blocklyDiv</code> element and associate the <code>toolbox</code> with it. We&rsquo;ll do this in our main <code>&lt;script&gt;</code> tag inside of <code>&lt;body&gt;</code></p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#586e75">// Inject Blockly workspace
+</span><span style="color:#586e75"></span><span style="color:#268bd2">const</span> workspace <span style="color:#719e07">=</span> Blockly.inject(<span style="color:#2aa198">&#39;blocklyDiv&#39;</span>, {toolbox<span style="color:#719e07">:</span> <span style="color:#b58900">document</span>.getElementById(<span style="color:#2aa198">&#39;toolbox&#39;</span>)});
+</code></pre></div><p>Next we&rsquo;ll create a function to run the code inside our Blockly workspace. We&rsquo;ll reserve the word &ldquo;code&rdquo; so that if the user tries to create anything  called &ldquo;code&rdquo; it won&rsquo;t cause problems.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#586e75">// Create function to evaluate Blockly code
+</span><span style="color:#586e75"></span><span style="color:#268bd2">function</span> runCode() {
 
-    // reserve &quot;code&quot; to avoid conflicts between the user's workspace and the page
-    Blockly.JavaScript.addReservedWords('code');
+    <span style="color:#586e75">// reserve &#34;code&#34; to avoid conflicts between the user&#39;s workspace and the page
+</span><span style="color:#586e75"></span>    Blockly.JavaScript.addReservedWords(<span style="color:#2aa198">&#39;code&#39;</span>);
 
-    // Assign the contents of the workspace to the 'code' variable
-    const code = Blockly.JavaScript.workspaceToCode(workspace);
+    <span style="color:#586e75">// Assign the contents of the workspace to the &#39;code&#39; variable
+</span><span style="color:#586e75"></span>    <span style="color:#268bd2">const</span> code <span style="color:#719e07">=</span> Blockly.JavaScript.workspaceToCode(workspace);
 
-    // Try to evaluate the code in the workspace, display any errors
-    try {
-        eval(code);
-    } catch (e) {
+    <span style="color:#586e75">// Try to evaluate the code in the workspace, display any errors
+</span><span style="color:#586e75"></span>    <span style="color:#719e07">try</span> {
+        <span style="color:#b58900">eval</span>(code);
+    } <span style="color:#719e07">catch</span> (e) {
         alert(e);
     }
 }
-</code></pre><p>Since we already have a button created from our <em>Hello Tone</em> section, we&rsquo;ll make that same button run the Blockly workspace code when it&rsquo;s pressed, simply by calling the <code>runCode()</code> function from the <em>on click</em> event listener.</p>
-<pre><code>// Add &quot;on click&quot; function to play note when button is pressed,
-// and run the workspace code
-button.addEventListener('click', () =&gt; {
-    synth.triggerAttackRelease('C4', '8n');
+</code></pre></div><p>Since we already have a button created from our <em>Hello Tone</em> section, we&rsquo;ll make that same button run the Blockly workspace code when it&rsquo;s pressed, simply by calling the <code>runCode()</code> function from the <em>on click</em> event listener.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#586e75">// Add &#34;on click&#34; function to play note when button is pressed,
+</span><span style="color:#586e75">// and run the workspace code
+</span><span style="color:#586e75"></span>button.addEventListener(<span style="color:#2aa198">&#39;click&#39;</span>, () =&gt; {
+    synth.triggerAttackRelease(<span style="color:#2aa198">&#39;C4&#39;</span>, <span style="color:#2aa198">&#39;8n&#39;</span>);
     runCode();
 });
-</code></pre><p>So now your <code>index.html</code> should look like this:</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Toneblocks Pt1&lt;/title&gt;
+</code></pre></div><p>So now your <code>index.html</code> should look similar to this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#719e07">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#268bd2">html</span> lang<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;en&#34;</span>&gt;
+&lt;<span style="color:#268bd2">head</span>&gt;
+    &lt;<span style="color:#268bd2">meta</span> charset<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;UTF-8&#34;</span>&gt;
+    &lt;<span style="color:#268bd2">meta</span> http-equiv<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;X-UA-Compatible&#34;</span> content<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;IE=edge&#34;</span>&gt;
+    &lt;<span style="color:#268bd2">meta</span> name<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;viewport&#34;</span> content<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+    &lt;<span style="color:#268bd2">title</span>&gt;Toneblocks Pt1&lt;/<span style="color:#268bd2">title</span>&gt;
 
-        &lt;!-- Load Tone.js --&gt;
-        &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js&quot; integrity=&quot;sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==&quot; crossorigin=&quot;anonymous&quot; referrerpolicy=&quot;no-referrer&quot;&gt;&lt;/script&gt;
+        <span style="color:#586e75">&lt;!-- Load Tone.js --&gt;</span>
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js&#34;</span> integrity<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==&#34;</span> crossorigin<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;anonymous&#34;</span> referrerpolicy<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;no-referrer&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
     
-        &lt;!-- Load Blockly --&gt;
-        &lt;script src=&quot;https://unpkg.com/blockly/blockly_compressed.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;https://unpkg.com/blockly/blocks_compressed.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;https://unpkg.com/blockly/javascript_compressed.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;https://unpkg.com/blockly/msg/en.js&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
+        <span style="color:#586e75">&lt;!-- Load Blockly --&gt;</span>
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://unpkg.com/blockly/blockly_compressed.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://unpkg.com/blockly/blocks_compressed.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://unpkg.com/blockly/javascript_compressed.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://unpkg.com/blockly/msg/en.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
+&lt;/<span style="color:#268bd2">head</span>&gt;
+&lt;<span style="color:#268bd2">body</span>&gt;
 
-    &lt;!-- Create button element --&gt;
-    &lt;button id=&quot;play&quot;&gt;Play&lt;/button&gt;
+    <span style="color:#586e75">&lt;!-- Create button element --&gt;</span>
+    &lt;<span style="color:#268bd2">button</span> id<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;play&#34;</span>&gt;Play&lt;/<span style="color:#268bd2">button</span>&gt;
 
-    &lt;!-- Create Blockly elements --&gt;
-    &lt;div id=&quot;blocklyDiv&quot; style=&quot;height: 480px; width: 600px;&quot;&gt;&lt;/div&gt;
-    &lt;xml id=&quot;toolbox&quot; style=&quot;display: none&quot;&gt;
-        &lt;block type=&quot;controls_if&quot;&gt;&lt;/block&gt;
-        &lt;block type=&quot;controls_repeat_ext&quot;&gt;&lt;/block&gt;
-        &lt;block type=&quot;logic_compare&quot;&gt;&lt;/block&gt;
-        &lt;block type=&quot;math_number&quot;&gt;&lt;/block&gt;
-        &lt;block type=&quot;math_arithmetic&quot;&gt;&lt;/block&gt;
-        &lt;block type=&quot;text&quot;&gt;&lt;/block&gt;
-        &lt;block type=&quot;text_print&quot;&gt;&lt;/block&gt;
-      &lt;/xml&gt;
+    <span style="color:#586e75">&lt;!-- Create Blockly elements --&gt;</span>
+    &lt;<span style="color:#268bd2">div</span> id<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;blocklyDiv&#34;</span> style<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;height: 480px; width: 600px;&#34;</span>&gt;&lt;/<span style="color:#268bd2">div</span>&gt;
+    &lt;<span style="color:#268bd2">xml</span> id<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;toolbox&#34;</span> style<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;display: none&#34;</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;controls_if&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;controls_repeat_ext&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;logic_compare&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;math_number&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;math_arithmetic&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;text&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;text_print&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+      &lt;/<span style="color:#268bd2">xml</span>&gt;
 
-    &lt;script&gt;
+    &lt;<span style="color:#268bd2">script</span>&gt;
  
-        // Create synth and route output to destination
-        const synth = new Tone.Synth().toDestination();
+        <span style="color:#586e75">// Create synth and route output to destination
+</span><span style="color:#586e75"></span>        <span style="color:#268bd2">const</span> synth <span style="color:#719e07">=</span> <span style="color:#719e07">new</span> Tone.Synth().toDestination();
 
-        // Assign button variable to button element
-        const button = document.getElementById('play');
+        <span style="color:#586e75">// Assign button variable to button element
+</span><span style="color:#586e75"></span>        <span style="color:#268bd2">const</span> button <span style="color:#719e07">=</span> <span style="color:#b58900">document</span>.getElementById(<span style="color:#2aa198">&#39;play&#39;</span>);
 
-        // Add &quot;on click&quot; function to play note when button is pressed,
-        // and run the workspace code
-        button.addEventListener('click', () =&gt; {
-            synth.triggerAttackRelease('C4', '8n');
+        <span style="color:#586e75">// Add &#34;on click&#34; function to play note when button is pressed,
+</span><span style="color:#586e75"></span>        <span style="color:#586e75">// and run the workspace code
+</span><span style="color:#586e75"></span>        button.addEventListener(<span style="color:#2aa198">&#39;click&#39;</span>, () =&gt; {
+            synth.triggerAttackRelease(<span style="color:#2aa198">&#39;C4&#39;</span>, <span style="color:#2aa198">&#39;8n&#39;</span>);
             runCode();
         });
 
-        // Inject Blockly workspace
-        const workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
+        <span style="color:#586e75">// Inject Blockly workspace
+</span><span style="color:#586e75"></span>        <span style="color:#268bd2">const</span> workspace <span style="color:#719e07">=</span> Blockly.inject(<span style="color:#2aa198">&#39;blocklyDiv&#39;</span>, {toolbox<span style="color:#719e07">:</span> <span style="color:#b58900">document</span>.getElementById(<span style="color:#2aa198">&#39;toolbox&#39;</span>)});
 
-        // Create function to evaluate Blockly code
-        function runCode() {
+        <span style="color:#586e75">// Create function to evaluate Blockly code
+</span><span style="color:#586e75"></span>        <span style="color:#268bd2">function</span> runCode() {
 
-            // reserve &quot;code&quot; to avoid conflicts between the user's workspace and the page
-            Blockly.JavaScript.addReservedWords('code');
+            <span style="color:#586e75">// reserve &#34;code&#34; to avoid conflicts between the user&#39;s workspace and the page
+</span><span style="color:#586e75"></span>            Blockly.JavaScript.addReservedWords(<span style="color:#2aa198">&#39;code&#39;</span>);
 
-            // Assign the contents of the workspace to te 'code' variable
-            const code = Blockly.JavaScript.workspaceToCode(workspace);
+            <span style="color:#586e75">// Assign the contents of the workspace to te &#39;code&#39; variable
+</span><span style="color:#586e75"></span>            <span style="color:#268bd2">const</span> code <span style="color:#719e07">=</span> Blockly.JavaScript.workspaceToCode(workspace);
 
-            // Try to evaluate the code in the workspace, display any errors
-            try {
-                eval(code);
-            } catch (e) {
+            <span style="color:#586e75">// Try to evaluate the code in the workspace, display any errors
+</span><span style="color:#586e75"></span>            <span style="color:#719e07">try</span> {
+                <span style="color:#b58900">eval</span>(code);
+            } <span style="color:#719e07">catch</span> (e) {
                 alert(e);
             }
         }
 
-    &lt;/script&gt;
+    &lt;/<span style="color:#268bd2">script</span>&gt;
     
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>Load the file in a browser window, you should see the <strong>Play</strong> button and a Blockly workspace with example blocks. Try dragging the <strong>print</strong> block into the workspace. Then connext the empty <strong>text</strong> block to that and type in &ldquo;Hello Block&rdquo;. Click the <strong>Play</strong> button and you will hear the tone and get an alert displaying &ldquo;Hello Block&rdquo;. It should look similar to beow:</p>
+&lt;/<span style="color:#268bd2">body</span>&gt;
+&lt;/<span style="color:#268bd2">html</span>&gt;
+</code></pre></div><p>Load the file in a browser window, you should see the <strong>Play</strong> button and a Blockly workspace with example blocks. Try dragging the <strong>print</strong> block into the workspace. Then connext the empty <strong>text</strong> block to that and type in &ldquo;Hello Block&rdquo;. Click the <strong>Play</strong> button and you will hear the tone and get an alert displaying &ldquo;Hello Block&rdquo;. It should look similar to beow:</p>
 <p><img src="../../images/hello-block.png" alt=""></p>
 <h3 id="a-tone-block">A Tone Block</h3>
 <p>For the final section, we&rsquo;ll create a custom Blockly block. This block will create a new Synth object, and have an input for a MIDI note number, supply by a separate number block. When the Blockly workspace code is run, the synth will play an 8th note with the equivalent pitch of the input MIDI number.</p>
 <p>With Blockly, every block needs a definition to dictate the shape, color, inputs, text, etc. of our block, and a generator function to handle the code that is added to the workspace when the block is created. As always, consult the developer&rsquo;s docs when using their API. <a href="https://developers.google.com/blockly/guides/create-custom-blocks/define-blocks">Blockly&rsquo;s is thorough</a>! We&rsquo;ll start by creating a file <code>synth.js</code> in our directory. And we&rsquo;ll define our custom block in JavaScript format (you can also use JSON).</p>
-<pre><code>// Define the block
-Blockly.Blocks['synth'] = { // Name it &quot;synth&quot;
-    init: function () {
-        this.appendDummyInput()
-            .appendField(&quot;Synth&quot;); // Label the block
-        this.appendValueInput('PITCH') // Name the input value
-            .setCheck('Number') // Check that it is a number
-            .appendField('MIDI Note'); // Label the input
-    }
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#586e75">// Define the block
+</span><span style="color:#586e75"></span>Blockly.Blocks[<span style="color:#2aa198">&#39;synth&#39;</span>] <span style="color:#719e07">=</span> { <span style="color:#586e75">// Name it &#34;synth&#34;
+</span><span style="color:#586e75"></span>    init<span style="color:#719e07">:</span> <span style="color:#268bd2">function</span> () {
+        <span style="color:#719e07">this</span>.appendDummyInput()
+            .appendField(<span style="color:#2aa198">&#34;Synth&#34;</span>); <span style="color:#586e75">// Label the block
+</span><span style="color:#586e75"></span>        <span style="color:#719e07">this</span>.appendValueInput(<span style="color:#2aa198">&#39;PITCH&#39;</span>) <span style="color:#586e75">// Name the input value
+</span><span style="color:#586e75"></span>            .setCheck(<span style="color:#2aa198">&#39;Number&#39;</span>) <span style="color:#586e75">// Check that it is a number
+</span><span style="color:#586e75"></span>            .appendField(<span style="color:#2aa198">&#39;MIDI Note&#39;</span>); <span style="color:#586e75">// Label the input
+</span><span style="color:#586e75"></span>    }
 };
-</code></pre><p>Next we write the generator function. You&rsquo;ll notice this gets a little bit weird. We need to write some JavaScript code to get the pitch value from the input and check its type and range. Ultimately we want the block to create a new Synth object, read the pitch value from a seperate number block, and trigger a note. But we want the actual note triggering to happen when we click our <strong>Play</strong> button. In order to do that, we have to encapsulate the relevant code as a string, and return this to our workspace. That way, the instructions to create the synth and play the note are all there when the <code>runCode()</code> function is called. So in our <code>synth.js</code> file, just below our definition, the generator function looks like this:</p>
-<pre><code>// Generator function called when the block is dragged into the workspace
-Blockly.JavaScript['synth'] = function (block) {
+</code></pre></div><p>Next we write the generator function. You&rsquo;ll notice this gets a little bit weird. We need to write some JavaScript code to get the pitch value from the input and check its type and range. Ultimately we want the block to create a new Synth object, read the pitch value from a seperate number block, and trigger a note. But we want the actual note triggering to happen when we click our <strong>Play</strong> button. In order to do that, we have to encapsulate the relevant code as a string, and return this to our workspace. That way, the instructions to create the synth and play the note are all there when the <code>runCode()</code> function is called. So in our <code>synth.js</code> file, just below our definition, the generator function looks like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#586e75">// Generator function called when the block is dragged into the workspace
+</span><span style="color:#586e75"></span>Blockly.JavaScript[<span style="color:#2aa198">&#39;synth&#39;</span>] <span style="color:#719e07">=</span> <span style="color:#268bd2">function</span> (block) {
 
-    // Get the pitch value from the input, convert it to an integer, or null if no value is present
-    const pitch = parseInt(Blockly.JavaScript.valueToCode(block, 'PITCH', Blockly.JavaScript.ORDER_FUNCTION_CALL)) || null;
+    <span style="color:#586e75">// Get the pitch value from the input, convert it to an integer, or null if no value is present
+</span><span style="color:#586e75"></span>    <span style="color:#268bd2">const</span> pitch <span style="color:#719e07">=</span> <span style="color:#b58900">parseInt</span>(Blockly.JavaScript.valueToCode(block, <span style="color:#2aa198">&#39;PITCH&#39;</span>, Blockly.JavaScript.ORDER_FUNCTION_CALL)) <span style="color:#719e07">||</span> <span style="color:#cb4b16">null</span>;
 
-    // Check that the pitch value is in range 0 - 127
-    if (pitch &lt; 0 || pitch &gt; 127 || pitch === null) {
-        return `alert(&quot;MIDI Number must be between 0 and 127&quot;)`
+    <span style="color:#586e75">// Check that the pitch value is in range 0 - 127
+</span><span style="color:#586e75"></span>    <span style="color:#719e07">if</span> (pitch <span style="color:#719e07">&lt;</span> <span style="color:#2aa198">0</span> <span style="color:#719e07">||</span> pitch <span style="color:#719e07">&gt;</span> <span style="color:#2aa198">127</span> <span style="color:#719e07">||</span> pitch <span style="color:#719e07">===</span> <span style="color:#cb4b16">null</span>) {
+        <span style="color:#719e07">return</span> <span style="color:#586e75">`alert(&#34;MIDI Number must be between 0 and 127&#34;)`</span>
     }
 
-    // Assign the code to be returned to the workspace as text
-    // This will then be evaluated when runCode() is called
-    const code = 
-    `
-    // Create new synth object, route to destination (speakers)
-    const synth = new Tone.Synth().toDestination();
-
-    // Convert MIDI pitch value to frequency (Hz) and trigger an 8th note
-    synth.triggerAttackRelease(Tone.Frequency(${pitch}, &quot;midi&quot;), '8n');
-    `;
+    <span style="color:#586e75">// Assign the code to be returned to the workspace as text
+</span><span style="color:#586e75"></span>    <span style="color:#586e75">// This will then be evaluated when runCode() is called
+</span><span style="color:#586e75"></span>    <span style="color:#268bd2">const</span> code <span style="color:#719e07">=</span> 
+    <span style="color:#586e75">`
+</span><span style="color:#586e75">    // Create new synth object, route to destination (speakers)
+</span><span style="color:#586e75">    const synth = new Tone.Synth().toDestination();
+</span><span style="color:#586e75">
+</span><span style="color:#586e75">    // Convert MIDI pitch value to frequency (Hz) and trigger an 8th note
+</span><span style="color:#586e75">    synth.triggerAttackRelease(Tone.Frequency(</span><span style="color:#2aa198">${</span>pitch<span style="color:#2aa198">}</span><span style="color:#586e75">, &#34;midi&#34;), &#39;8n&#39;);
+</span><span style="color:#586e75">    `</span>;
     
-    // returns the text of the code we want added to the workspace
-    return code;
+    <span style="color:#586e75">// returns the text of the code we want added to the workspace
+</span><span style="color:#586e75"></span>    <span style="color:#719e07">return</span> code;
 };
-</code></pre><p>Now our custom synth block is all set. We just need to load it into our main <code>index.html</code> file and remove the old synth and trigger code (since we&rsquo;re doing that in the custom block now).<br>
+</code></pre></div><p>Now our custom synth block is all set. We just need to load it into our main <code>index.html</code> file and remove the old synth and trigger code (since we&rsquo;re doing that in the custom block now).<br>
 Load in the custom block in the <code>&lt;head&gt;</code> section below Tone.js and Blockly:</p>
-<pre><code>&lt;!-- Load Custom Block --&gt;
-&lt;script src=&quot;synth.js&quot;&gt;&lt;/script&gt;
-</code></pre><p>Add the synth block to your <code>toolbox</code>:</p>
-<pre><code>&lt;xml id=&quot;toolbox&quot; style=&quot;display: none&quot;&gt;
-    &lt;block type=&quot;math_number&quot;&gt;&lt;/block&gt;
-    &lt;block type=&quot;text&quot;&gt;&lt;/block&gt;
-    &lt;block type=&quot;text_print&quot;&gt;&lt;/block&gt;
-    &lt;!-- our new custom synth block! --&gt;
-    &lt;block type=&quot;synth&quot;&gt;&lt;/block&gt;
-&lt;/xml&gt;
-</code></pre><p>Since we&rsquo;re handling the synth in it&rsquo;s own block, we can remove the original one we made and also remove the <code>triggerAttackRelease()</code> from the button&rsquo;s <em>on click</em> function. Instead that will all happen when we call <code>runCode()</code>.<br>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#586e75">&lt;!-- Load Custom Block --&gt;</span>
+&lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;synth.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
+</code></pre></div><p>Add the synth block to your <code>toolbox</code>:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#268bd2">xml</span> id<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;toolbox&#34;</span> style<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;display: none&#34;</span>&gt;
+    &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;math_number&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+    &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;text&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+    &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;text_print&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+    <span style="color:#586e75">&lt;!-- our new custom synth block! --&gt;</span>
+    &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;synth&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+&lt;/<span style="color:#268bd2">xml</span>&gt;
+</code></pre></div><p>Since we&rsquo;re handling the synth in it&rsquo;s own block, we can remove the original one we made and also remove the <code>triggerAttackRelease()</code> from the button&rsquo;s <em>on click</em> function. Instead that will all happen when we call <code>runCode()</code>.<br>
 The last thing to do is to have our button click start the Tone audio context. Most browsers won&rsquo;t allow audio to play until the user takes some kind of action. Since we&rsquo;re using the same button to create and trigger our audio, there could be some issues with the audio attempting to trigger before its been allowed. To avoid this, we&rsquo;ll call <code>Tone.start()</code> right before we run our code, and we&rsquo;ll give the <em>on click</em> function an asyc/await to make sure we&rsquo;re all set before evaluating the workspace code.</p>
-<pre><code>// Add &quot;on click&quot; function to start audio context and call runCode
-button.addEventListener('click', async () =&gt; {
-    await Tone.start();
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#586e75">// Add &#34;on click&#34; function to start audio context and call runCode
+</span><span style="color:#586e75"></span>button.addEventListener(<span style="color:#2aa198">&#39;click&#39;</span>, <span style="color:#268bd2">async</span> () =&gt; {
+    <span style="color:#268bd2">await</span> Tone.start();
     runCode();
 });
-</code></pre><p>And that&rsquo;s it! Now we have a custom synth block which takes a MIDI Note number value and plays an 8th note at the corresponding pitch when you click <strong>Play</strong>. The full <code>index.html</code> file should be something like:</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Toneblocks Pt1&lt;/title&gt;
+</code></pre></div><p>And that&rsquo;s it! Now we have a custom synth block which takes a MIDI Note number value and plays an 8th note at the corresponding pitch when you click <strong>Play</strong>. The full <code>index.html</code> file should be something like:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#719e07">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#268bd2">html</span> lang<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;en&#34;</span>&gt;
+&lt;<span style="color:#268bd2">head</span>&gt;
+    &lt;<span style="color:#268bd2">meta</span> charset<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;UTF-8&#34;</span>&gt;
+    &lt;<span style="color:#268bd2">meta</span> http-equiv<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;X-UA-Compatible&#34;</span> content<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;IE=edge&#34;</span>&gt;
+    &lt;<span style="color:#268bd2">meta</span> name<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;viewport&#34;</span> content<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+    &lt;<span style="color:#268bd2">title</span>&gt;Toneblocks Pt1&lt;/<span style="color:#268bd2">title</span>&gt;
 
-        &lt;!-- Load Tone.js --&gt;
-        &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js&quot; integrity=&quot;sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==&quot; crossorigin=&quot;anonymous&quot; referrerpolicy=&quot;no-referrer&quot;&gt;&lt;/script&gt;
+        <span style="color:#586e75">&lt;!-- Load Tone.js --&gt;</span>
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js&#34;</span> integrity<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==&#34;</span> crossorigin<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;anonymous&#34;</span> referrerpolicy<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;no-referrer&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
     
-        &lt;!-- Load Blockly --&gt;
-        &lt;script src=&quot;https://unpkg.com/blockly/blockly_compressed.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;https://unpkg.com/blockly/blocks_compressed.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;https://unpkg.com/blockly/javascript_compressed.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;https://unpkg.com/blockly/msg/en.js&quot;&gt;&lt;/script&gt;
+        <span style="color:#586e75">&lt;!-- Load Blockly --&gt;</span>
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://unpkg.com/blockly/blockly_compressed.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://unpkg.com/blockly/blocks_compressed.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://unpkg.com/blockly/javascript_compressed.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;https://unpkg.com/blockly/msg/en.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
 
-        &lt;!-- Load Custom Block --&gt;
-        &lt;script src=&quot;synth.js&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
+        <span style="color:#586e75">&lt;!-- Load Custom Block --&gt;</span>
+        &lt;<span style="color:#268bd2">script</span> src<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;synth.js&#34;</span>&gt;&lt;/<span style="color:#268bd2">script</span>&gt;
+&lt;/<span style="color:#268bd2">head</span>&gt;
+&lt;<span style="color:#268bd2">body</span>&gt;
 
-    &lt;!-- Create button element --&gt;
-    &lt;button id=&quot;play&quot;&gt;Play&lt;/button&gt;
+    <span style="color:#586e75">&lt;!-- Create button element --&gt;</span>
+    &lt;<span style="color:#268bd2">button</span> id<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;play&#34;</span>&gt;Play&lt;/<span style="color:#268bd2">button</span>&gt;
 
-    &lt;!-- Create Blockly elements --&gt;
-    &lt;div id=&quot;blocklyDiv&quot; style=&quot;height: 480px; width: 600px;&quot;&gt;&lt;/div&gt;
-    &lt;xml id=&quot;toolbox&quot; style=&quot;display: none&quot;&gt;
-        &lt;block type=&quot;math_number&quot;&gt;&lt;/block&gt;
-        &lt;block type=&quot;text&quot;&gt;&lt;/block&gt;
-        &lt;block type=&quot;text_print&quot;&gt;&lt;/block&gt;
-        &lt;block type=&quot;synth&quot;&gt;&lt;/block&gt;
-      &lt;/xml&gt;
+    <span style="color:#586e75">&lt;!-- Create Blockly elements --&gt;</span>
+    &lt;<span style="color:#268bd2">div</span> id<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;blocklyDiv&#34;</span> style<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;height: 480px; width: 600px;&#34;</span>&gt;&lt;/<span style="color:#268bd2">div</span>&gt;
+    &lt;<span style="color:#268bd2">xml</span> id<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;toolbox&#34;</span> style<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;display: none&#34;</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;math_number&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;text&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;text_print&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+        &lt;<span style="color:#268bd2">block</span> type<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;synth&#34;</span>&gt;&lt;/<span style="color:#268bd2">block</span>&gt;
+      &lt;/<span style="color:#268bd2">xml</span>&gt;
 
-    &lt;script&gt;
+    &lt;<span style="color:#268bd2">script</span>&gt;
  
-        // Assign button variable to button element
-        const button = document.getElementById('play');
+        <span style="color:#586e75">// Assign button variable to button element
+</span><span style="color:#586e75"></span>        <span style="color:#268bd2">const</span> button <span style="color:#719e07">=</span> <span style="color:#b58900">document</span>.getElementById(<span style="color:#2aa198">&#39;play&#39;</span>);
 
-        // Add &quot;on click&quot; function to start audio context and call runCode
-        button.addEventListener('click', async () =&gt; {
-            await Tone.start();
+        <span style="color:#586e75">// Add &#34;on click&#34; function to start audio context and call runCode
+</span><span style="color:#586e75"></span>        button.addEventListener(<span style="color:#2aa198">&#39;click&#39;</span>, <span style="color:#268bd2">async</span> () =&gt; {
+            <span style="color:#268bd2">await</span> Tone.start();
             runCode();
         });
 
-        // Inject Blockly workspace
-        const workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
+        <span style="color:#586e75">// Inject Blockly workspace
+</span><span style="color:#586e75"></span>        <span style="color:#268bd2">const</span> workspace <span style="color:#719e07">=</span> Blockly.inject(<span style="color:#2aa198">&#39;blocklyDiv&#39;</span>, {toolbox<span style="color:#719e07">:</span> <span style="color:#b58900">document</span>.getElementById(<span style="color:#2aa198">&#39;toolbox&#39;</span>)});
 
-        // Create function to evaluate Blockly code
-        function runCode() {
+        <span style="color:#586e75">// Create function to evaluate Blockly code
+</span><span style="color:#586e75"></span>        <span style="color:#268bd2">function</span> runCode() {
 
-            // reserve &quot;code&quot; to avoid conflicts between the user's workspace and the page
-            Blockly.JavaScript.addReservedWords('code');
+            <span style="color:#586e75">// reserve &#34;code&#34; to avoid conflicts between the user&#39;s workspace and the page
+</span><span style="color:#586e75"></span>            Blockly.JavaScript.addReservedWords(<span style="color:#2aa198">&#39;code&#39;</span>);
 
-            // Assign the contents of the workspace to te 'code' variable
-            const code = Blockly.JavaScript.workspaceToCode(workspace);
+            <span style="color:#586e75">// Assign the contents of the workspace to te &#39;code&#39; variable
+</span><span style="color:#586e75"></span>            <span style="color:#268bd2">const</span> code <span style="color:#719e07">=</span> Blockly.JavaScript.workspaceToCode(workspace);
 
-            // Try to evaluate the code in the workspace, display any errors
-            try {
-                eval(code);
-            } catch (e) {
+            <span style="color:#586e75">// Try to evaluate the code in the workspace, display any errors
+</span><span style="color:#586e75"></span>            <span style="color:#719e07">try</span> {
+                <span style="color:#b58900">eval</span>(code);
+            } <span style="color:#719e07">catch</span> (e) {
                 alert(e);
             }
         }
 
-    &lt;/script&gt;
+    &lt;/<span style="color:#268bd2">script</span>&gt;
     
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>In a browser, it should look something like this, and play the pitch value you supply:
+&lt;/<span style="color:#268bd2">body</span>&gt;
+&lt;/<span style="color:#268bd2">html</span>&gt;
+</code></pre></div><p>In a browser, it should look something like this, and play the pitch value you supply:
 <img src="../../images/a-tone-block.png" alt=""></p>
 <p>Thanks for following along! This was a simplified look at the basic mechanics underlying Toneblocks: using Blockly to interface with Tone.js and create music with code in the browser. In future posts I&rsquo;ll take a closer look at the specific blocks constructed for the application, like <strong>Synth</strong>, <strong>Volume</strong>, and scheduling <strong>Loops</strong> with the <code>Tone.Transport</code>.</p>
 
@@ -676,6 +670,7 @@ button.addEventListener('click', async () =&gt; {
 <link rel="stylesheet" href=/blog/lib/font-awesome/css/all.min.css>
 <script src=/blog/lib/jquery/jquery.min.js></script>
 <script src=/blog/js/main.js></script>
+<script src=/blog/js/code-copy.js></script>
 
 
 
