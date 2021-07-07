@@ -223,50 +223,50 @@ Source code is available on <a href="https://github.com/mdquigley/bandname">GitH
 <p>If you navigate to <code>some-desired-name.bandcamp.com</code> and that subdomain already exists, you get the artist&rsquo;s site at either their album list page or a specific album, depending on how they set that up. But if it does not yet exist, you would instead be brought to the Sign Up page with <code>Some Desired Name</code> populated into the artist name field. So I figured this is a simple enough destinction for us utilize in the app. We just need to attempt to request a specific subdomain, and scrape the returned page for some diferentiating info, in this case the <code>&lt;title&gt;</code> tag.</p>
 <p>If the page exists, you&rsquo;ll see the artist name in the title tag, something like <code>&lt;title&gt;Music | Pile&lt;/title&gt;</code> or <code>&lt;title&gt;Ovlov&lt;/title&gt;</code>. However, if the page does not exist and you are rerouted to the Sign Up page, you&rsquo;ll see <code>&lt;title&gt;Signup | Bandcamp&lt;/title&gt;</code>. So with this in mind, it&rsquo;s just a matter of requesting the URL and parsing the returned data to test the title info.</p>
 <p>We make a <code>JQuery.ajax()</code> request with the desired URL, which will return an object with a <code>responseText</code> property. This is a string of the site&rsquo;s HTML content. We can use <code>JQuery.parseHTML()</code> which returns an array of the various DOM elements in the HTML content. We want the <code>title</code> property, which is the second index in the array, or <code>[1]</code>, and within that is the <code>innerText</code> key which will either include the band name we searched or &ldquo;Sign Up | Bandcamp&rdquo;.</p>
-<pre><code>$.ajax({
-    url: url,
-    complete: function (data) {
-        response = $.parseHTML(data.responseText)[1].innerText;
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">$.ajax({
+    url<span style="color:#719e07">:</span> url,
+    complete<span style="color:#719e07">:</span> <span style="color:#268bd2">function</span> (data) {
+        response <span style="color:#719e07">=</span> $.parseHTML(data.responseText)[<span style="color:#2aa198">1</span>].innerText;
     }
     ...
 });
-</code></pre><p>So that&rsquo;s the majority of the actual task. Once you have that data, you can test it and set various interface elements accordingly. In our case, we test if the response includes the sign up text and either let the user know if the subdomain is available or not. If it is, we show a button that links the user to the Bandcamp Sign Up page with the name field populated.</p>
-<pre><code>const signup = &quot;Signup | Bandcamp&quot;;
+</code></pre></div><p>So that&rsquo;s the majority of the actual task. Once you have that data, you can test it and set various interface elements accordingly. In our case, we test if the response includes the sign up text and either let the user know if the subdomain is available or not. If it is, we show a button that links the user to the Bandcamp Sign Up page with the name field populated.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#268bd2">const</span> signup <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;Signup | Bandcamp&#34;</span>;
 ...
-    bname.innerText = bandname;
-    warning.innerText = (response.includes(signup) ? '🤘\n' : '😭\n');
-    avail.innerText = '.bandcamp.com is ' + (response.includes(signup) ? 'available!' : 'not available');
-</code></pre><p>The above code then looks like:
+    bname.innerText <span style="color:#719e07">=</span> bandname;
+    warning.innerText <span style="color:#719e07">=</span> (response.includes(signup) <span style="color:#719e07">?</span> <span style="color:#2aa198">&#39;🤘\n&#39;</span> <span style="color:#719e07">:</span> <span style="color:#2aa198">&#39;😭\n&#39;</span>);
+    avail.innerText <span style="color:#719e07">=</span> <span style="color:#2aa198">&#39;.bandcamp.com is &#39;</span> <span style="color:#719e07">+</span> (response.includes(signup) <span style="color:#719e07">?</span> <span style="color:#2aa198">&#39;available!&#39;</span> <span style="color:#719e07">:</span> <span style="color:#2aa198">&#39;not available&#39;</span>);
+</code></pre></div><p>The above code then looks like:
 <img src="../../images/bandname-available.png" alt="Bandname available"></p>
 <h2 id="cors-anywhere">CORS Anywhere</h2>
 <p>If you&rsquo;ve tried to make a JQuery or fetch request to some other site, you may have run into various CORS errors before. They can be a headache and there are <a href="https://stackoverflow.com/search?q=CORS">tons of forum posts</a> with people struggling to sort them out. I won&rsquo;t go too far into the weeds here. In short, from the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">MDB Web Docs</a>: &ldquo;For security reasons, browsers restrict cross-origin HTTP requests initiated from scripts.&rdquo;</p>
 <p>We care because this means our little script will get turned down by Bandcamp when it attempts to request the subdomain we&rsquo;re testing. To get around this, we can use <a href="https://github.com/Rob--W/cors-anywhere">CORS Anywhere</a> to setup a proxy server. Essentially, we pass the subdomain we want to check to the proxy server, which can then make the request to Bandcamp with the appropriate headers. This satisfies Bandcamp&rsquo;s security needs, so the requested data is returned to the proxy, and then passed back through to our site.</p>
 <p>CORS Anywhere is more or less good to go right off the bat. You just need to host it and limit requests only to your site, to avoid unwanted traffic. I chose to use <a href="https://heroku.com/">Heroku</a>, as I&rsquo;d not had much experience with it prior and there&rsquo;s a free tier which is definitely enough for a small project like this.</p>
 <p>Basing instructions off of the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Heroku &ldquo;Getting Started With Node.js&rdquo;</a> article and <a href="https://github.com/Rob--W/cors-anywhere">CORS Anywhere repo</a>&hellip;</p>
-<pre><code>//Install heroku:
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#586e75">#Install heroku:</span>
 brew install heroku/brew/heroku
-</code></pre><pre><code>//Login to your account:
+</code></pre></div><div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#586e75">#Login to your account:</span>
 heroku login
-</code></pre><pre><code>//Clone a local copy of the CORS Anywhere repo:
+</code></pre></div><div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#586e75">#Clone a local copy of the CORS Anywhere repo:</span>
 git clone git@github.com:Rob--W/cors-anywhere.git
-</code></pre><pre><code>//Create a heroku app:
+</code></pre></div><div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#586e75">#Create a heroku app:</span>
 heroku create bandname-proxy
-</code></pre><pre><code>//Set the whitelist (limit requests to our site):
-heroku config:set CORSANYWHERE_WHITELIST=https://quig.info,http://quig.info
-</code></pre><pre><code>//Deploy the app:
+</code></pre></div><div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#586e75">#Set the whitelist (limit requests to our site):</span>
+heroku config:set <span style="color:#268bd2">CORSANYWHERE_WHITELIST</span><span style="color:#719e07">=</span>https://quig.info,http://quig.info
+</code></pre></div><div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#586e75">#Deploy the app:</span>
 git push heroku main
-</code></pre><p>Now our proxy is up and running. To use it, we pass it our desired bandcamp subdomain and it returns the response. So up in our <code>.ajax()</code> request, we need to include the proxy in our URL. If we want to check <code>pile.bandcamp.com</code>, we need to use <code>https://bandname-proxy.herokuapp.com/https://pile.bandcamp.com</code>. In the code that looks like this:</p>
-<pre><code>const bandname = input.value.toLowerCase();
-const url = 'https://bandname-proxy.herokuapp.com/https://' + bandname + '.bandcamp.com';
+</code></pre></div><p>Now our proxy is up and running. To use it, we pass it our desired bandcamp subdomain and it returns the response. So up in our <code>.ajax()</code> request, we need to include the proxy in our URL. If we want to check <code>pile.bandcamp.com</code>, we need to use <code>https://bandname-proxy.herokuapp.com/https://pile.bandcamp.com</code>. In the code that looks like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#268bd2">const</span> bandname <span style="color:#719e07">=</span> input.value.toLowerCase();
+<span style="color:#268bd2">const</span> url <span style="color:#719e07">=</span> <span style="color:#2aa198">&#39;https://bandname-proxy.herokuapp.com/https://&#39;</span> <span style="color:#719e07">+</span> bandname <span style="color:#719e07">+</span> <span style="color:#2aa198">&#39;.bandcamp.com&#39;</span>;
 ...
 $.ajax({
-    url: url,
-    complete: function (data) {
-        response = $.parseHTML(data.responseText)[1].innerText;
+    url<span style="color:#719e07">:</span> url,
+    complete<span style="color:#719e07">:</span> <span style="color:#268bd2">function</span> (data) {
+        response <span style="color:#719e07">=</span> $.parseHTML(data.responseText)[<span style="color:#2aa198">1</span>].innerText;
     }
     ...
 });
-</code></pre>
+</code></pre></div>
     </div>
   </article>
 
