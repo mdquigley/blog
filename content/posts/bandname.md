@@ -25,7 +25,7 @@ If the page exists, you'll see the artist name in the title tag, something like 
 
 We make a `JQuery.ajax()` request with the desired URL, which will return an object with a `responseText` property. This is a string of the site's HTML content. We can use `JQuery.parseHTML()` which returns an array of the various DOM elements in the HTML content. We want the `title` property, which is the second index in the array, or `[1]`, and within that is the `innerText` key which will either include the band name we searched or "Sign Up | Bandcamp". 
 
-```
+```js
 $.ajax({
     url: url,
     complete: function (data) {
@@ -35,7 +35,7 @@ $.ajax({
 });
 ```
 So that's the majority of the actual task. Once you have that data, you can test it and set various interface elements accordingly. In our case, we test if the response includes the sign up text and either let the user know if the subdomain is available or not. If it is, we show a button that links the user to the Bandcamp Sign Up page with the name field populated.
-```
+```js
 const signup = "Signup | Bandcamp";
 ...
     bname.innerText = bandname;
@@ -54,32 +54,32 @@ CORS Anywhere is more or less good to go right off the bat. You just need to hos
 
 Basing instructions off of the [Heroku "Getting Started With Node.js"](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article and [CORS Anywhere repo](https://github.com/Rob--W/cors-anywhere)...
 
-```
-//Install heroku:
+```bash
+#Install heroku:
 brew install heroku/brew/heroku
 ```
-```
-//Login to your account:
+```bash
+#Login to your account:
 heroku login
 ```
-```
-//Clone a local copy of the CORS Anywhere repo:
+```bash
+#Clone a local copy of the CORS Anywhere repo:
 git clone git@github.com:Rob--W/cors-anywhere.git
 ```
-```
-//Create a heroku app:
+```bash
+#Create a heroku app:
 heroku create bandname-proxy
 ```
-```
-//Set the whitelist (limit requests to our site):
+```bash
+#Set the whitelist (limit requests to our site):
 heroku config:set CORSANYWHERE_WHITELIST=https://quig.info,http://quig.info
 ```
-```
-//Deploy the app:
+```bash
+#Deploy the app:
 git push heroku main
 ```
 Now our proxy is up and running. To use it, we pass it our desired bandcamp subdomain and it returns the response. So up in our `.ajax()` request, we need to include the proxy in our URL. If we want to check `pile.bandcamp.com`, we need to use `https://bandname-proxy.herokuapp.com/https://pile.bandcamp.com`. In the code that looks like this:
-```
+```js
 const bandname = input.value.toLowerCase();
 const url = 'https://bandname-proxy.herokuapp.com/https://' + bandname + '.bandcamp.com';
 ...
