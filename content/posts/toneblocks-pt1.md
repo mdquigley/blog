@@ -27,8 +27,8 @@ To get a sense of what's going on here, we're going to walk through three versio
 The [Tone.js API documentation](https://tonejs.github.io/docs/14.7.77/index.html) has lots of detailed information on what's available, as well as some example projects and real world demos/applications. To get us started, we'l try implementing a simple Synth object that that plays a note when a button is pressed.
 
 Create a project folder and a file `index.html`.  
-In our file, lets load in Tone.js from CDNJS with a `<script>` tag in the `<head>` section. Note the version and integrity hash may be different now than at the time this post was written.
-```
+In our file, lets load in Tone.js from CDNJS with a `<script>` tag in the `<head>` section. Note the version and integrity hash may be different at the time you are reading this post.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,29 +40,22 @@ In our file, lets load in Tone.js from CDNJS with a `<script>` tag in the `<head
     referrerpolicy="no-referrer">
     </script>
 </head>
-...
 ```
 Now that Tone.js is loaded into our main file, we'll be able to use it to create a synth. Lets do that in a new `<script>` tag in the `<body>` section.
-```
-<!DOCTYPE html>
-<html lang="en">
-<head>...</head>
+```html
 <body>
     <script>
         // Create synth and route output to destination
         const synth = new Tone.Synth().toDestination();
     </script>
 </body>
-...
 ```
 In the code above, we create a new variable of type const, assign it a new [`Tone.Synth()`](https://tonejs.github.io/docs/14.7.77/Synth) object, and connect the the synth's output to the system's main output (likely your speakers) using the [`toDestination()`](https://tonejs.github.io/docs/14.7.77/Synth#toDestination) method.
 
 We want the synth to play a note when we press a button. So lets create a button in the `<body>` section of the file. Then we can access the button in our `<script>` section and give it an *on click* function to trigger the synth.  
 Checking the Tone.js docs, Synth objects have a [`triggerAttackRelease()`](https://tonejs.github.io/docs/14.7.77/Synth#triggerAttackRelease) method which takes a pitch value and a duration value. We'll use 'C4' for our pitch value, which is middle C on a piano, or ~261.63 Hz. And we'll use '8n' as our duration, so the tone will play for the length of an 8th note. 
-```
-<!DOCTYPE html>
-<html lang="en">
-<head>...</head>
+
+```html
 <body>
     <!-- Create button element -->
     <button id="play">Play</button>
@@ -80,15 +73,15 @@ Checking the Tone.js docs, Synth objects have a [`triggerAttackRelease()`](https
         });
     </script>
 </body>
-...
 ```
+
 So now if you run your `index.html` file in your browser, you should see a single button with "Play" displayed. And when you press it, you should hear an 8th note of Middle C. Hello Tone! 🎵
 
 ### Hello Block
 Next, we're going to implement a Blockly workspace and print "Hello Block" when the workspace code is run. The [Blockly API documentation](https://developers.google.com/blockly/) has a breakdown of its many features, as well as examples and tools to help with creating your own environment.  
 First we'll load Blockly with a few `<script>` tags just like we did for Tone.js.
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,13 +99,9 @@ First we'll load Blockly with a few `<script>` tags just like we did for Tone.js
         <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
         <script src="https://unpkg.com/blockly/msg/en.js"></script>
 </head>
-...
 ```
 In its barest form, Blockly requires a *Workspace* on your page within which you can click and drag blocks from a *Toolbox*, a list of avilable blocks. To get this set up, we need to create a few HTML elements in our `<body>` section so that Blockly can "inject" its workspace. The example blocks we'll use in this *Toolbox* are taken from the [Blockly docs](https://developers.google.com/blockly/guides/configure/web/fixed-size).
-```
-<!DOCTYPE html>
-<html lang="en">
-<head>...</head>
+```html
 <body>
     <!-- Create button element -->
     <button id="play">Play</button>
@@ -127,15 +116,14 @@ In its barest form, Blockly requires a *Workspace* on your page within which you
 
     <script>...</script>
 </body>
-...
 ```
 Now that the elements are there, we need to "inject" Blockly into the `blocklyDiv` element and associate the `toolbox` with it. We'll do this in our main `<script>` tag inside of `<body>`
-```
+```js
 // Inject Blockly workspace
 const workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
 ```
 Next we'll create a function to run the code inside our Blockly workspace. We'll reserve the word "code" so that if the user tries to create anything  called "code" it won't cause problems.
-```
+```js
 // Create function to evaluate Blockly code
 function runCode() {
 
@@ -154,7 +142,7 @@ function runCode() {
 }
 ```
 Since we already have a button created from our *Hello Tone* section, we'll make that same button run the Blockly workspace code when it's pressed, simply by calling the `runCode()` function from the *on click* event listener.
-```
+```js
 // Add "on click" function to play note when button is pressed,
 // and run the workspace code
 button.addEventListener('click', () => {
@@ -162,8 +150,8 @@ button.addEventListener('click', () => {
     runCode();
 });
 ```
-So now your `index.html` should look like this:
-```
+So now your `index.html` should look similar to this:
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -246,7 +234,7 @@ Load the file in a browser window, you should see the **Play** button and a Bloc
 For the final section, we'll create a custom Blockly block. This block will create a new Synth object, and have an input for a MIDI note number, supply by a separate number block. When the Blockly workspace code is run, the synth will play an 8th note with the equivalent pitch of the input MIDI number.
 
 With Blockly, every block needs a definition to dictate the shape, color, inputs, text, etc. of our block, and a generator function to handle the code that is added to the workspace when the block is created. As always, consult the developer's docs when using their API. [Blockly's is thorough](https://developers.google.com/blockly/guides/create-custom-blocks/define-blocks)! We'll start by creating a file `synth.js` in our directory. And we'll define our custom block in JavaScript format (you can also use JSON).
-```
+```js
 // Define the block
 Blockly.Blocks['synth'] = { // Name it "synth"
     init: function () {
@@ -259,7 +247,7 @@ Blockly.Blocks['synth'] = { // Name it "synth"
 };
 ```
 Next we write the generator function. You'll notice this gets a little bit weird. We need to write some JavaScript code to get the pitch value from the input and check its type and range. Ultimately we want the block to create a new Synth object, read the pitch value from a seperate number block, and trigger a note. But we want the actual note triggering to happen when we click our **Play** button. In order to do that, we have to encapsulate the relevant code as a string, and return this to our workspace. That way, the instructions to create the synth and play the note are all there when the `runCode()` function is called. So in our `synth.js` file, just below our definition, the generator function looks like this:
-```
+```js
 // Generator function called when the block is dragged into the workspace
 Blockly.JavaScript['synth'] = function (block) {
 
@@ -288,12 +276,12 @@ Blockly.JavaScript['synth'] = function (block) {
 ```
 Now our custom synth block is all set. We just need to load it into our main `index.html` file and remove the old synth and trigger code (since we're doing that in the custom block now).  
 Load in the custom block in the `<head>` section below Tone.js and Blockly:
-```
+```html
 <!-- Load Custom Block -->
 <script src="synth.js"></script>
 ```
 Add the synth block to your `toolbox`:
-```
+```html
 <xml id="toolbox" style="display: none">
     <block type="math_number"></block>
     <block type="text"></block>
@@ -304,7 +292,7 @@ Add the synth block to your `toolbox`:
 ```
 Since we're handling the synth in it's own block, we can remove the original one we made and also remove the `triggerAttackRelease()` from the button's *on click* function. Instead that will all happen when we call `runCode()`.  
 The last thing to do is to have our button click start the Tone audio context. Most browsers won't allow audio to play until the user takes some kind of action. Since we're using the same button to create and trigger our audio, there could be some issues with the audio attempting to trigger before its been allowed. To avoid this, we'll call `Tone.start()` right before we run our code, and we'll give the *on click* function an asyc/await to make sure we're all set before evaluating the workspace code.
-```
+```js
 // Add "on click" function to start audio context and call runCode
 button.addEventListener('click', async () => {
     await Tone.start();
@@ -312,7 +300,7 @@ button.addEventListener('click', async () => {
 });
 ```
 And that's it! Now we have a custom synth block which takes a MIDI Note number value and plays an 8th note at the corresponding pitch when you click **Play**. The full `index.html` file should be something like:
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>

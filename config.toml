@@ -10,6 +10,7 @@ publishDir = "docs"
 	mainSection = "posts"
 	showAllPostsOnHomePage = true
 	css = ["css/custom.css"]
+	colortheme = "white"
 
 [[menu.main]]
 name = "Blog"
@@ -28,3 +29,15 @@ weight = 2
 [[params.social]]
 	name = "email"
 	link = "quig.info@gmail.com"
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "solarized-dark"
+    tabWidth = 4
