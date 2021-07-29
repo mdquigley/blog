@@ -6,7 +6,29 @@
     <description>Recent content on Mike Quigley</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 28 Jun 2021 12:43:36 -0400</lastBuildDate><atom:link href="https://quig.info/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Jul 2021 19:02:29 -0400</lastBuildDate><atom:link href="https://quig.info/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploying a Game With Webpack and Github Pages</title>
+      <link>https://quig.info/blog/posts/deploying-a-game-with-webpack-and-github-pages/</link>
+      <pubDate>Wed, 28 Jul 2021 19:02:29 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/posts/deploying-a-game-with-webpack-and-github-pages/</guid>
+      <description>Goal In this post, we&amp;rsquo;re going to look at deploying a Phaser game with Webpack and GitHub Pages. You&amp;rsquo;ll need a game already made, even if it&amp;rsquo;s super bare bones. Phaser has decent tutorials. I&amp;rsquo;d also recommend the Phaser 3 Project Template.
+Setup I recently worked up a simple browser-based JavaScript game using the Phaser 3 and Tone.js frameworks. I called it &amp;ldquo;Get To The Gig&amp;rdquo; and wrote about it here.</description>
+    </item>
+    
+    <item>
+      <title>Get To The Gig</title>
+      <link>https://quig.info/blog/posts/get-to-the-gig/</link>
+      <pubDate>Wed, 28 Jul 2021 16:04:49 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/posts/get-to-the-gig/</guid>
+      <description>Get To The Gig is a simple browser based game written in JavaScript, built with the Phaser 3 and Tone.js frameworks.
+Check out the work-in-progress demo
+Source code on GitHub
+About I wanted to build a game that utilized music in an interactive way, and in which the music itself was composed via code as oppposed to only playing back audio files. I thought of a quest style game in which the player picks up instruments and a corresponding musical layer is added to the soundtrack.</description>
+    </item>
+    
     <item>
       <title>Toneblocks Pt1</title>
       <link>https://quig.info/blog/posts/toneblocks-pt1/</link>

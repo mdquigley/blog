@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>webpack on Mike Quigley</title>
+    <link>https://quig.info/blog/tags/webpack/</link>
+    <description>Recent content in webpack on Mike Quigley</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 28 Jul 2021 19:02:29 -0400</lastBuildDate><atom:link href="https://quig.info/blog/tags/webpack/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploying a Game With Webpack and Github Pages</title>
+      <link>https://quig.info/blog/posts/deploying-a-game-with-webpack-and-github-pages/</link>
+      <pubDate>Wed, 28 Jul 2021 19:02:29 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/posts/deploying-a-game-with-webpack-and-github-pages/</guid>
+      <description>Goal In this post, we&amp;rsquo;re going to look at deploying a Phaser game with Webpack and GitHub Pages. You&amp;rsquo;ll need a game already made, even if it&amp;rsquo;s super bare bones. Phaser has decent tutorials. I&amp;rsquo;d also recommend the Phaser 3 Project Template.
+Setup I recently worked up a simple browser-based JavaScript game using the Phaser 3 and Tone.js frameworks. I called it &amp;ldquo;Get To The Gig&amp;rdquo; and wrote about it here.</description>
+    </item>
+    
+  </channel>
+</rss>

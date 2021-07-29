@@ -2,28 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://quig.info/blog/posts/deploying-a-game-with-webpack-and-github-pages/</loc>
+    <lastmod>2021-07-28T19:02:29-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/development/</loc>
+    <lastmod>2021-07-28T19:02:29-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/game-design/</loc>
+    <lastmod>2021-07-28T19:02:29-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/games/</loc>
+    <lastmod>2021-07-28T19:02:29-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/github-pages/</loc>
+    <lastmod>2021-07-28T19:02:29-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/javascript/</loc>
+    <lastmod>2021-07-28T19:02:29-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/</loc>
+    <lastmod>2021-07-28T19:02:29-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/phaser/</loc>
+    <lastmod>2021-07-28T19:02:29-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/posts/</loc>
+    <lastmod>2021-07-28T19:02:29-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/</loc>
+    <lastmod>2021-07-28T19:02:29-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/webpack/</loc>
+    <lastmod>2021-07-28T19:02:29-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/game-audio/</loc>
+    <lastmod>2021-07-28T16:04:49-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/posts/get-to-the-gig/</loc>
+    <lastmod>2021-07-28T16:04:49-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/pixel-art/</loc>
+    <lastmod>2021-07-28T16:04:49-04:00</lastmod>
+  </url><url>
+    <loc>https://quig.info/blog/tags/tonejs/</loc>
+    <lastmod>2021-07-28T16:04:49-04:00</lastmod>
+  </url><url>
     <loc>https://quig.info/blog/tags/blockly/</loc>
     <lastmod>2021-06-28T12:43:36-04:00</lastmod>
   </url><url>
-    <loc>https://quig.info/blog/</loc>
-    <lastmod>2021-06-28T12:43:36-04:00</lastmod>
-  </url><url>
     <loc>https://quig.info/blog/tags/music-technology/</loc>
-    <lastmod>2021-06-28T12:43:36-04:00</lastmod>
-  </url><url>
-    <loc>https://quig.info/blog/posts/</loc>
-    <lastmod>2021-06-28T12:43:36-04:00</lastmod>
-  </url><url>
-    <loc>https://quig.info/blog/tags/</loc>
     <lastmod>2021-06-28T12:43:36-04:00</lastmod>
   </url><url>
     <loc>https://quig.info/blog/tags/thesis/</loc>
     <lastmod>2021-06-28T12:43:36-04:00</lastmod>
   </url><url>
     <loc>https://quig.info/blog/posts/toneblocks-pt1/</loc>
-    <lastmod>2021-06-28T12:43:36-04:00</lastmod>
-  </url><url>
-    <loc>https://quig.info/blog/tags/tonejs/</loc>
     <lastmod>2021-06-28T12:43:36-04:00</lastmod>
   </url><url>
     <loc>https://quig.info/blog/tags/web-audio/</loc>

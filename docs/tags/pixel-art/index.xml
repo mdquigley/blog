@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pixel art on Mike Quigley</title>
+    <link>https://quig.info/blog/tags/pixel-art/</link>
+    <description>Recent content in pixel art on Mike Quigley</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 28 Jul 2021 16:04:49 -0400</lastBuildDate><atom:link href="https://quig.info/blog/tags/pixel-art/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Get To The Gig</title>
+      <link>https://quig.info/blog/posts/get-to-the-gig/</link>
+      <pubDate>Wed, 28 Jul 2021 16:04:49 -0400</pubDate>
+      
+      <guid>https://quig.info/blog/posts/get-to-the-gig/</guid>
+      <description>Get To The Gig is a simple browser based game written in JavaScript, built with the Phaser 3 and Tone.js frameworks.
+Check out the work-in-progress demo
+Source code on GitHub
+About I wanted to build a game that utilized music in an interactive way, and in which the music itself was composed via code as oppposed to only playing back audio files. I thought of a quest style game in which the player picks up instruments and a corresponding musical layer is added to the soundtrack.</description>
+    </item>
+    
+  </channel>
+</rss>
