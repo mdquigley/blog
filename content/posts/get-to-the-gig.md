@@ -46,6 +46,9 @@ Some possible future development may include:
     - NPCs that interfere with the quest
     - Lasers? magic bolts? to counter NPCs
 
+## Deployment
+I wrote a short tutorial on [deploying the game with Webpack and GitHub pages](../deploying-a-game-with-webpack-and-github-pages).
+
 ## Screenshots
 ### Title Scene
 ![](../../images/gettothegig-title.png)
