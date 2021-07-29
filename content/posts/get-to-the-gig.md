@@ -3,7 +3,7 @@ title: "Get To The Gig"
 date: 2021-07-28T16:04:49-04:00
 draft: false
 author: Mike Quigley
-tags: ["games", "game audio", "game design", "development", "phaser", "tonejs", "pixel art"]
+tags: ["games", "game audio", "game design", "development", "phaser", "tonejs", "pixel art", "javascript"]
 ---
 
 ![](../../images/gettothegig.png)
@@ -37,7 +37,7 @@ Some possible future development may include:
 - more complexity in the instrumental parts
 - more complexity in song structure (ie. verse, chorus, bridge for longer levels)
 - songs with varying styles to match level vibes
-- tone.js translations of friends' songs (with permission)
+- tone.js transcriptions (covers) of friends' songs (with permission)
 - custom sprites for player and items
 - Stakes!
     - a countdown to gig time
@@ -52,35 +52,3 @@ Some possible future development may include:
 
 ### Level01
 ![](../../images/gettothegig-play.gif)
-
-## Development
-GTTG is based on the [Phaser 3 Webpack Project Template](https://github.com/photonstorm/phaser3-project-template), which allowed me to get up and running pretty quickly. The template sets you up to utilize a few Node.js modules, including `webpack`, and `babel`. This helps to begin developing quickly with a local server and makes bundling a final distribution for hosting via GitHub pages super easy.  
-
-| Command | Description |
-|---------|-------------|
-| `npm install` | Install project dependencies |
-| `npm start` | Build project and open web server running project |
-| `npm run build` | Builds code bundle with production settings, publishes to 'docs' for hosting |
-
-### Explanation of npm run build -> webpack commands
-
-### Customize Webpack for Hosting on GitHub Pages
-GitHub Pages is a free service that GitHub offers for hosting static sites. It's great, I use it for this blog, my main [portfolio site](https://quig.info), my [band](https://washerfacts.com), volunteer orgs, etc.  
-
-We want to use `webpack` to bundle the game files into a distribution folder. This way the playable game files are organized and separate from our development files, and can be used to serve the game with a simple web server. Since GitHub Pages will serve a site from either the repo's root level, or a folder called `docs`, we need to tell `webpack` to write the distribution files to a folder named `docs` instead of the default name `dist`.  
-
-We do this by adding some customization to the `webpack/prod.js` file provided with the Phaser 3 Webpack Project Template.  
-```js
-module.exports = merge(base, {
-  mode: "production",
-  output: {
-    filename: "bundle.min.js",
-    // change output folder name to docs for hosting on github pages
-    path: path.resolve(__dirname, '../docs')
-  },
-}
-```
-Now when we run `npm run build`, we'll see a folder named `docs` generated in our repo with all the necessary game files.  
-![](../../images/gettothegig-docs.png)
-
-### Enable Pages for docs folder
