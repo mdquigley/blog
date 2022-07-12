@@ -27,6 +27,10 @@ weight = 2
 	link = "https://github.com/mdquigley"
 
 [[params.social]]
+	name = "twitter"
+	link = "https://twitter.com/quig_m"
+
+[[params.social]]
 	name = "email"
 	link = "quig.info@gmail.com"
 
